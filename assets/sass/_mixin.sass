@@ -1,0 +1,43 @@
+@mixin after-line ($color)
+   &:hover
+      &::after
+         width: 100%
+   &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 0
+      height: 2px
+      background: $color
+      transition: all 0.3s ease
+
+
+@mixin absolute-align-center
+   position: absolute
+   top: 50%
+   left: 50%
+   transform: translate(-50%, -50%)
+
+
+@mixin el-stroke-button ($colorText, $colorTextHover, $colorBorder, $colorBorderHover, $colorBG)
+   .el-stroke-button
+      font-family: 'Jost'
+      font-size: 1.13rem
+      font-weight: 500
+      letter-spacing: .05rem
+      line-height: 2rem
+      color: $colorText
+      display: inline-block
+      border: 2px solid $colorBorder
+      padding: .413em 1.9em
+      text-decoration: none
+      transition: all 0.3s ease
+      background: none
+      opacity: 1
+      visibility: visible
+      &:hover
+         text-decoration: none
+         color: $colorTextHover
+         background: $colorBG
+         border: 2px solid $colorBorderHover

@@ -1,0 +1,182 @@
+@import '../mixin';
+@import '../vars';
+
+@import '../elements'
+
+
+.myaccount_registration-active
+   .myaccount-animation-block
+   .myaccount_authorization-login-from
+      margin-top: -410px
+      opacity: 0
+   .myaccount_registration-login-from
+      margin-top: 0
+      opacity: 1
+
+
+
+.myaccount_authorization
+   &__center
+      justify-content: center
+      display: flex
+      width: 100%
+      .myaccount-animation-block
+         width: 480px
+         display: block
+         .myaccount-animation-block__tab-login
+            overflow: hidden
+         .myaccount-animation-block__tab-registration
+            overflow: hidden
+   &__nopadding
+      padding-bottom: 0 !important
+
+
+
+.myaccount_authorization-login-from
+   padding: 1.6rem 1.6rem 2.66rem 
+   text-align: center
+   width: 100%
+   display: flex
+   flex-direction: column
+   align-items: center
+   margin-bottom: 5rem
+   opacity: 1
+   transition: all 1s ease
+   .woocommerce-form-login
+      width: 100%
+      border: none !important
+      padding: 0 !important
+      margin: 0 !important
+      border-radius: 0 !important
+      .input-username
+         margin-bottom: 1.6rem
+      .input-password
+         margin-bottom: 1.6rem
+      &__remembers-lost
+         display: flex
+         justify-content: space-between
+         &__remember
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            color: $dark-light
+            margin-left: 0.7rem
+         .lost_password
+            color: $blue
+            text-decoration: underline
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+      .el-form__button
+         width: 100%
+         margin-top: 1.6rem
+         margin-bottom: 1.6rem
+      .myaccount_woocommerce-form-login__no-accaount
+         width: 100%
+         display: flex
+         align-items: center
+         text-align: center
+         justify-content: center
+         p
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            color: $dark-light
+            margin-right: 0.6rem
+         button
+            color: $blue
+            text-decoration: underline
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            background: none
+            border: none
+
+
+.myaccount_registration-login-from
+   padding: 1.6rem 1.6rem 2.66rem 
+   text-align: center
+   width: 100%
+   display: flex
+   flex-direction: column
+   align-items: center
+   transition: all 1s ease
+   opacity: 0
+   margin-top: -570px
+   margin-bottom: 5rem
+   .woocommerce-form-register
+      border: none !important
+      padding: 0 !important
+      margin: 0 !important
+      border-radius: 0 !important
+      .input-username
+         margin-bottom: 1.6rem
+      .input-email
+         margin-bottom: 1.6rem
+      .input-password
+         margin-bottom: 1.6rem
+      &__password-will-send
+         width: 100%
+         text-align: left
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         color: $dark-light
+         margin-bottom: 1.6rem
+      &__submit-but
+         .woocommerce-privacy-policy-text
+            width: 100%
+            text-align: left
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            color: $dark-light
+         .el-form__button
+            width: 100%
+            margin-top: 1.6rem
+            margin-bottom: 1.6rem
+      .myaccount_woocommerce-form-register__have-accaount
+         width: 100%
+         display: flex
+         align-items: center
+         text-align: center
+         justify-content: center
+         p
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            color: $dark-light
+            margin-right: 0.6rem
+         button
+            color: $blue
+            text-decoration: underline
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            background: none
+            border: none
+
+
+
+
+.myaccount_lost_password
+   &__tabs
+      width: 480px
+      &__content
+         margin-bottom: 5rem
+         .woocommerce-ResetPassword
+            .regular-fiveteen
+               margin-bottom: 1.6rem
+            .input-email
+               margin-bottom: 1.6rem
+            &__submit
+               width: 100%
+               text-align: center

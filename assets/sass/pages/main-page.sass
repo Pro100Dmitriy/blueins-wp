@@ -1,0 +1,681 @@
+@import '../mixin';
+@import '../vars';
+
+.main
+   overflow: hidden
+   
+   
+.slider
+   height: 980px
+   width: 100%
+   @media screen and ( max-width: 992px )
+      height: 900px
+   @media screen and ( max-width: 768px )
+      height: 800px
+   &:hover
+      .slick-slider
+         .slick-prev
+            left: 6%
+            opacity: 1
+         .slick-next
+            right: 6%
+            opacity: 1
+   .slick-slider
+      position: relative
+      .slick-arrow
+         position: absolute
+         top: 45%
+         transform: translateY(-50%)
+         z-index: 1
+         width: 2.8rem
+         height: 2.8rem
+         background: rgba($light, 0.5)
+         border-radius: 50%
+         display: flex
+         justify-content: center
+         align-items: center
+         transition: all 0.5s ease
+         opacity: 0
+         &::before
+            content: none
+      .slick-prev
+         left: 0%
+      .slick-next
+         right: 0%
+      .slick-dots
+         position: absolute
+         bottom: 2.6rem
+         left: 2.6rem
+         text-align: left
+         width: 90%
+         &>li
+            margin: 0 0.5rem 0 0
+            button
+               width: 0.6rem
+               height: 0.6rem
+               background: rgba($light, 0.4)
+               border-radius: 50%
+               transition: all 0.3s ease
+               margin: 0
+               padding: 0
+               &::before
+                  content: none
+         .slick-active
+            button
+               width: 0.7rem
+               height: 0.7rem
+               background: rgba($white, 1)
+      .slick-current
+         .title-slider
+            top: 0 !important
+            opacity: 1 !important
+         .description__text
+            top: 0 !important
+            opacity: 1 !important
+         .line-button
+            top: 0 !important
+            opacity: 1 !important
+      &__item
+         max-height: 980px
+         position: relative
+         overflow: hidden
+         &__img
+            width: 100%
+            @media screen and ( max-width: 1500px )
+               width: auto
+               height: 1082px
+            @media screen and ( max-width: 992px )
+               width: auto
+               height: 900px
+            @media screen and ( max-width: 768px )
+               width: auto
+               height: 800px
+            @media screen and ( max-width: 480px )
+               transform: translateX(-50%)
+         &__content
+            position: absolute
+            top: 45%
+            left: 50%
+            transform: translate(-50%,-50%)
+            width: 1200px
+            @media screen and ( max-width: 1250px )
+               top: 50%
+               width: 50pc
+            @media screen and ( max-width: 992px )
+               top: 50%
+               width: 40pc
+            @media screen and ( max-width: 768px )
+               text-align: center
+               width: 100%
+               padding: 0 2rem
+            .h2-cover
+               position: relative
+               height: 11rem
+               width: 100%
+               overflow: hidden
+               .title-slider
+                  position: absolute
+                  top: 100%
+                  left: 0
+                  color: $white
+                  width: 64.5rem
+                  transition: all 0.5s ease
+                  transition-delay: 0.5s
+                  opacity: 0
+                  @media screen and ( max-width: 992px )
+                     white-space: normal
+                     width: 100%
+                  @media screen and ( max-width: 480px )
+                     font-size: 2.4rem
+            .description
+               padding: 2.8rem 0 0 1.8rem
+               max-width: 40.6rem
+               @media screen and ( max-width: 768px )
+                  text-align: center
+                  max-width: 100%
+                  padding: 2.8rem 0 0 0
+               .description__text-cover
+                  position: relative
+                  height: 4rem
+                  width: 100%
+                  overflow: hidden
+                  margin-bottom: 2.5rem
+                  @media screen and ( max-width: 480px )
+                     height: 6rem
+                  .description__text
+                     @media screen and ( max-width: 768px )
+                        text-align: center
+                        width: 100%
+                     @media screen and ( max-width: 480px )
+                        font-size: 1.2rem
+                     position: absolute
+                     top: 100%
+                     color: $white
+                     transition: all 0.6s ease
+                     transition-delay: 0.6s
+                     opacity: 0
+               .line-button-cover
+                  height: 3rem
+                  width: 100%
+                  overflow: hidden
+                  .line-button
+                     color: $white
+                     text-decoration: none
+                     position: relative
+                     top: 100%
+                     padding: 0.8rem 0
+                     font-size: 1.13rem
+                     font-family: 'Jost'
+                     font-weight: 500
+                     letter-spacing: 0.05rem
+                     line-height: 2rem
+                     transition: all 0.7s ease
+                     transition-delay: 0.7s
+                     opacity: 0
+                  .line-button-white
+                     &:hover
+                        color: $light
+                        &::after
+                           width: 100%
+                     &::after
+                        content: ''
+                        position: absolute 
+                        bottom: 0
+                        left: 0
+                        width: 0
+                        height: 2px
+                        background: $white
+                        transition: all 0.3s ease
+                  .line-button-dark
+                     &:hover
+                        color: $dark
+                        &::after
+                           width: 100%
+                     &::after
+                        content: ''
+                        position: absolute 
+                        bottom: 0
+                        left: 0
+                        width: 0
+                        height: 2px
+                        background: $dark
+                        transition: all 0.3s ease
+
+
+      
+.category
+   padding: 6rem 0
+   border-bottom: 1px solid $line_gray
+   &__cart
+      position: relative
+      max-width: 350px
+      height: 537px
+      overflow: hidden
+      background: $blue
+      @media screen and ( max-width: 992px )
+         height: 400px
+      @media screen and ( max-width: 768px )
+         max-width: 100%
+         height: 350px
+         margin-bottom: 2rem
+      &:hover
+         .fill-button
+            background: $light
+         .category__cart__img
+            transform: scale(1.1)
+      &__img
+         margin: 0 auto
+         height: 100%
+         transition: all 1.5s ease
+         @media screen and ( max-width: 768px )
+            width: 100%
+            height: auto
+      &__text
+         width: 80%
+         position: absolute
+         z-index: 2
+         top: 50%
+         left: 50%
+         transform: translate(-50%, -50%)
+         text-align: center
+         .cart-title
+            color: $white
+         .cart-description
+            margin-top: 3.5rem
+            color: $white
+         .fill-button-white
+            margin-top: 3.5rem
+
+
+   
+.section-title
+   width: 100%
+   text-align: center
+   margin-bottom: 3rem
+   .section-text__title
+      margin-bottom: 1rem
+      display: block
+   .seciton-text__description
+      margin: 0 auto
+      max-width: 650px
+
+
+.big-products
+   padding: 6rem 0
+   &__list
+      display: flex
+      justify-content: space-between
+      flex-direction: row
+      width: 100%
+      transition: all 0.3s ease
+      @media screen and ( max-width: 768px )
+         flex-wrap: wrap
+         justify-content: center
+      &__item
+         transition: all 0.3s ease
+         @media screen and ( max-width: 768px )
+            margin-bottom: 2rem
+
+
+.small-product-cart
+   max-width: 270px
+   .product-cart__top
+      width: 270px
+      height: 270px
+      @media screen and ( max-width: 1200px )
+         width: 210px
+         height: 210px
+      @media screen and ( max-width: 992px )
+         width: 210px
+         height: 210px
+      @media screen and ( max-width: 768px )
+         width: 360px
+         height: 360px
+      @media screen and ( max-width: 450px )
+         width: 280px
+         height: 280px
+      @media screen and ( max-width: 480px )
+         width: 88vw
+         height: 88vw
+
+
+.product-cart
+   max-width: 360px
+   &:hover
+      .product-cart__top
+         margin-top: -8px
+         margin-bottom: 15px
+         .fast-view
+            bottom: 0
+         .figure-product
+            &__first
+               //transform: translate(-50%, -50%) scale(1.3)
+               //opacity: 0
+            &__second
+               //transform: translate(-50%, -50%) scale(1.1)
+      .product-cart__bottom
+         &__left
+            &__links
+               .price
+                  margin-top: -30px
+               .view-product-link
+                  margin-top: -30px
+   &__top
+      position: relative
+      width: 360px
+      height: 360px
+      overflow: hidden
+      margin-bottom: 7px
+      transition: 0.3s ease-out
+      @media screen and ( max-width: 1200px )
+         width: 300px
+         height: 300px
+      @media screen and ( max-width: 992px )
+         width: 210px
+         height: 210px
+      @media screen and ( max-width: 768px )
+         width: 360px
+         height: 360px
+      @media screen and ( max-width: 450px )
+         width: 280px
+         height: 280px
+      @media screen and ( max-width: 480px )
+         width: 88vw
+         height: 88vw
+      .new-icon
+         position: absolute
+         top: 1rem
+         left: 1rem
+         z-index: 3
+         font-family: 'Jost'
+         font-size: 0.8rem
+         letter-spacing: 0.05rem
+         color: $dark
+         background: $white
+         border-radius: 50px
+         padding: 0.42em 1.2em
+      .product-cart__list-icon
+         &:hover
+            button
+               background: $white
+               svg
+                  path
+                     fill: $dark
+            .cart-icon
+               top: calc( 1rem + 1rem + 35px )
+               opacity: 1
+         button
+            border: none
+            background: none
+            transition: all 0.3s ease
+            &:hover
+               background: $light
+            svg
+               path
+                  fill: $dark
+                  transition: all 0.3s ease
+         .like-icon
+            position: absolute
+            top: 1rem
+            right: 1rem
+            z-index: 4
+            border-radius: 50px
+            padding: 1px
+         .cart-icon
+            position: absolute
+            top: 1rem
+            right: 1rem
+            z-index: 3
+            border-radius: 50px
+            padding: 1px
+            opacity: 0
+            &::before
+               content: ''
+               width: 35px
+               height: 50px
+               position: absolute
+               top: -35px
+      .figure-product
+         width: 100%
+         height: 100%
+         position: relative
+         &:hover
+            .figure-product__first
+               transform: translate(-50%, -50%) scale(1.15)
+               opacity: 0
+            .figure-product__second
+               transform: translate(-50%, -50%) scale(1.1)
+         .product-img
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%) scale(1.03)
+            width: 100%
+            transition: all 0.5s ease
+         &__first
+            z-index: 2
+         &__second
+            z-index: 1
+      .fast-view
+         position: absolute
+         bottom: -37px
+         left: 0
+         z-index: 3
+         display: inline-block
+         width: 100%
+         text-align: center
+         text-decoration: none
+         color: $dark
+         background: rgba($white, 0.4)
+         padding: 0.5em 0
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         transition: all 0.3s ease
+   &__bottom
+      display: flex
+      justify-content: space-between
+      flex-direction: row
+      &__left
+         .product-title
+            margin-bottom: 0.3rem
+         &__links
+            overflow: hidden
+            height: 28px
+            margin-bottom: 0.5rem
+            .price
+               color: $dark-light
+               margin-top: 0
+               transition: all 0.3s ease
+            .view-product-link
+               color: $dark-light
+               text-decoration: none
+               margin-top: 0
+               transition: all 0.3s ease
+         .product-color
+            display: flex
+            &__item
+               margin-right: 0.66rem
+               .color-select-circle
+                  width: 18px
+                  height: 18px
+                  display: inline-block
+                  border-radius: 100px
+                  position: relative
+                  transition: all 0.2s ease
+                  &::before
+                     transition: all 0.2s ease
+                     content: ''
+                     @include absolute-align-center
+                     width: 24px
+                     height: 24px
+                     border: 1px solid $gray
+                     border-radius: 100px
+                     opacity: 0
+                  &:hover
+                     &::before
+                        opacity: 1
+               .color-select
+                  &::after
+                     content: ''
+                     @include absolute-align-center
+                     width: 24px
+                     height: 24px
+                     border: 1px solid $dark
+                     border-radius: 100px
+         .additing-block-information
+            max-width: 400px
+            .block-description
+               margin: 3rem 0
+               height: 95px
+               overflow: hidden
+            .stroke-button
+               border: 2px solid $dark
+               color: $dark
+               white-space: nowrap
+               i
+                  font-style: normal
+               &:hover
+                  color: $white
+                  background: $dark
+      &__right
+
+
+.feedback
+   background: $bg-blue
+   padding: 5rem 0 4rem
+   .section-title
+      margin-bottom: 2.8rem
+   &__slider
+      position: relative
+      &:hover
+         .feedback__slider__text
+            .slick-prev
+               left: 15%
+               opacity: 1
+            .slick-next
+               right: 15%
+               opacity: 1
+      &__img
+         .slick-list
+            width: 450px
+            margin: 0 auto
+            @media screen and ( max-width: 500px )
+               width: 180px
+         .feedback__img__el
+            height: 140px
+            .img-cover
+               display: block
+               width: 80px
+               height: 80px
+               border-radius: 50%
+               overflow: hidden
+               position: relative
+               top: 50%
+               left: 50%
+               transform: translate(-50%, -50%)
+               transition: all 0.5s ease
+               &__img
+                  position: absolute
+                  top: 50%
+                  left: 50%
+                  transform: translate(-50%, -50%)
+                  width: 150%
+         .slick-current
+            .img-cover
+               width: 115px !important
+               height: 115px !important
+               box-shadow: 0 3px 6px rgba($dark, 0.3)
+      &__text
+         margin: 0
+         position: initial
+         .slick-arrow
+            position: absolute
+            top: 23%
+            z-index: 1
+            width: 2.8rem
+            height: 2.8rem
+            background: rgba($light, 0.5)
+            border-radius: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+            transition: all 0.5s ease
+            opacity: 0
+            &::before
+               content: none
+         .slick-prev
+            left: 0%
+         .slick-next
+            right: 0%
+         .slick-dots
+            position: absolute
+            bottom: 0
+            left: 0
+            text-align: center
+            &>li
+               margin: 0 0.5rem 0 0
+               button
+                  width: 0.6rem
+                  height: 0.6rem
+                  background: rgba($dark, 0.4)
+                  border-radius: 50%
+                  transition: all 0.3s ease
+                  margin: 0
+                  padding: 0
+                  &::before
+                     content: none
+            .slick-active
+               button
+                  width: 0.7rem
+                  height: 0.7rem
+                  background: rgba($dark, 1)
+         .feedback__text__el
+            text-align: center
+            .el-name
+               max-width: 600px
+               margin: 0 auto 1.8rem
+               color: $dark
+               display: block
+            .el-description
+               color: $dark-light
+               display: block
+               max-width: 600px
+               margin: 0 auto 3.2rem
+
+
+.small-products
+   padding: 6rem 0
+   &__list
+      display: flex
+      justify-content: space-between
+      flex-direction: row
+      width: 100%
+      @media screen and ( max-width: 992px )
+         flex-wrap: wrap
+         justify-content: center
+      &__item
+         width: 270px
+         @media screen and ( max-width: 1200px )
+            width: auto
+         @media screen and ( max-width: 992px )
+            margin: 1.5rem
+
+
+.about
+   padding: 6rem 0 1rem 0
+   &__content
+      &__img-cover
+         width: 100%
+         height: 680px
+         display: block
+         position: relative
+         overflow: hidden
+         @media screen and ( max-width: 992px )
+            height: 450px
+         &__img
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: 100%
+            @media screen and ( max-width: 768px )
+               width: 100%
+               height: auto
+      &__text
+         display: flex
+         flex-direction: row
+         justify-content: space-around
+         margin-top: -80px
+         position: relative
+         z-index: 1
+         @media screen and ( max-width: 768px )
+            flex-direction: column
+            align-items: center
+         .text-box
+            text-align: center
+            width: 310px
+            height: 160px
+            background: $white
+            box-shadow: 0 3px 6px rgba($dark, 0.16)
+            display: flex
+            align-items: center
+            justify-content: center
+            @media screen and ( max-width: 1200px )
+               width: 25%
+               padding: 1rem
+            @media screen and ( max-width: 992px )
+               width: 25%
+               height: 120px
+               p
+                  font-size: 1.15rem
+            @media screen and ( max-width: 768px )
+               width: 80%
+               height: 130px
+               margin-bottom: 2rem
+               p
+                  font-size: 1.2rem
+         .text-right
+            @media screen and ( max-width: 768px )
+               display: none

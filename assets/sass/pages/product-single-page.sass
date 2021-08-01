@@ -1,0 +1,703 @@
+@import '../mixin';
+@import '../vars';
+
+@import '../elements'
+
+
+.product-single__header__bottom
+   border-bottom: 1px solid $line_gray
+   .main-menu__item
+      &>a
+         color: $dark
+         &::after
+            background: $dark !important
+   .user-page__links
+      li
+         a
+            color: $dark
+   svg
+      path
+         fill: $dark !important
+
+.small-container
+   max-width: 780px
+   margin: 0 auto
+   @media screen and ( max-width: 992px )
+      max-width: 720px
+      padding-right: 15px
+      padding-left: 15px
+   @media screen and ( max-width: 768px )
+      max-width: 540px
+      padding-right: 15px
+      padding-left: 15px
+   @media screen and ( max-width: 325px )
+      padding-right: 0
+      padding-left: 0
+
+.media-small-container
+   @media screen and ( max-width: 500px )
+      padding-right: 0 !important
+      padding-left: 0 !important
+   
+.content-d-flex-center
+   display: flex
+   justify-content: center
+   align-items: center   
+
+
+.single-product-container
+   max-width: 1440px
+   margin: 0 auto
+   @media screen and ( max-width: 1450px )
+      max-width: 1140px
+      padding-right: 15px
+      padding-left: 15px
+   @media screen and ( max-width: 992px )
+      max-width: 720px
+      .d-flex
+         flex-direction: column
+   @media screen and ( max-width: 768px )
+      max-width: 720px
+   @media screen and ( max-width: 576px )
+      max-width: 540px
+
+   
+.information-product
+   border-bottom: 1px solid $line_gray
+   width: 100%
+   //background: $blue-light
+   position: relative
+   padding: 188px 0 100px
+   @media screen and ( max-width: 500px )
+      padding: 73px 0 100px
+   &__details
+      padding: 3rem 0 0 3rem
+      z-index: 3
+      position: relative
+      @media screen and ( max-width: 992px )
+         padding: 3rem 0 0 0
+      .medium-fiveteen, .lights-fiveteen
+         letter-spacing: 0
+      .details__breadcrumbs
+         &__list
+            display: flex
+            flex-direction: row
+            align-items: center
+            &__item
+               position: relative
+               a
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+                  color: $dark-light
+                  &::after
+                     content: '/'
+                     margin: 0 4px
+               &:last-child
+                  a
+                     font-weight: 500
+                     &::after
+                        content: ''
+      .details__h1
+         width: 500px
+         margin-bottom: 2rem
+         @media screen and ( max-width: 1450px )
+            width: 100%
+      .details__price
+         display: flex
+         flex-direction: row
+         align-items: center
+         color: $dark-light
+         .woocommerce-Price-amount
+            bdi
+               font-size: 1.13rem
+               font-family: 'Jost'
+               font-weight: 300
+               letter-spacing: 0.05rem
+               line-height: 2rem
+         del
+            .woocommerce-Price-amount
+               bdi
+                  margin-right: 1.33rem
+         ins
+            text-decoration: none !important
+            .woocommerce-Price-amount
+               bdi
+                  margin-right: 1.33rem
+         .percant-price
+            .onsale
+               margin-left: 1.33rem
+               color: $red
+               border: 1px solid $red
+               border-radius: 50px
+               padding: 0.27rem 0.75rem
+      .variations_form
+         .variations
+            &__selects
+               display: none
+            .details__colors
+               margin: 1.66rem 0
+               &__name
+                  display: flex
+                  margin-bottom: 1rem
+                  p
+                     color: $dark
+                     margin-right: .5rem
+                  &__value
+                     color: $dark-light
+               &__list
+                  margin-top: 0.5rem
+                  display: flex
+                  padding: 1rem 0
+                  border-top: 1px solid $line_gray
+                  border-bottom: 1px solid $line_gray
+                  .details__razmer__list__item
+                     margin-right: 0.8rem
+                     transition: all 0.3s ease
+                     position: relative
+                     &:hover
+                        &::before
+                           top: -13px
+                           opacity: 1
+                           visibility: visible
+                        &::after
+                           top: -44px
+                           opacity: 1
+                           visibility: visible
+                     &::before
+                        position: absolute
+                        top: -19px
+                        left: 0
+                        content: ""
+                        width: 0
+                        height: 0
+                        border-left: .5rem solid transparent
+                        border-right: .5rem solid transparent
+                        border-bottom: .5rem solid #17191a
+                        background: none
+                        border-radius: 2px
+                        transform: rotate(180deg) translateX(-50%)
+                        opacity: 0
+                        visibility: hidden
+                        transition: all 0.3s ease
+                     &::after
+                        position: absolute
+                        top: -50px
+                        left: 50%
+                        transform: translateX(-50%)
+                        content: attr(name)
+                        background: rgba(#17191a, 0.9)
+                        color: #fff
+                        font-size: .9rem
+                        line-height: .9rem
+                        font-family: Jost
+                        font-weight: 400
+                        letter-spacing: .05rem
+                        box-shadow: 0 10px 14px rgba( $dark, 0.25 )
+                        padding: .6rem
+                        border-radius: 4px
+                        opacity: 0
+                        visibility: hidden
+                        transition: all 0.3s ease
+                     .details-select-square
+                        transition: all 0.3s ease
+                        width: 28px
+                        height: 28px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        border-radius: 2px
+                        border: 1px solid $gray
+                        color: $dark-light
+                        font-family: 'Jost'
+                        font-size: 1rem
+                        position: relative
+                        cursor: pointer
+                        &:hover
+                           border: 1px solid $dark
+                     .element-select
+                        border: 1px solid $dark
+                  &__item
+                     margin-right: 0.8rem
+                     transition: all 0.3s ease
+                     position: relative
+                     &:hover
+                        &::before
+                           top: -13px
+                           opacity: 1
+                           visibility: visible
+                        &::after
+                           top: -44px
+                           opacity: 1
+                           visibility: visible
+                     &::before
+                        position: absolute
+                        top: -19px
+                        left: 0
+                        content: ""
+                        width: 0
+                        height: 0
+                        border-left: .5rem solid transparent
+                        border-right: .5rem solid transparent
+                        border-bottom: .5rem solid #17191a
+                        background: none
+                        border-radius: 2px
+                        transform: rotate(180deg) translateX(-50%)
+                        opacity: 0
+                        visibility: hidden
+                        transition: all 0.3s ease
+                     &::after
+                        position: absolute
+                        top: -50px
+                        left: 50%
+                        transform: translateX(-50%)
+                        content: attr(name)
+                        background: rgba(#17191a, 0.9)
+                        color: #fff
+                        font-size: .9rem
+                        line-height: .9rem
+                        font-family: Jost
+                        font-weight: 400
+                        letter-spacing: .05rem
+                        box-shadow: 0 10px 14px rgba( $dark, 0.25 )
+                        padding: .6rem
+                        border-radius: 4px
+                        opacity: 0
+                        visibility: hidden
+                        transition: all 0.3s ease
+                     .details-select-circle
+                        transition: all 0.3s ease
+                        width: 28px
+                        height: 28px
+                        display: inline-block
+                        border-radius: 100px
+                        position: relative
+                        &::after
+                           content: ''
+                           @include absolute-align-center
+                           width: 34px
+                           height: 34px
+                           border: 1px solid $dark
+                           border-radius: 100px
+                           transition: all 0.3s ease
+                           opacity: 0
+                        &:hover
+                           &::after
+                              opacity: 1
+                     .element-select
+                        &::after
+                           opacity: 1
+      .product_meta
+         margin: 1.66rem 0
+         .woocommerce-product-attributes
+            display: flex
+            margin-bottom: 1.66rem
+            flex-wrap: wrap
+            .woocommerce-product-attributes-item
+               display: flex
+               margin-right: 2rem
+               .group-title
+                  margin-right: 0.5rem
+         .woocommerce-product-meta
+            display: flex
+            flex-wrap: wrap
+            .woocommerce-product-meta__item
+               display: flex
+               margin-right: 2rem
+               .group-title
+                  margin-right: 0.5rem
+               .posted_in
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 500
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  a
+                     font-size: 1rem
+                     font-family: 'Jost'
+                     font-weight: 300
+                     letter-spacing: 0.05rem
+                     line-height: 2rem
+                     margin-left: 0.5rem
+                     color: $dark
+                     position: relative
+                     @include after-line ($dark)
+            .sku_wrapper
+            .tagged_as
+      .woocommerce-variation-price
+         margin-bottom: 1.66rem
+         .price
+            del
+               opacity: .7
+               .woocommerce-Price-amount
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  color: $dark-light
+                  margin-right: .5rem
+            ins
+               text-decoration: none !important
+               .woocommerce-Price-amount
+                  font-size: 1.7rem
+                  font-family: 'Jost'
+                  font-weight: 500
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  color: $dark-light
+            .woocommerce-Price-amount
+               font-size: 1.7rem
+               font-family: 'Jost'
+               font-weight: 500
+               letter-spacing: 0.05rem
+               line-height: 2rem
+               color: $dark-light
+
+
+      .details__quantity-but
+         margin-top: 1.66rem
+      .woocommerce-variation-add-to-cart
+         display: flex
+         .details__quantity-but__quantity
+            @include el-quantity ($dark, $light, $line_gray)
+            margin-right: 1rem
+         .fill-button-dark
+            margin-right: 1rem
+            @media screen and ( max-width: 500px )
+               span
+                  display: none
+               i
+                  text-transform: uppercase
+         .details-like-button
+            margin-right: 1rem
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 48px
+            height: 48px
+            background: $gray
+            transition: all 0.3s ease
+            border: none
+            svg
+               path
+                  fill: $white
+                  transition: all 0.3s ease
+            &:hover
+               background: $white
+               svg
+                  path
+                     fill: $dark
+   &__sliders
+      margin-right: 2rem
+      @media screen and ( max-width: 992px )
+         margin-right: 0rem
+      .woocommerce-product-gallery
+         display: flex
+         flex-direction: row-reverse
+         position: relative
+         @media screen and ( max-width: 992px )
+            flex-direction: column
+         .woocommerce-product-gallery__trigger
+            display: none
+         .flex-viewport
+            width: 700px !important
+            height: 700px !important
+            overflow: hidden
+            @media screen and ( max-width: 1450px )
+               width: 500px !important
+               height: 500px !important
+            @media screen and ( max-width: 1070px )
+               width: 450px !important
+               height: 450px !important
+            @media screen and ( max-width: 992px )
+               width: 100% !important
+               height: 700px !important
+            @media screen and ( max-width: 768px )
+               width: 100% !important
+               height: calc(100vw - 45px) !important
+            .woocommerce-product-gallery__wrapper
+               .woocommerce-product-gallery__image
+                  a
+                     img
+                        @media screen and ( max-width: 1450px )
+                           width: 100% !important
+                           height: 100% !important
+         .flex-control-nav
+            margin: 0 1rem 0 0
+            padding: 0
+            @media screen and ( max-width: 992px )
+               display: flex
+               margin: 1rem 0 0 0
+            li
+               width: 80px
+               height: 80px
+               overflow: hidden
+               position: relative
+               margin-bottom: 0.5rem
+               @media screen and ( max-width: 992px )
+                  margin-bottom: 0rem
+                  margin-right: 0.5rem
+               &::marker
+                  content: ''
+               .flex-active
+                  opacity: 1
+                  transform: translate(-50%, -50%) scale(1.2)
+               img
+                  @include absolute-align-center
+                  transition: all 0.4s ease
+                  opacity: .6
+         .flex-direction-nav
+            width: 0
+            @media screen and ( max-width: 992px )
+               display: none
+            .flex-nav-prev
+               position: absolute
+               top: 50%
+               left: calc(80px + 1rem)
+               z-index: 2
+               transform: translateY(-50%)
+               background: rgba($white, 0.5)
+               transition: all 0.5s ease
+               opacity: 0
+               &:hover
+                  opacity: 1
+               .flex-prev
+                  visibility: hidden
+                  &::after
+                     visibility: visible
+                     content: '\f053'
+                     font: normal normal normal 14px/1 FontAwesome
+                     margin-right: 10px
+                     font-size: 20px
+                     font-weight: bold
+                     color: $dark-light
+                     display: flex
+                     justify-content: center
+                     align-items: center
+                     padding-left: 1rem
+                     width: 2.8rem
+                     height: 700px 
+            .flex-nav-next
+               position: absolute
+               top: 50%
+               right: 0
+               z-index: 2
+               transform: translateY(-50%)
+               background: rgba($white, 0.5)
+               transition: all 0.5s ease
+               opacity: 0
+               &:hover
+                  opacity: 1
+               .flex-next
+                  visibility: hidden
+                  &::after 
+                     visibility: visible
+                     content: '\f054'
+                     font: normal normal normal 14px/1 FontAwesome
+                     margin-right: 10px
+                     font-size: 20px
+                     font-weight: bold
+                     color: $dark-light
+                     display: flex
+                     justify-content: center
+                     align-items: center
+                     padding-left: 1rem
+                     width: 2.8rem
+                     height: 700px 
+
+
+.description-product 
+   margin-bottom: 10rem
+   &__text
+      margin: 0 auto
+      max-width: 780px
+      p
+         color: $dark-light
+         margin-bottom: 2rem
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         line-height: 2rem
+         &:last-child
+            margin-bottom: 0
+
+
+.section-product__title
+   margin: 3.66rem 0 2rem
+   h2
+      width: fit-content
+      position: relative
+      &::after
+         content: ''
+         position: absolute
+         top: 55%
+         right: calc( -2.66rem - 45px )
+         height: 1px
+         width: 45px
+         background: $blue-light
+
+.comment-form-box
+   overflow: hidden
+
+
+.woocommerce-tabs
+   .wc-tabs
+      display: none !important
+
+
+.comments-product
+   margin-bottom: 10rem
+   &__writed
+      text-align: center
+      &__list
+         .comment__item
+            display: flex
+            text-align: left
+            margin-top: 2rem
+            &:first-child
+               margin-top: 0
+            &:last-child
+               margin-bottom: 1.66rem
+               .comment__item__text
+                  border-bottom: none
+            &__avatar-cover
+               position: relative
+               width: 80px
+               height: 80px
+               border-radius: 50%
+               overflow: hidden
+               margin-right: 1.5rem
+               img
+                  width: 100%
+                  height: 100%
+                  @include absolute-align-center
+            &__text
+               padding-bottom: 2rem
+               border-bottom: 1px solid $blue-light
+               width: calc( 100% - 80px - 1.5rem )
+               &__info
+                  display: flex
+                  justify-content: space-between
+                  .comment-rating
+                     .comment-rating__stars
+                        span
+                           a
+                              position: relative
+                              color: $dark-light
+                              display: inline-block
+                              text-indent: -999em
+                              width: 15px
+                              font-size: 14px
+                              &::before
+                                 position: absolute
+                                 display: block
+                                 width: 15px
+                                 text-indent: 0
+                                 content: "\f005"
+                                 display:inline-block
+                                 font: normal normal normal 14px/1 FontAwesome
+                                 font-size: inherit
+                                 text-rendering: auto
+                                 color: $gray
+                                 -webkit-font-smoothing: antialiased
+                                 -moz-osx-font-smoothing: grayscale
+                           .star-active
+                              &::before
+                                 color: $dark !important
+                  .comment__name-date
+                     &__name
+                        color: $dark
+                        line-height: 1em
+                        margin-bottom: 0.5rem
+                        white-space: nowrap
+                     &__date
+                        line-height: 1em
+                        color: $dark-light
+               &__message
+                  .description
+                     color: $dark-light
+                     margin-top: 1rem
+   &__add
+      transition: all 0.8s ease
+      opacity: 1
+      .comment-form
+         margin-top: 3rem
+         text-align: center
+         .comment-notes
+            width: 100%
+            text-align: left
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            color: $dark-light
+            .required
+               color: $red
+         .comment-form-rating
+            display: flex
+            align-items: center
+            justify-content: center
+            background: $light
+            padding: 1.2rem
+            margin-top: 1rem
+            margin-bottom: 2rem
+            select
+               display: none
+            .comments-rating__label
+               font-size: 1rem
+               font-family: 'Jost'
+               font-weight: 400
+               margin: 0
+               color: $dark-light
+               margin-right: 1rem
+            .stars
+               a
+                  position: relative
+                  color: $dark-light
+                  display: inline-block
+                  text-indent: -999em
+                  width: 24px
+                  font-size: 12px
+                  &::before
+                     position: absolute
+                     display: block
+                     width: 24px
+                     text-indent: 0
+                     content: "\f005"
+                     display:inline-block
+                     font: normal normal normal 14px/1 FontAwesome
+                     font-size:inherit
+                     text-rendering:auto
+                     color: $gray
+                     -webkit-font-smoothing:antialiased
+                     -moz-osx-font-smoothing:grayscale
+               .star-hover, .star-active
+                  &::before
+                     color: $dark !important
+         .comments__email-name
+            display: flex
+            flex-direction: row
+            margin-bottom: 2rem
+            .comments-text
+               margin-right: 2rem
+         .comments-textarea
+            margin-bottom: 2rem
+      .comment-form-cookies-consent
+         width: 100%
+         text-align: left
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 400
+         color: $dark-light
+         display: flex
+         align-items: center
+         margin-bottom: 2rem
+         input
+            margin-right: 1rem
+         label
+            margin-bottom: 0
+.comments-hidden
+   opacity: 0
+   margin-top: -600px !important
+   

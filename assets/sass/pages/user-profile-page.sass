@@ -1,0 +1,319 @@
+@import '../mixin';
+@import '../vars';
+
+@import '../elements'
+
+
+.user__header__bottom
+   .main-menu__item
+      &>a
+         color: $dark
+         &::after
+            background: $dark !important
+   .user-page__links
+      li
+         a
+            color: $dark
+   svg
+      path
+         fill: $dark !important
+
+
+.user__title
+   padding-top: calc( 84px + 3.66rem )
+   padding-bottom: 6rem
+   .section-text__title
+      @media screen and ( max-width: 385px )
+         font-size: 2.8rem
+
+
+
+.user__content
+   .user__content__flex
+      display: flex
+      @media screen and ( max-width: 992px )
+         flex-direction: column
+   &__menu
+      width: 250px
+      padding: 2.66rem
+      background: $light
+      box-sizing: border-box
+      @media screen and ( max-width: 992px )
+         width: 100%
+         margin-bottom: 5rem
+      .user__menu__avatar
+         text-align: center
+         margin-bottom: 3rem
+         &__cover
+            margin: 0 auto
+            position: relative
+            width: 100px
+            height: 100px
+            border-radius: 50%
+            overflow: hidden
+            img
+               @include absolute-align-center
+               width: 100%
+         &__name
+            color: $dark
+         &__log
+            color: $dark-light
+      .user__menu__links
+         &__list
+            @media screen and ( max-width: 992px )
+               display: flex
+               flex-wrap: wrap
+               justify-content: center
+               .user__menu__links__list__item
+                  margin-right: 3rem
+            @media screen and ( max-width: 768px )
+               text-align: center
+               flex-direction: column
+               .user__menu__links__list__item
+                  margin-right: 0
+            .user-current
+               a
+                  position: relative
+                  &::after
+                     content: ''
+                     position: absolute
+                     bottom: 0
+                     left: 0
+                     width: 100%
+                     height: 2px
+                     background: $dark-light
+                     transition: all 0.3s ease
+            &__item
+               margin-bottom: 0.3rem
+               &>a
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  color: $dark-light
+
+.user__content__information
+   width: calc( 100% - 250px )
+   margin-bottom: 15rem
+   @media screen and ( max-width: 768px )
+      width: 100%
+   .user-container
+      width: 670px
+      margin: 0 auto
+      @media screen and ( max-width: 1200px )
+         padding: 0 3rem
+      @media screen and ( max-width: 768px )
+         width: 100%
+      @media screen and ( max-width: 400px )
+         padding: 0
+
+
+.user__form
+   text-align: center
+   &__name-sur
+      display: flex
+      flex-direction: row
+      @media screen and ( max-width: 400px )
+         flex-direction: column
+      .user-name
+         margin-right: 2rem
+         @media screen and ( max-width: 400px )
+            margin-right: 0
+   .el-input
+      margin-bottom: 2rem
+
+
+
+// User page
+
+.woocommerce-EditAccountForm
+   .user__form__name-sur, .input-login, .input-email
+      margin-bottom: 2rem
+   fieldset
+      legend
+         margin-bottom: .8rem
+      .el-input
+         margin-bottom: 2rem
+   .profile-button-submit
+      width: 100%
+      text-align: center
+
+
+
+.blueins_edit_addres_form
+   .regular-fiveteen
+      margin-bottom: .8rem
+   .woocommerce-address-fields
+      .el-input
+         margin-bottom: 2rem
+      .woocommerce-address-fields__button
+         display: flex
+         justify-content: center
+
+
+.addres-top-text
+   margin-bottom: 3rem
+
+.blueins-woocommerce-address
+   margin-bottom: 5rem
+   &__title
+
+      .h3-style
+         margin-bottom: 1rem
+      address
+         margin-bottom: 2rem
+      &__but-cover
+         width: 100%
+         .stroke-button-dark
+
+
+
+// Orders
+
+.blueins-orders-table
+   width: 100%
+   thead
+      margin-bottom: 2rem
+      .blueins-orders-table__header
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 500
+         letter-spacing: 0.05rem
+         line-height: 2rem
+         color: $dark
+         border-right: 1px solid $line_gray
+         border-bottom: 1px solid $dark
+         padding: 0 0.5rem
+         &:last-child
+            border-right: none
+   tbody
+      .blueins-orders-table__row
+         .blueins-orders-table__cell
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            line-height: 2rem
+            color: $dark-light
+            border-right: 1px solid $line_gray
+            padding: 0.5rem 0.5rem
+            &:last-child
+               border-right: none
+
+
+.blueins-order-details, .blueins-woocommerce-order
+   .regular-fiveteen
+      margin-bottom: 3rem
+      i 
+         color: $blue
+         font-style: normal
+   .woocommerce-order-details
+      margin-bottom: 5rem
+      .woocommerce-order-details__title
+         font-size: 2rem
+         font-family: 'PlayfairDisplay'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         line-height: 2rem
+         margin-bottom: 2rem
+         color: $dark
+      .woocommerce-table
+         border-spacing: 0
+         border: none
+         margin-bottom: 3rem
+         thead
+            tr
+               th
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 500
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  color: $dark
+                  border-right: 1px solid $line_gray
+                  border-bottom: 1px solid $dark
+                  padding: 0 0.5rem
+                  &:last-child
+                     border-right: none
+         tbody
+            .woocommerce-table__line-item
+               &:last-child
+                  td
+                     border-bottom: 1px solid $dark
+               td
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 400
+                  letter-spacing: 0.05rem
+                  line-height: 2rem
+                  color: $dark-light
+                  border-right: 1px solid $line_gray
+                  padding: 0.5rem 0.5rem
+                  border-top: none
+                  &:last-child
+                     border-right: none
+               .woocommerce-table__product-name
+                  a
+                     color: $blue
+               .woocommerce-table__product-total
+         tfoot
+            th
+               font-size: 1rem
+               font-family: 'Jost'
+               font-weight: 500
+               letter-spacing: 0.05rem
+               line-height: 2rem
+               color: $dark
+               border-right: 1px solid $line_gray
+               padding: 0 0.5rem
+               border-top: none
+            td
+               font-size: 1rem
+               font-family: 'Jost'
+               font-weight: 400
+               letter-spacing: 0.05rem
+               line-height: 2rem
+               color: $dark-light
+               padding: 0.5rem 0.5rem
+               border-top: none
+      .order-again
+         text-align: center
+         a
+            border-radius: 0
+            font-family: 'Jost'
+            font-size: 1.13rem
+            font-weight: 500
+            letter-spacing: .05rem
+            line-height: 2rem
+            color: $dark-light
+            display: inline-block
+            border: 2px solid $dark-light
+            padding: .413em 1.9em
+            text-decoration: none
+            transition: all 0.3s ease
+            background: none
+            &:disabled
+               opacity: 0.5
+               cursor: not-allowed
+            &:hover
+               text-decoration: none
+               color: $dark
+               border: 2px solid $dark
+   .woocommerce-customer-details
+      .woocommerce-column__title
+         font-size: 2rem
+         font-family: 'PlayfairDisplay'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         line-height: 2rem
+         margin-bottom: 2rem
+         color: $dark
+      address
+         border: none
+         font-size: 1rem
+         font-family: 'Jost'
+         font-weight: 400
+         letter-spacing: 0.05rem
+         line-height: 2rem
+         color: $dark-light

@@ -1,0 +1,389 @@
+@mixin el-quantity ($color, $bg, $hoverBg)
+   .el-quantity
+      display: flex
+      &__button
+         display: flex
+         justify-content: center
+         align-items: center
+         width: 48px
+         height: 48px
+         background: $bg
+         cursor: pointer
+         transition: all 0.3s ease
+         border: none
+         &:hover
+            background: $hoverBg
+         svg
+            g 
+               rect
+                  fill: $color
+      &__minus
+      &__input-number
+         display: inline-block
+         font-family: 'Jost'
+         font-size: 1rem
+         font-weight: 400
+         width: 48px
+         height: 48px
+         background: $bg
+         border: 0
+         outline: none
+         color: $color
+         text-align: center
+         &::-webkit-outer-spin-button,
+         &::-webkit-inner-spin-button 
+            -webkit-appearance: none
+            margin: 0
+      &__plus
+
+
+.fill-button-white
+   display: inline-block
+   font-size: 1.13rem
+   font-family: 'Jost'
+   font-weight: 500
+   letter-spacing: 0.05rem
+   line-height: 2rem
+   background: $white
+   padding: 0.532em 1.9em
+   color: $dark
+   text-decoration: none
+   transition: all 0.3s ease
+   &:hover
+      color: $dark
+      background: $light
+
+.fill-button-dark
+   display: inline-block
+   font-size: 1.13rem
+   font-family: 'Jost'
+   font-weight: 500
+   letter-spacing: 0.05rem
+   line-height: 2rem
+   background: $dark
+   padding: 0.532em 1.9em
+   color: $white
+   text-decoration: none
+   transition: all 0.3s ease
+   i
+      font-style: normal
+   &:hover
+      color: $white
+      background: $black
+
+
+.el-input
+   position: relative
+   width: 100%
+   &__label
+      position: absolute
+      top: 23px
+      left: 1.4rem
+      z-index: 3 !important
+      transform: translate(0%, -50%)
+      font-size: 1rem
+      font-family: 'Jost'
+      font-weight: 400
+      color: $dark
+      z-index: -1
+      transition: all 0.3s ease
+      display: inline-block
+      padding: 0.1rem 0.4rem
+      height: 4px
+      display: flex
+      align-items: center
+   .el-label-focus
+      top: 1px
+      transform: translateY(-50%)
+      color: $dark-light
+      background: $white
+   &__field
+      width: 100%
+      padding: 0.74rem 1.5rem
+      border: 2px solid $dark
+      border-radius: 0
+      background: none
+      font-size: 1rem
+      font-family: 'Jost'
+      font-weight: 500
+      &-box
+         position: relative
+         .svg-box-visible
+            i
+               svg
+                  opacity: 1 !important
+               &::after
+                  width: 0 !important
+         .svg-box
+            position: absolute
+            top: 50%
+            right: 10px
+            transform: translateY(-50%)
+            width: 33px
+            height: 33px
+            i
+               position: relative
+               width: 33px
+               height: 33px
+               display: block
+               &:hover
+                  svg
+                     opacity: 1
+                  &::after
+                     width: 0
+               svg
+                  opacity: 0.5
+                  transition: all 0.3s ease
+               &::after
+                  content: ''
+                  width: 33px
+                  height: 2px
+                  position: absolute
+                  top: 4px
+                  right: 4px
+                  background: $dark
+                  transform: rotate(-45deg)
+                  transition: all 0.3s ease
+                  transform-origin: right top
+
+.el-checkbox
+   display: flex
+   align-items: center
+   &__box
+      margin-right: 1.33rem
+   &__label
+      font-size: 1rem
+      font-family: 'Jost'
+      font-weight: 400
+      color: $dark-light
+      display: inline-block
+
+.el-form__button
+   display: inline-block
+   padding: 0.534em 1.828em
+   font-size: 1.13rem
+   font-family: 'Jost'
+   font-weight: 500
+   letter-spacing: 0.05rem
+   line-height: 2rem
+   color: $white
+   background: $dark
+   border: none
+   border-radius: 0
+   transition: all 0.3s ease
+   i
+      font-style: normal
+   &:hover
+      background: $blue
+      color: $white
+
+
+.stroke-button-dark
+   font-family: 'Jost'
+   font-size: 1.13rem
+   font-weight: 500
+   letter-spacing: .05rem
+   line-height: 2rem
+   color: $dark-light
+   display: inline-block
+   border: 2px solid $dark-light
+   padding: .413em 1.9em
+   text-decoration: none
+   transition: all 0.3s ease
+   background: none
+   &:disabled
+      opacity: 0.5
+      cursor: not-allowed
+   &:hover
+      text-decoration: none
+      color: $dark
+      border: 2px solid $dark
+
+
+
+
+// Breadcrumbs
+
+.start-img__breadcrumbs
+   width: fit-content
+   margin: 0 auto
+   margin-top: 1.6rem
+   &__list
+      display: flex
+      flex-direction: row
+      align-items: center
+      &__item
+         position: relative
+         a
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 300
+            color: $white
+            &::after
+               content: '/'
+               margin: 0 4px
+         &:last-child
+            a
+               font-weight: 500
+               &::after
+                  content: ''
+
+
+
+// Go to tooop!
+
+.hidden
+   opacity: 0 !important
+   bottom: -40px !important
+
+.go-to-top
+   opacity: 1
+   position: fixed
+   bottom: 60px
+   right: 60px
+   z-index: $header-z-index
+   width: 40px
+   height: 40px
+   border-radius: 100px
+   border: none
+   background: $white
+   box-shadow: 0 3px 10px rgba($dark, 0.2)
+   display: flex
+   align-items: center
+   justify-content: center
+   transition: all 0.5s ease
+   @media screen and ( max-width: 500px )
+      bottom: 35px
+      right: 35px
+   &:hover
+      span
+         &::before
+            transform: translateY(-50%) rotate(0deg)
+         &::after
+            transform: translateY(-50%) rotate(0deg)
+   span
+      width: 20px
+      height: 20px
+      display: block
+      position: relative
+      right: 0
+      &::before
+         content: ''
+         position: absolute
+         top: 50%
+         left: 10%
+         transform: translateY(-50%) rotate(-45deg)
+         width: 50%
+         height: 2px
+         background: $dark
+         border-radius: 3px
+         transition: all 0.3s ease
+      &::after
+         content: ''
+         position: absolute
+         top: 50%
+         left: 45%
+         transform: translateY(-50%) rotate(45deg)
+         width: 50%
+         height: 2px
+         background: $dark
+         border-radius: 3px
+         transition: all 0.3s ease
+
+
+
+.woocommerce-notices-wrapper
+   .woocommerce-message
+      background: none
+      font-size: 1rem
+      font-family: 'Jost'
+      font-weight: 500
+      letter-spacing: 0.05rem
+      line-height: 2rem
+      color: #03a678
+      border-top: none
+      padding: 0 0 1rem
+      margin: 0 0 2rem 0
+      &::before
+         content: ''
+         display: none
+      .wc-forward
+         display: none
+
+
+.el-dark-line-button // link
+   color: $dark-light
+   text-decoration: none
+   position: relative
+   top: 100%
+   padding: .5rem 0
+   font-size: 1rem
+   font-family: Jost
+   font-weight: 400
+   letter-spacing: .05rem
+   line-height: 2rem
+   transition: all .7s ease
+   transition-delay: .7s
+   @include after-line($dark)
+
+
+.el-price-slider
+   &_container
+      position: relative
+      height: 3px
+      margin: 5px 0
+      background: #ccc
+      box-shadow: none
+      border: none
+      border-radius: 0
+      .noUi-base
+         width: 100%
+         height: 100%
+         position: relative
+         z-index: 1
+         .noUi-origin
+            position: absolute
+            right: 0
+            top: 0
+            left: 0
+            bottom: 0
+            &:first-child
+               background: $blue
+            &:last-child
+               background: #ccc
+            .noUi-handle
+               position: absolute
+               top: -5px
+               left: 0
+               margin-left: -1px
+               background: #fff
+               border: 3px solid #484848
+               cursor: pointer
+               width: 12px
+               height: 12px
+               border-radius: 999px
+               box-sizing: border-box
+               box-shadow: none
+               &-lower
+               &-upper
+   &_values
+      margin-top: 1rem
+      &__inputs
+         display: none
+      .el-slider__values
+         display: flex
+         p
+            margin-right: 1rem
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 300
+            letter-spacing: 0.05rem
+            line-height: 2rem
+            color: $white
+            .el-slider__values__price
+               font-size: 1rem
+               font-family: 'Jost'
+               font-weight: 400
+               letter-spacing: 0.05rem
+               line-height: 2rem
+               color: $white

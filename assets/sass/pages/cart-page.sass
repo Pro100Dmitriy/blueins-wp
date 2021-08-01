@@ -1,0 +1,259 @@
+@import '../mixin';
+@import '../vars';
+
+@import '../elements'
+
+.cart__content
+   margin-bottom: calc(15rem + 60px)
+   .blu-empty-cart
+      display: flex
+      justify-content: space-between
+      &__img
+         display: flex
+         width: calc( 100% - 400px )
+         img
+            margin: 0 auto
+            width: 600px
+      .return-to-shop
+         width: 400px
+   &__flex 
+      display: flex
+      .woocommerce-cart-form
+         width: calc( 100% - 300px )
+         @media screen and ( max-width: 992px )
+            width: 100%
+      @media screen and ( max-width: 992px )
+         flex-direction: column
+   &__information
+      width: 100%
+      padding: 0 3.66rem
+      @media screen and ( max-width: 992px )
+         width: 100%
+         padding: 0
+      &__promocode
+         width: 363px
+         display: flex
+         &__d-flex
+            margin-top: 1rem
+            display: flex
+            justify-content: space-between
+         .el-input
+            margin-right: 1rem
+            &__field
+               border-color: $dark-light
+         .stroke-button-dark
+            white-space: nowrap
+      .cart__products__list
+         &__item
+            display: flex
+            justify-content: space-between
+            padding: 1.2rem 0
+            border-bottom: 1px solid $blue-light
+            &:last-child
+               border-bottom: none
+            &__img
+               display: flex
+               .cart__products__title
+                  width: 200px
+                  .cart-title
+                     color: $dark
+                     font-size: 1rem
+                     font-family: 'Jost'
+                     font-weight: 500
+                     margin-bottom: 0.5rem
+                  .cart-color
+                     color: $dark-light
+                     font-size: 1rem
+                     font-family: 'Jost'
+                     font-weight: 300
+                     span
+                        margin-left: 0.5rem
+               .cart__products__img__cover
+                  margin-right: 2rem
+                  position: relative
+                  overflow: hidden
+                  width: 100px
+                  height: 100px
+                  img
+                     width: 100%
+                     @include absolute-align-center
+            &__quantity
+               @include el-quantity ($dark, $white, $light)
+            &__price
+               display: flex
+               flex-direction: column
+               align-items: flex-end
+               .cart-price
+                  color: $dark-light
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+               .remove
+                  color: $dark-light
+                  &:hover
+                     background: none
+               .close-button
+                  width: 2.5rem
+                  height: 2.5rem
+                  background: none
+                  border-radius: 0
+                  margin-bottom: 0.73rem
+   &__menu
+      width: 300px
+      background: $light
+      padding: 2.66rem
+      height: 100%
+      @media screen and ( max-width: 992px )
+         margin-top: 5rem
+         width: 100%
+      .cart__table
+         border: none !important
+         tbody
+            border: none !important
+            .cart__menu__top
+               span
+               th, td
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+                  letter-spacing: 0.05rem
+                  white-space: nowrap
+                  color: $dark-light
+                  padding: 1rem 0
+                  border-bottom: 1px solid $dark-light
+                  strong
+                     font-weight: normal !important
+               td
+                  font-weight: 400
+                  text-align: right
+            .cart__menu__bottom
+               th, td
+                  font-size: 1rem
+                  font-family: 'Jost'
+                  font-weight: 300
+                  letter-spacing: 0.05rem
+                  white-space: nowrap
+                  color: $dark-light
+                  padding: 1rem 0
+                  border-top: 1px solid $dark-light
+                  strong
+                     font-weight: normal !important
+               td
+                  font-weight: 400
+                  text-align: right
+      .el-form__button
+         width: 100%
+         text-align: center
+      .cart__table
+         margin-bottom: 1rem
+         width: 100%
+         border-spacing: 0
+         border-collapse: separate
+      .cart__menu__top
+         th, td
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 300
+            letter-spacing: 0.05rem
+            white-space: nowrap
+            color: $dark-light
+            padding: 1rem 0
+            border-bottom: 1px solid $dark-light
+         td
+            font-weight: 400
+            text-align: right
+      .cart__menu__middle
+         th
+            display: none
+         td
+            .cart__menu__middle__list
+               &__item
+                  display: flex
+                  justify-content: space-between
+                  &>p, &>span
+                     font-size: 1rem
+                     font-family: 'Jost'
+                     font-weight: 300
+                     letter-spacing: 0.05rem
+                     white-space: nowrap
+                     padding: 1rem 0
+                     color: $dark-light
+                  span
+                     font-weight: 400
+                  &:last-child
+                     flex-direction: column
+                  .cart__item-slide
+                     cursor: pointer
+                     display: flex
+                     justify-content: space-between
+                     align-items: center
+                     &>p
+                        font-size: 1rem
+                        font-family: 'Jost'
+                        font-weight: 300
+                        letter-spacing: 0.05rem
+                        white-space: nowrap
+                        color: $dark-light
+                        padding: 1rem 0
+                     .close
+                        &::before
+                           transform: translateY(-50%) rotate(0deg) !important
+                        &::after
+                           transform: translateY(-50%) rotate(0deg)  !important
+                     .delete-item
+                        width: 15px
+                        height: 15px
+                        display: block
+                        position: relative
+                        right: 0
+                        &::before
+                           content: ''
+                           position: absolute
+                           top: 50%
+                           left: 0%
+                           transform: translateY(-50%) rotate(-45deg)
+                           width: 50%
+                           height: 2px
+                           background: $dark-light
+                           border-radius: 3px
+                           transition: all 0.3s ease
+                        &::after
+                           content: ''
+                           position: absolute
+                           top: 50%
+                           left: 35%
+                           transform: translateY(-50%) rotate(45deg)
+                           width: 50%
+                           height: 2px
+                           background: $dark-light
+                           border-radius: 3px
+                           transition: all 0.3s ease
+                  .item-forms__open
+                     .cart__item-forms
+                        margin-top: 5px !important
+                  .cart__item-forms__cover
+                     overflow: hidden
+                  .cart__item-forms
+                     margin-top: -200px
+                     transition: all 0.5s ease-out
+                     &>li
+                        margin-bottom: 2rem
+                        .el-input
+                           &__field
+                              border-color: $dark-light
+                           .el-label-focus
+                              background: $light
+
+      .cart__menu__bottom
+         th, td
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 300
+            letter-spacing: 0.05rem
+            white-space: nowrap
+            color: $dark-light
+            padding: 1rem 0
+            border-top: 1px solid $dark-light
+         td
+            font-weight: 400
+            text-align: right
