@@ -1,3 +1,5 @@
+import '../sass/style.sass'
+
 import {EventWindow} from './frontend/event-window'
 import {FullscreenMenu} from './frontend/blueins-fullscreen-menu'
 
@@ -20,7 +22,6 @@ const fullscreenMenu = new FullscreenMenu( {
       }
   ]
 } )
-
 
 
 

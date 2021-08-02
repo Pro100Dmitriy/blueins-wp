@@ -1,21 +1,50 @@
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
+const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 
 module.exports = {
 
     context: path.resolve( __dirname, 'assets/js' ),
 
-    entry: '../common.js',
+    entry: './common.js',
 
     output: {
-        filename: 'bundle.js',
-        path: path.resolve( __dirname, 'dist' )
+        path: path.resolve( __dirname, 'dist' ),
+        filename: 'bundle.js'
     },
 
-    resolve: {
-        extentions: ['.js']
+    plugins: [
+        new CaseSensitivePathsWebpackPlugin(),
+        new webpack.DefinePlugin({
+            //GLOBAL Variable
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        })
+    ],
+
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ],
+            }
+        ]
     },
 
-    watch: true
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin()
+        ]
+    },
+
+    watch: true,
+    devtool: 'eval',
+    mode: 'development'
 
 }
