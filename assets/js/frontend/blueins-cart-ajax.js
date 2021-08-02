@@ -1,32 +1,26 @@
+import { mutation_observe, sendRequest } from './utils'
+
+
 document.addEventListener('DOMContentLoaded', event => {
-
-    /**
-     *      Common Functions
-     */
+// *************************************************************************** DOM Content Loaded
 
 
     /**
-     *      Add Cart Element
+     *      Add To Cart (Shop Page)
      */
-    let productContainer = document.querySelector('#products__list-container')
-    
 
-    if(productContainer){
+    let $productContainer = document.querySelector('#products__list-container')
 
-        const mutationProduct = new MutationObserver( mutation => {
-            mutation.forEach( mut => {
-                updateLinks();
-            })
-        })
+    if( $productContainer ){
 
-        mutationProduct.observe( productContainer, {
+        mutation_observe( $productContainer, updateLinks, {
             attributes: false,
             characterData: false,
             childList: true,
             subtree: false,
             attributeOldValue: false,
             characterDataOldValue: false
-        });
+        } )
 
         updateLinks()      
 
@@ -81,40 +75,28 @@ document.addEventListener('DOMContentLoaded', event => {
                 </div>
             `
 
-            function addRequest(method, url, action, product_id){
-                return new Promise( (resolve, reject) => {
-                    const xhr = new XMLHttpRequest();
+            if( product_id ){
 
-                    xhr.open(method, url + `?action=${action}&product_id=${product_id}`);
-                    xhr.onloadstart = () => {
+                sendRequest( {
+                    method: 'GET',
+                    url: ajax_url,
+                    action,
+                    product_id,
+                    onloadstart_callback(){
+    
                         document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
-
                         $('body').css('overflow-y','hidden');
                         $('#cart-menu').addClass('right-ziro');
                         $('#cart-overlay').css('visibility','visible');
                         setTimeout(function(){
                             $('#cart-overlay').css('background','rgba(180,197,204, 0.4)');
                         }, 100);
+    
                     }
-                    xhr.onload = () => {
-                        resolve(xhr.response)
-                    }
-                    xhr.onerror = () => {
-                        reject(xhr.response)
-                    }
-                    xhr.send()
-                })
-            }
+                } )
+                .then( data => document.querySelector('.blueins_cart_center').innerHTML = data )
+                .catch( error => console.log(error) )
 
-            if( product_id ){
-                addRequest('GET', ajax_url, action, product_id)
-                    .then( data => {
-                        //console.log(data)
-                        document.querySelector('.blueins_cart_center').innerHTML = data
-                    } )
-                    .catch( error => {
-                        //console.log(error)
-                    } )
             }else{
                 //console.log(this)
                 //let event = new Event('click')
@@ -125,8 +107,11 @@ document.addEventListener('DOMContentLoaded', event => {
 
     }
 
+
+
+
     /**
-     *      Add To Cart Single Product Page
+     *      Add To Cart (Single Product Page)
      */
 
     let button_single_page = document.querySelector('.single_add_to_cart_button')
@@ -227,25 +212,15 @@ document.addEventListener('DOMContentLoaded', event => {
 
     }
 
+
+
     /**
      *      Remove Cart Element
      */
     let cartMenu = document.querySelector('#cart-menu')
 
-    const mutationCart = new MutationObserver( mutCart => {
-        mutCart.forEach( mC => {
-            updateRemoveLinks()
-        })
-    })
+    mutation_observe( cartMenu, updateRemoveLinks )
 
-    mutationCart.observe( cartMenu, {
-        attributes: true,
-        characterData: true,
-        childList: true,
-        subtree: true,
-        attributeOldValue: true,
-        characterDataOldValue: true
-    });
 
     function updateRemoveLinks(){
         let miniCartItem = document.querySelectorAll('.blueins_remove_cart_button')
@@ -335,5 +310,5 @@ document.addEventListener('DOMContentLoaded', event => {
     }
 
     
-
+// *************************************************************************** DOM Content Loaded
 })

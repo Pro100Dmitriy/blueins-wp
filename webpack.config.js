@@ -9,11 +9,14 @@ module.exports = {
 
     context: path.resolve( __dirname, 'assets/js' ),
 
-    entry: './common.js',
+    entry: [
+        './common.js',
+        './frontend/blueins-cart-ajax.js'
+    ],
 
     output: {
         path: path.resolve( __dirname, 'dist' ),
-        filename: 'bundle.js'
+        filename: `[name].js`
     },
 
     plugins: [
