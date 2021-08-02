@@ -1,6 +1,9 @@
 import { mutation_observe, sendRequest } from './utils'
 
 
+const AJAX_URL = woocommerce_params.ajax_url
+
+
 document.addEventListener('DOMContentLoaded', event => {
 // *************************************************************************** DOM Content Loaded
 
@@ -32,14 +35,11 @@ document.addEventListener('DOMContentLoaded', event => {
         function addToCart(event){
             event.preventDefault()
         
-            const ajax_url = woocommerce_params.ajax_url
             let link = this.getAttribute('href')
-            let action = 'blueins_cart_add'
-            let r = /add-to-cart=\d+/
-            let add_to_cart = link.match(r) ? link.match(r)[0] : false
-            let r2 = /\d+/
-            let product_id = add_to_cart !== false ? add_to_cart.match(r2)[0] : false
 
+            let action = 'blueins_cart_add'
+            let add_to_cart = link.match( /add-to-cart=\d+/ ) ? link.match( /add-to-cart=\d+/ )[0] : false
+            let product_id = add_to_cart !== false ? add_to_cart.match( /\d+/ )[0] : false
             let preloader = `
                 <div class="preloader">
                     <svg version="1.1" id="L5" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', event => {
 
                 sendRequest( {
                     method: 'GET',
-                    url: ajax_url,
+                    url: AJAX_URL,
                     action,
                     product_id,
                     onloadstart_callback(){
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', event => {
 
     let button_single_page = document.querySelector('.single_add_to_cart_button')
 
-    if(button_single_page){
+    if( button_single_page ){
 
         button_single_page.addEventListener('click', addToCartSingle)
 
@@ -214,101 +214,104 @@ document.addEventListener('DOMContentLoaded', event => {
 
 
 
+
     /**
-     *      Remove Cart Element
+     *      Remove Cart Element (Cart Template)
      */
+
     let cartMenu = document.querySelector('#cart-menu')
 
-    mutation_observe( cartMenu, updateRemoveLinks )
+    if( cartMenu ){
+        mutation_observe( cartMenu, updateRemoveLinks )
 
+        function updateRemoveLinks(){
+            let miniCartItem = document.querySelectorAll('.blueins_remove_cart_button')
+            miniCartItem.forEach(el => el.addEventListener('click', removeFromCart ) )
+        }
 
-    function updateRemoveLinks(){
-        let miniCartItem = document.querySelectorAll('.blueins_remove_cart_button')
-        miniCartItem.forEach(el => el.addEventListener('click', removeFromCart ) )
-    }
+        updateRemoveLinks()
 
-    updateRemoveLinks()
+        function removeFromCart(event){
+            event.preventDefault();
+            
+            const ajax_url = woocommerce_params.ajax_url;
+            let product_id = this.getAttribute('data-product_id')
+            let data_cart_item_key = this.getAttribute('data-cart_item_key')
+            let action = 'blueins_cart_remove'
 
-    function removeFromCart(event){
-        event.preventDefault();
+            let preloader = `
+                        <div class="preloader">
+                            <svg version="1.1" id="L5" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                                <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+                                <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 15 ; 0 -15; 0 15" 
+                                    repeatCount="indefinite" 
+                                    begin="0.1"/>
+                                </circle>
+                                <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
+                                <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 10 ; 0 -10; 0 10" 
+                                    repeatCount="indefinite" 
+                                    begin="0.2"/>
+                                </circle>
+                                <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
+                                <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5" 
+                                    repeatCount="indefinite" 
+                                    begin="0.3"/>
+                                </circle>
+                            </svg>
+                        </div>
+            `
+
+            function addRequest(method, url, action, product_id, product_key){
+                return new Promise( (resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
         
-        const ajax_url = woocommerce_params.ajax_url;
-        let product_id = this.getAttribute('data-product_id')
-        let data_cart_item_key = this.getAttribute('data-cart_item_key')
-        let action = 'blueins_cart_remove'
+                    xhr.open(method, url + `?action=${action}&product_id=${product_id}&data_cart_item_key=${product_key}`);
+                    xhr.onloadstart = () => {
+                        document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
 
-        let preloader = `
-                    <div class="preloader">
-                        <svg version="1.1" id="L5" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-                            <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
-                            <animateTransform 
-                                attributeName="transform" 
-                                dur="1s" 
-                                type="translate" 
-                                values="0 15 ; 0 -15; 0 15" 
-                                repeatCount="indefinite" 
-                                begin="0.1"/>
-                            </circle>
-                            <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
-                            <animateTransform 
-                                attributeName="transform" 
-                                dur="1s" 
-                                type="translate" 
-                                values="0 10 ; 0 -10; 0 10" 
-                                repeatCount="indefinite" 
-                                begin="0.2"/>
-                            </circle>
-                            <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
-                            <animateTransform 
-                                attributeName="transform" 
-                                dur="1s" 
-                                type="translate" 
-                                values="0 5 ; 0 -5; 0 5" 
-                                repeatCount="indefinite" 
-                                begin="0.3"/>
-                            </circle>
-                        </svg>
-                    </div>
-        `
+                        $('body').css('overflow-y','hidden');
+                        $('#cart-menu').addClass('right-ziro');
+                        $('#cart-overlay').css('visibility','visible');
+                        setTimeout(function(){
+                            $('#cart-overlay').css('background','rgba(180,197,204, 0.4)');
+                        }, 100);
+                    }
+                    xhr.onload = () => {
+                        resolve(xhr.response)
+                    }
+                    xhr.onerror = () => {
+                        reject(xhr.response)
+                    }
+                    xhr.send()
+                })
+            }
 
-        function addRequest(method, url, action, product_id, product_key){
-            return new Promise( (resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-    
-                xhr.open(method, url + `?action=${action}&product_id=${product_id}&data_cart_item_key=${product_key}`);
-                xhr.onloadstart = () => {
-                    document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
-
-                    $('body').css('overflow-y','hidden');
-                    $('#cart-menu').addClass('right-ziro');
-                    $('#cart-overlay').css('visibility','visible');
-                    setTimeout(function(){
-                        $('#cart-overlay').css('background','rgba(180,197,204, 0.4)');
-                    }, 100);
-                }
-                xhr.onload = () => {
-                    resolve(xhr.response)
-                }
-                xhr.onerror = () => {
-                    reject(xhr.response)
-                }
-                xhr.send()
-            })
-        }
-
-        if( product_id ){
-            addRequest('GET', ajax_url, action, product_id, data_cart_item_key)
-                .then( data => {
-                    //console.log(data)
-                    document.querySelector('.blueins_cart_center').innerHTML = data
-                } )
-                .catch( error => {
-                    //console.log(error)
-                } )
+            if( product_id ){
+                addRequest('GET', ajax_url, action, product_id, data_cart_item_key)
+                    .then( data => {
+                        //console.log(data)
+                        document.querySelector('.blueins_cart_center').innerHTML = data
+                    } )
+                    .catch( error => {
+                        //console.log(error)
+                    } )
+            }
         }
     }
 
-    
+
 // *************************************************************************** DOM Content Loaded
 })
