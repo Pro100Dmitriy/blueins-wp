@@ -24,16 +24,19 @@ const sendObject = {
     url: ajax_url,
     action,
     product_id,
+    priduct_qty,
+    variation_id,
+    color,
+    size,
     onloadstart_callback(){},
-    onload_callback(){},
-    onerror_callback(){}
 }
 */
 export function sendRequest( sendObject ){
     return new Promise( (resolve, reject) => {
         const xhr = new XMLHttpRequest();
 
-        xhr.open( sendObject.method, sendObject.url + `?action=${sendObject.action}&product_id=${sendObject.product_id}`);
+        xhr.open( sendObject.method, sendObject.url + sendObject.query )
+        
         xhr.onloadstart = sendObject.onloadstart_callback()
         xhr.onload = () => {
             resolve(xhr.response)
