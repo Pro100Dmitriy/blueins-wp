@@ -88,14 +88,17 @@ get_header('','about__header__bottom');
             <div class="container">
                 <div class="row justify-content-between">
                     <?php if( get_field('main_title_section_0') ) : ?>
-                    <div class="section-title display-none">
-                        <h1 class="section-text__title h2-style"><?php echo get_field('main_title_section_0'); ?></h1>
-                        <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_0'); ?></p>
-                    </div>
+                        <div class="section-title">
+                            <h1 class="section-text__title h2-style"><?php echo get_field('main_title_section_0'); ?></h1>
+                            <?php if( get_field('main_describtion_section_0') ): ?>
+                                <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_0'); ?></p>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                     <?php
 
-                    
+                    $category_id = get_theme_mod('shop_category_id_view');
+                    $category_id_separated = explode( ' | ', $category_id );
 
                     $woo_categories = get_categories( array(
                         'taxonomy'    => 'product_cat',
@@ -103,7 +106,8 @@ get_header('','about__header__bottom');
 	                    'order'       => 'ASC',
                         'hide_empty'  => false,
                         //'include'     => array(17,18,19),
-                        'include'     => array(34,18,19),
+                        //'include'     => array(34,18,19),
+                        'include'     => $category_id_separated,
                         'number'      => 3
                       ) );
 

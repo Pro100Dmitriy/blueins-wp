@@ -49,8 +49,10 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
     <div id="prod-filter-overlay" class="prod-filter-overlay"></div>
     <!-- Filter -->
 
+    
     <main class="main">
     <!-- Main -->
+
       	<section class="start-img <?php if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){ echo 'start-img-white-color'; }else{ echo 'start-img-dark-color'; } ?>">
             <div class="start-img__cover">
                 <img id="parallax_img" class="start-img__cover__img" src="<?php echo get_theme_mod('shop-start-img-upload'); ?>">
@@ -144,80 +146,76 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
                 do_action('woocommerce_before_shop_loop_nitices'); // add notices
             ?>
         </section>
-        
 
-
-    <section class="products">
-        <div class="big-container">
-            <?php
-            if ( woocommerce_product_loop() ) {
-            
-                woocommerce_product_loop_start();
-
-                $args = array(
-                    'post_type' => 'product',
-                    'paged' => 1,
-                    'post_status' => 'publish',
-                    'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
-                    //'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
-                    //'tax_query' => false,
-		            //'meta_query' => $meta_query,
-                    'orderby' => 'meta_value_num',
-                    'meta_key' => 'total_sales',
-                    'order' => 'desc'
-                );
-
-                //print_r($args);                
-
-                $blu_loop = new WP_Query( $args );
-                if( $blu_loop->have_posts() ){
-                    $count = 0;
-                    while( $blu_loop->have_posts() ){
-                        $blu_loop->the_post();
-                        ?>
-                            <li class="big-products__list__item" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="<?php echo $count += 100; ?>">
-                            <?php
-                            /**
-                             * Hook: woocommerce_shop_loop.
-                             */
-                            do_action( 'woocommerce_shop_loop' );
+        <section class="products">
+            <div class="big-container">
+                <?php
+                if ( woocommerce_product_loop() ) {
                 
-                            wc_get_template_part( 'content', 'product' );
+                    woocommerce_product_loop_start();
+
+                    $args = array(
+                        'post_type' => 'product',
+                        'paged' => 1,
+                        'post_status' => 'publish',
+                        'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
+                        //'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
+                        //'tax_query' => false,
+                        //'meta_query' => $meta_query,
+                        'orderby' => 'meta_value_num',
+                        'meta_key' => 'total_sales',
+                        'order' => 'desc'
+                    );
+
+                    //print_r($args);                
+
+                    $blu_loop = new WP_Query( $args );
+                    if( $blu_loop->have_posts() ){
+                        $count = 0;
+                        while( $blu_loop->have_posts() ){
+                            $blu_loop->the_post();
                             ?>
-                            </li>
-                        <?php
+                                <li class="big-products__list__item" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="<?php echo $count += 100; ?>">
+                                <?php
+                                /**
+                                 * Hook: woocommerce_shop_loop.
+                                 */
+                                do_action( 'woocommerce_shop_loop' );
+                    
+                                wc_get_template_part( 'content', 'product' );
+                                ?>
+                                </li>
+                            <?php
+                        }
+                        wp_reset_postdata();
                     }
-                    wp_reset_postdata();
+                
+                    woocommerce_product_loop_end();
+                
+                } else {
+                    /**
+                     * Hook: woocommerce_no_products_found.
+                     *
+                     * @hooked wc_no_products_found - 10
+                     */
+                    do_action( 'woocommerce_no_products_found' );
                 }
-            
-                woocommerce_product_loop_end();
-            
-            } else {
+                ?>
+
+            <div class="paggination footer-marg">
+
+                <?php
                 /**
-                 * Hook: woocommerce_no_products_found.
+                 * Hook: woocommerce_after_shop_loop.
                  *
-                 * @hooked wc_no_products_found - 10
+                 * @hooked woocommerce_pagination - 10
                  */
-                do_action( 'woocommerce_no_products_found' );
-            }
-            ?>
-
-        <div class="paggination footer-marg">
-
-            <?php
-            /**
-             * Hook: woocommerce_after_shop_loop.
-             *
-             * @hooked woocommerce_pagination - 10
-             */
-            do_action( 'woocommerce_after_shop_loop' );
-            ?>
-            
-        </div>
-        </div>
-    </section>
-
-    
+                do_action( 'woocommerce_after_shop_loop' );
+                ?>
+                
+            </div>
+            </div>
+        </section>
 
     <!-- Main -->
     </main>

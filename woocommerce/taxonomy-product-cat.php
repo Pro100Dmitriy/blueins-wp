@@ -162,7 +162,7 @@ if( is_tax() ){
         
 
 
-    <section class="products">
+    <section class="products footer-marg">
         <div class="big-container">
             <?php
             if ( woocommerce_product_loop() ) {
@@ -242,7 +242,13 @@ if( is_tax() ){
                 
             </div>
         </div>
-        <div class="archine-descripion footer-marg">
+    </section>
+
+    <?php
+        $thumb_id = get_woocommerce_term_meta( $taxonomy_page, 'thumbnail_id', true );
+    ?>
+    <section class="archine-descripion" style="background: url('<?php echo wp_get_attachment_url(  $thumb_id );  ?>') top/cover fixed">
+        <div class="archine-descripion__bg">
             <div class="small-container">
                 <?php 
                 /**

@@ -39,6 +39,9 @@ const $header_bottom = document.querySelector('#header__bottom-cover')
 const $go_to_top = document.querySelector('#go-to-top')
 
 
+document.addEventListener( 'DOMContentLoaded', headerAnimation )
+document.addEventListener( 'DOMContentLoaded', go_to_topAnimation )
+document.addEventListener( 'DOMContentLoaded', go_to_topView )
 
 /**
  *      Header
