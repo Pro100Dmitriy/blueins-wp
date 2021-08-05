@@ -25,27 +25,77 @@ const fullscreenMenu = new FullscreenMenu( {
 
 
 
-// Fullscreen menu
-// $('.fullscreen__nav__list__item').on('mouseover', function(e){
-//   $('.fullscreen__nav__list__item').removeClass('curent-hover')
-//   $(this).addClass('curent-hover');
-// });
+
+let TOP_HEADER = 0
+let wppanel = document.querySelector('#wpadminbar')
+
+if( wppanel ){
+  TOP_HEADER = wppanel.getBoundingClientRect().height
+}
+
+const header = document.querySelector('.header')
+const { height } = document.querySelector('.header__top').getBoundingClientRect()
+const $header_bottom = document.querySelector('#header__bottom-cover')
+const $go_to_top = document.querySelector('#go-to-top')
 
 
-let viewportwidth;
-let viewportheight;
-let documentheight;
 
+/**
+ *      Header
+ */
+document.addEventListener( 'wheel', headerAnimation )
+document.addEventListener( 'touchmove', headerAnimation )
 
-$(document).on('wheel touchmove',function(e){
-
-  if( $(window).scrollTop() >= 300 ){
-    $('#header__bottom-cover').addClass('header__bottom-fixed');
+function headerAnimation(event){
+  
+  if( $(window).scrollTop() >= height ){
+    header.style = `top: -${height}px`
+    $header_bottom.classList.add('header__bottom-fixed')
+    $header_bottom.style = `top: ${TOP_HEADER}px`
   }else{
-    $('#header__bottom-cover').removeClass('header__bottom-fixed');
+    header.style = `top: ${TOP_HEADER}px`
+    $header_bottom.classList.remove('header__bottom-fixed')
+    $header_bottom.style = `top: 0px`
   }
 
-})
+}
+
+
+
+/**
+ *      Go To Top
+ */
+$go_to_top.addEventListener( 'click', go_to_topAnimation )
+window.addEventListener( 'wheel', go_to_topView )
+window.addEventListener( 'touchmove', go_to_topView )
+
+function go_to_topAnimation(event){
+
+  $('html, body').animate({scrollTop: 0}, 600);
+  $('#go-to-top').addClass('hidden');
+
+  setTimeout( () => {
+
+    if( $(window).scrollTop() < height ){
+      header.style = `top: ${TOP_HEADER}px`
+      $header_bottom.classList.remove('header__bottom-fixed')
+    }
+
+  }, 600 )
+  
+}
+
+function go_to_topView(){
+
+  if( $(window).scrollTop() >= 1000 ){
+    $go_to_top.classList.remove('hidden');
+  }else{
+    $go_to_top.classList.add('hidden');
+  }
+
+}
+
+
 
 
 // Cart Menu
@@ -147,23 +197,7 @@ $('#fotter-email').on('blur',function(e){
 });
 
 
-// Go To Top
 
-$('#go-to-top').on('click', function(e){
-  e.preventDefault();
-  $('html, body').animate({scrollTop: 0}, 1000);
-  $('#header__bottom-cover').removeClass('header__bottom-fixed');
-  $('#go-to-top').addClass('hidden');
-});
-
-
-$(window).on('wheel touchmove', function() {
-  if( $(window).scrollTop() >= 1000 ){
-    $('#go-to-top').removeClass('hidden');
-  }else{
-    $('#go-to-top').addClass('hidden');
-  }
-});
 
 
 //el-form

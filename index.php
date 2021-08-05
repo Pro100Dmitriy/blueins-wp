@@ -34,14 +34,14 @@ get_header('','about__header__bottom');
                     <img class="slick-slider__item__img" width="100%" height="100%" src="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" alt="Slider Img">
                     <div class="slick-slider__item__content">
                         <div class="h2-cover">
-                            <h2 class="title-slider h1-style" style="<?php
+                            <span class="title-slider h1-style" style="<?php
                                 $field_color = get_field('slider_color');
                                 if( $field_color == 'white' ){
                                     ?> color: white; <?php
                                 }else{
                                     ?> color: #212529; <?php
                                 }
-                            ?>"><?php the_title(); ?></h2>
+                            ?>"><?php the_title(); ?></span>
                         </div>
                         <div class="description">
                             <?php 
@@ -180,7 +180,7 @@ get_header('','about__header__bottom');
                                 </div>
                                 <div class="product-cart__bottom">
                                     <div class="product-cart__bottom__left">
-                                        <h4 class="product-title h4-style"><?php the_title(); ?></h4>
+                                        <span class="product-title h4-style"><?php the_title(); ?></span>
                                         <div class="product-cart__bottom__left__links">
                                             <p class="price regular-fiveteen"><?php woocommerce_template_loop_price(); ?></p>
                                             <a class="view-product-link regular-fiveteen" href="<?php the_permalink(); ?>">Просмотреть продукт</a>
@@ -295,7 +295,7 @@ get_header('','about__header__bottom');
                                 </div>
                                 <div class="product-cart__bottom">
                                     <div class="product-cart__bottom__left">
-                                        <h4 class="product-title h4-style"><?php the_title(); ?></h4>
+                                        <span class="product-title h4-style"><?php the_title(); ?></span>
                                         <div class="product-cart__bottom__left__links">
                                             <p class="price regular-fiveteen"><?php woocommerce_template_loop_price(); ?></p>
                                             <a class="view-product-link regular-fiveteen" href="<?php the_permalink(); ?>">Просмотреть продукт</a>
@@ -320,7 +320,7 @@ get_header('','about__header__bottom');
             <div class="container">
                 <?php if( get_field('main_title_section_3') ) : ?>
                 <div class="section-title">
-                    <span class="section-text__title h2-style"><?php echo get_field('main_title_section_3'); ?></span>
+                    <h2 class="section-text__title h2-style"><?php echo get_field('main_title_section_3'); ?></h2>
                     <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_3'); ?></p>
                 </div>
                 <?php endif; ?>

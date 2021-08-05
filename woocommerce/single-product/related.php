@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ( $heading ) :
 			?>
 				<div class="section-product__title">
-					<h2 class="h2-style"><?php echo esc_html( $heading ); ?></h2>
+					<span class="h2-title h2-style"><?php echo esc_html( $heading ); ?></span>
 				</div>
 			<?php
 				endif; 

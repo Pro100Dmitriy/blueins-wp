@@ -20,7 +20,7 @@ if ( ! comments_open() ) {
     <div id="comments" class="container">
 
 		<div class="section-product__title">
-			<h2 class="h2-style">
+			<span class="h2-title h2-style">
 			<?php
 				$count = $product->get_review_count();
 				if ( $count && wc_review_ratings_enabled() ) {
@@ -32,7 +32,7 @@ if ( ! comments_open() ) {
 					esc_html_e( 'Reviews', 'woocommerce' );
 				}
 			?>
-			</h2>
+			</span>
 		</div>
 		
 		<div class="small-container media-small-container">

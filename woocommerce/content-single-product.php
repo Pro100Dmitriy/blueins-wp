@@ -97,7 +97,7 @@ global $product;
 					$heading = apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'woocommerce' ) );
 				?>
 				<?php if ( $heading ) : ?>
-					<h2 class="h2-style"><?php echo esc_html( $heading ); ?></h2>
+					<span class="h2-title h2-style"><?php echo esc_html( $heading ); ?></span>
 				<?php endif; ?>
 			</div>
 			<div class="description-product__text">
@@ -114,7 +114,7 @@ global $product;
 					$heading = apply_filters( 'woocommerce_product_description_heading', __( 'Дополнительно', 'woocommerce' ) );
 				?>
 				<?php if ( $heading ) : ?>
-					<h2 class="h2-style"><?php echo esc_html( $heading ); ?></h2>
+					<span class="h2-title h2-style"><?php echo esc_html( $heading ); ?></span>
 				<?php endif; ?>
 			</div>
 			<div class="description-product__text">

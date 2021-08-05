@@ -677,12 +677,13 @@ body
 
 
 .header
-    position: absolute
+    position: fixed
     top: 0
     left: 0
     width: 100%
     z-index: $header-z-index
     color: white
+    transition: all 0.2s ease
     &__top
         width: 100%
         background-color: $dark
@@ -767,8 +768,8 @@ body
             path
                 fill: $dark !important
     .header__bottom-fixed
-        position: fixed !important
-        top: 0 !important
+        //position: fixed !important
+        //top: 0 !important
         width: 100%
         .main-menu__item
             &>a
@@ -782,9 +783,12 @@ body
             background: $white !important
             border-bottom: 1px solid rgba($line_gray, 1)
             box-shadow: 0 3px 10px rgba($dark, 0.2)
+            .header__bottom__content__center
+                svg
+                    transform: scale(0.8)
             .main-menu__links
                 &>li
-                    padding: 1.5rem 0
+                    padding: 1.3rem 0
             .sub-nav
                 box-shadow: 0 4px 4px rgba($dark, 0.2)
             ul
@@ -873,7 +877,7 @@ body
                         &>li
                             padding: 1.8rem 0
                         li
-                            margin-right: 3rem
+                            margin-right: 2.5rem
                             a
                                 position: relative
                                 padding: 0.5rem 0

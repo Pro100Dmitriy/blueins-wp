@@ -243,7 +243,7 @@ if( is_tax() ){
             </div>
         </div>
         <div class="archine-descripion footer-marg">
-            <div class="small-container display-none">
+            <div class="small-container">
                 <?php 
                 /**
                  * Hook: woocommerce_archive_description.
