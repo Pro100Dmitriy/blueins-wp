@@ -5,15 +5,6 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/taxonomy-product-cat.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see         https://docs.woocommerce.com/document/template-structure/
- * @package     WooCommerce\Templates
- * @version     4.7.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -35,8 +26,6 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 //do_action( 'woocommerce_after_main_content' );
-
-
 
 //style="background: url('<?php echo get_theme_mod( 'shop-start-img-upload' );') center/cover no-repeat; "
 
@@ -66,6 +55,7 @@ if( is_tax() ){
 
     <main class="main">
     <!-- Main -->
+
       	<section class="start-img <?php if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){ echo 'start-img-white-color'; }else{ echo 'start-img-dark-color'; } ?>">
             <div class="start-img__cover">
                 <img id="parallax_img" class="start-img__cover__img" src="<?php echo get_theme_mod('shop-start-img-upload'); ?>">
@@ -159,109 +149,109 @@ if( is_tax() ){
                 do_action('woocommerce_before_shop_loop_nitices'); // add notices
             ?>
         </section>
-        
 
-
-    <section class="products footer-marg">
-        <div class="big-container">
-            <?php
-            if ( woocommerce_product_loop() ) {
-            
-                woocommerce_product_loop_start();
-
-                $tax_query = array(
-                    array(
-                        'taxonomy' => 'product_cat',
-                        'field' => 'id',
-                        'terms' => $taxonomy_page
-                    )
-                );
-
-                $args = array(
-                    'post_type' => 'product',
-                    'paged' => 1,
-                    'post_status' => 'publish',
-                    'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
-                    //'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
-                    'tax_query' => $tax_query,
-		            //'meta_query' => $meta_query,
-                    'orderby' => 'meta_value_num',
-                    'meta_key' => 'total_sales',
-                    'order' => 'desc'
-                );
-
-                $blu_loop = new WP_Query($args);
-                if( $blu_loop->have_posts() ){
-                    $count = 0;
-                    while( $blu_loop->have_posts() ){
-                        $blu_loop->the_post();
-                        ?>
-                            <li class="big-products__list__item" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="<?php echo $count += 100; ?>">
-                            <?php
-                            /**
-                             * Hook: woocommerce_shop_loop.
-                             */
-                            do_action( 'woocommerce_shop_loop' );
-                
-                            wc_get_template_part( 'content', 'product' );
-                            ?>
-                            </li>
-                        <?php
-                    }
-                    wp_reset_postdata();
-                }
-
-				//if ( wc_get_loop_prop( 'total' ) ) {
-				//	while ( have_posts() ) {
-				//		the_post();
-				//	}
-				//}
-            
-                woocommerce_product_loop_end();
-            
-            } else {
-                /**
-                 * Hook: woocommerce_no_products_found.
-                 *
-                 * @hooked wc_no_products_found - 10
-                 */
-                do_action( 'woocommerce_no_products_found' );
-            }
-            ?>
-
-            <div class="paggination">
-
+        <section class="products footer-marg">
+            <div class="big-container">
                 <?php
-                /**
-                 * Hook: woocommerce_after_shop_loop.
-                 *
-                 * @hooked woocommerce_pagination - 10
-                 */
-                do_action( 'woocommerce_after_shop_loop' );
-                ?>
+                if ( woocommerce_product_loop() ) {
                 
-            </div>
-        </div>
-    </section>
+                    woocommerce_product_loop_start();
 
-    <?php
-        $thumb_id = get_woocommerce_term_meta( $taxonomy_page, 'thumbnail_id', true );
-    ?>
-    <section class="archine-descripion" style="background: url('<?php echo wp_get_attachment_url(  $thumb_id );  ?>') top/cover fixed">
-        <div class="archine-descripion__bg">
-            <div class="small-container">
-                <?php 
-                /**
-                 * Hook: woocommerce_archive_description.
-                 *
-                 * @hooked woocommerce_taxonomy_archive_description - 10
-                 * @hooked woocommerce_product_archive_description - 10
-                 */
-                do_action( 'woocommerce_archive_description' );
+                    $tax_query = array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'id',
+                            'terms' => $taxonomy_page
+                        )
+                    );
+
+                    $args = array(
+                        'post_type' => 'product',
+                        'paged' => 1,
+                        'post_status' => 'publish',
+                        'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
+                        //'posts_per_page' => get_option('woocommerce_catalog_columns') * get_option('woocommerce_catalog_rows'),
+                        'tax_query' => $tax_query,
+                        //'meta_query' => $meta_query,
+                        'orderby' => 'meta_value_num',
+                        'meta_key' => 'total_sales',
+                        'order' => 'desc'
+                    );
+
+                    $blu_loop = new WP_Query($args);
+                    if( $blu_loop->have_posts() ){
+                        $count = 0;
+                        while( $blu_loop->have_posts() ){
+                            $blu_loop->the_post();
+                            ?>
+                                <li class="big-products__list__item" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="<?php echo $count += 100; ?>">
+                                <?php
+                                /**
+                                 * Hook: woocommerce_shop_loop.
+                                 */
+                                do_action( 'woocommerce_shop_loop' );
+                    
+                                wc_get_template_part( 'content', 'product' );
+                                ?>
+                                </li>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                    }
+
+                    //if ( wc_get_loop_prop( 'total' ) ) {
+                    //	while ( have_posts() ) {
+                    //		the_post();
+                    //	}
+                    //}
+                
+                    woocommerce_product_loop_end();
+                
+                } else {
+                    /**
+                     * Hook: woocommerce_no_products_found.
+                     *
+                     * @hooked wc_no_products_found - 10
+                     */
+                    do_action( 'woocommerce_no_products_found' );
+                }
                 ?>
+
+                <div class="paggination">
+
+                    <?php
+                    /**
+                     * Hook: woocommerce_after_shop_loop.
+                     *
+                     * @hooked woocommerce_pagination - 10
+                     */
+                    do_action( 'woocommerce_after_shop_loop' );
+                    ?>
+                    
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <?php
+            $thumb_id = get_woocommerce_term_meta( $taxonomy_page, 'thumbnail_id', true );
+        ?>
+        <section class="archine-descripion" style="background: url('<?php echo wp_get_attachment_url(  $thumb_id );  ?>') top/cover fixed">
+            <div class="archine-descripion__bg">
+                <div class="small-container">
+                    <?php
+
+                    /**
+                     * Hook: woocommerce_archive_description.
+                     *
+                     * @hooked woocommerce_taxonomy_archive_description - 10
+                     * @hooked woocommerce_product_archive_description - 10
+                     */
+                    do_action( 'woocommerce_archive_description' );
+
+                    ?>
+                </div>
+            </div>
+        </section>
 
     
 

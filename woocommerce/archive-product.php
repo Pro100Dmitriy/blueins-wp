@@ -11,14 +11,6 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
     get_header('','about__header__bottom');
 }
 
-/**
- * Hook: woocommerce_archive_description.
- *
- * @hooked woocommerce_taxonomy_archive_description - 10
- * @hooked woocommerce_product_archive_description - 10
- */
-//do_action( 'woocommerce_archive_description' );
-
 
 /**
  * Hook: woocommerce_after_main_content.
@@ -26,7 +18,6 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 //do_action( 'woocommerce_after_main_content' );
-
 
 //style="background: url('<?php echo get_theme_mod( 'shop-start-img-upload' );') center/cover no-repeat; "
 ?>
@@ -214,6 +205,27 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
                 ?>
                 
             </div>
+            </div>
+        </section>
+
+        <?php
+            $page = get_page_by_path( 'main/shop' )
+        ?>
+        <section class="archine-descripion" style="background: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>') top/cover fixed">
+            <div class="archine-descripion__bg">
+                <div class="small-container">
+                    <?php
+        
+                    /**
+                     * Hook: woocommerce_archive_description.
+                     *
+                     * @hooked woocommerce_taxonomy_archive_description - 10
+                     * @hooked woocommerce_product_archive_description - 10
+                     */
+                    do_action( 'woocommerce_archive_description' );
+
+                    ?>
+                </div>
             </div>
         </section>
 
