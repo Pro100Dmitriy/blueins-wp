@@ -2,6 +2,7 @@ import '../sass/style.sass'
 
 import {EventWindow} from './frontend/event-window'
 import {FullscreenMenu} from './frontend/blueins-fullscreen-menu'
+import {mutation_observe} from './frontend/utils'
 
 
 const start_img_animation = new EventWindow({
@@ -573,6 +574,10 @@ document.addEventListener('DOMContentLoaded', event => {
   let optionsProductRazmer = document.getElementById('razmer')
   let optionsProductPaRazmer = document.getElementById('pa_razmer')
 
+  console.log(optionsProductCzvet)
+  console.log(optionsProductRazmer)
+  console.log(optionsProductPaRazmer)
+
   if( optionsProductCzvet ){
 
     let childrenCzvet = [ ...optionsProductCzvet.children ]
@@ -765,10 +770,12 @@ $('.slick-slider').slick({
 
 $(document).ready( ()=>{
 
-  if( document.getElementById('slider-in-main') ){
+  const main_slider = document.querySelector('#slider-in-main')
+
+  if( main_slider ){
 
     let activeSlide, colorTitle, header;
-    let sclickSlider = document.querySelector('.slick-slider');
+    let sclickSlider = main_slider.querySelector('.slick-slider');
 
     function changeColor(){
 
@@ -873,16 +880,6 @@ $('#information-product__sliders__slick').slick({
   }]
 });
 
-
-$('#fastview-slick-slider').slick({
-    dots: true,
-    infinite: false,
-    autoplay: false,
-    fade: false,
-    nextArrow: `<button type="button" class="slick-next"><img src="${PAGE_URL}/assets/img/Icon/Dark/next.svg" alt="Next"></button>`,
-    prevArrow: `<button type="button" class="slick-prev"><img src="${PAGE_URL}/assets/img/Icon/Dark/prev.svg" alt="Prev"></button>`,
-    responsive: [{}]
-});
 
 
 /**

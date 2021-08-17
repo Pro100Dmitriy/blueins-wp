@@ -1,7 +1,8 @@
 export function mutation_observe( $element, callback, settings = {
     attributes: true,
     characterData: true,
-    childList: true,subtree: true,
+    childList: true,
+    subtree: true,
     attributeOldValue: true,
     characterDataOldValue: true
 } ){
