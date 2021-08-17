@@ -256,14 +256,21 @@
     </header>
 
 
-<div id="blueins_user_form_popup" class="blueins_login_user_form_popup">
-    <div class="blueins_login_user_form_popup__close-button">
-        <button id="blueins_user_form_popup-colose" class="close-button">Close Popup</button>
+    <!-- User Registration -->
+    <div id="blueins_user_form_popup" class="blueins_login_user_form_popup">
+        <div class="blueins_login_user_form_popup__close-button">
+            <button id="blueins_user_form_popup-colose" class="close-button">Close Popup</button>
+        </div>
+        <div class="blueins_login_user_form_popup__containter">
+            <?php
+                do_action('blueins_authorization_user');
+            ?>
+        </div>
     </div>
-    <div class="blueins_login_user_form_popup__containter">
-        <?php
-            do_action('blueins_authorization_user');
-        ?>
-    </div>
-</div>
-<div id="blueins_user_form_popup-overlay" class="blueins_login_user_form_popup-overlay"></div>
+    <div id="blueins_user_form_popup-overlay" class="blueins_login_user_form_popup-overlay"></div>
+    <!-- User Registration -->
+
+
+    <?php
+        wc_get_template_part( 'fastview', 'template' );
+    ?>

@@ -37,7 +37,10 @@ class blueins_fullscreen_walker_nav_menu extends Walker_Nav_Menu{
         $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
         $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-        if( ! empty( $item->url ) && $depth !== 1 ) { 
+        if( ! empty( $item->url ) && $depth !== 1 ) {
+            // if( stristr( $item->url, 'contact' ) || stristr( $item->url, 'about' ) || stristr( $item->url, 'otvety-na-voprosy' ) ){
+            //     $attributes .= ' rel="nofollow"';
+            // }
             $attributes .= ' href="' . esc_attr( $item->url ) . '"';
         }else{
             $attributes .= ' href="#"';

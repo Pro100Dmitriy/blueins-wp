@@ -39,7 +39,7 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
     </div>
     <div id="prod-filter-overlay" class="prod-filter-overlay"></div>
     <!-- Filter -->
-
+    
     
     <main class="main">
     <!-- Main -->

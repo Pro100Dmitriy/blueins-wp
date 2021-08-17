@@ -874,6 +874,17 @@ $('#information-product__sliders__slick').slick({
 });
 
 
+$('#fastview-slick-slider').slick({
+    dots: true,
+    infinite: false,
+    autoplay: false,
+    fade: false,
+    nextArrow: `<button type="button" class="slick-next"><img src="${PAGE_URL}/assets/img/Icon/Dark/next.svg" alt="Next"></button>`,
+    prevArrow: `<button type="button" class="slick-prev"><img src="${PAGE_URL}/assets/img/Icon/Dark/prev.svg" alt="Prev"></button>`,
+    responsive: [{}]
+});
+
+
 /**
  * *************************************** Animation ******************************************
  */

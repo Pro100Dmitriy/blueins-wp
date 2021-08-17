@@ -1195,6 +1195,50 @@ body
 
 
 
+// Fast View
+.fastview
+    position: fixed
+    top: 0
+    left: 0
+    background: rgba($dark , 0.4)
+    z-index: $fastview-z-index
+    overflow: hidden
+    .fastview-relative
+        position: relative
+        width: 100vw
+        height: 100vh
+        .preloader
+            position: absolute
+            top: 50%
+            left: 50%
+            width: 100vw
+            height: 100vh
+        .fastview__container
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            background: white
+            display: flex
+            flex-direction: row
+            &__slider
+                .fastview-slick-list
+                    width: 500px
+                    height: 500px
+                    .slick-arrow
+                    .slick-prev
+                    .slick-next
+                    .slick-dots
+                    .slick-item
+                        img
+                            width: 500px
+                            height: 500px
+            &__content
+                width: 500px
+                .details__quantity-but__quantity
+                    @include el-quantity($dark, $light, $line_gray)
+
+
 
 @import 'pages/main-page.sass'
 @import 'pages/product-page.sass'
