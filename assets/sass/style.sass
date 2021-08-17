@@ -1203,6 +1203,9 @@ body
     background: rgba($dark , 0.4)
     z-index: $fastview-z-index
     overflow: hidden
+    opacity: 0
+    display: none
+    transition: all 0.2s ease
     .fastview-relative
         position: relative
         width: 100vw
@@ -1211,16 +1214,18 @@ body
             position: absolute
             top: 50%
             left: 50%
-            width: 100vw
-            height: 100vh
+            transform: translate(-50%, -50%)
+            opacity: 0
+            svg
         .fastview__container
             position: absolute
             top: 50%
             left: 50%
-            transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%) scale(0)
             background: white
             display: flex
             flex-direction: row
+            transition: all 0.2s ease-in-out
             &__slider
                 .fastview-slick-list
                     width: 500px
