@@ -17,7 +17,7 @@ if( get_theme_mod( 'contact-start-img-color-text' ) === 'normal' ){
 
         <section class="contact__start-img <?php if( get_theme_mod( 'contact-start-img-color-text' ) === 'normal' ){ echo 'start-img-white-color'; }else{ echo 'start-img-dark-color'; } ?>">
             <div class="contact__start-img__cover">
-                <img id="parallax_img" class="contact__start-img__cover__img" src="<?php echo get_theme_mod('contact-start-img-upload'); ?>">
+                <img id="parallax_img" class="contact__start-img__cover__img" src="<?php echo get_theme_mod('contact-start-img-upload'); ?>" alt="Контакты">
             </div>
             <div class="contact__start-img__cover__content">
                 <div class="container">

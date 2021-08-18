@@ -444,26 +444,26 @@ $(document).ready( ()=>{
  * ************************ Vaiable Colors Start ************************
  */
 
-function updateHTML( circleEl, childrenArr, optionsWoo, circle, nameHere ){
-  
+ function updateHTML( circleEl, childrenArr, optionsWoo, circle, nameHere, space ){
+
   for( let i=0; i < circle.length; i++ ){
-    circle[i].classList.remove('element-select'); 
+      circle[i].classList.remove('element-select'); 
   }
   circleEl.classList.add('element-select');
 
   let circleElId = circleEl.getAttribute('id');
 
   let fullval = childrenArr.map( opt => {
-    if( opt.value.slice( opt.value.indexOf('#') ) == circleElId ){
+      if( opt.value.slice( opt.value.indexOf('#') ) == circleElId ){
       return opt.value;
-    }
+      }
   } );
 
   fullval = fullval.filter( optVal => {if( optVal != undefined ) return optVal } );
   $( optionsWoo ).val(fullval[0]).change();
 
   // Set Name Color
-  let nameContainer = document.getElementById( nameHere );
+  let nameContainer = space.querySelector( `#${nameHere}` );
   nameContainer.innerHTML = fullval[0].slice( 0, fullval[0].indexOf('#') );
 
 }
@@ -471,12 +471,12 @@ function updateHTML( circleEl, childrenArr, optionsWoo, circle, nameHere ){
 function updateIMG(targetEl){
   let activeID
   if( img_variation_src ){
-    img_variation_src.forEach( item => {
+      img_variation_src.forEach( item => {
       let harpIdex = item['id'].indexOf('#')
       if( item['id'].slice( harpIdex ) == targetEl ){
-        activeID = item
+          activeID = item
       }
-    })
+      })
   }
 
   let variation_slider = document.getElementById('blu-variations-slider')
@@ -498,12 +498,12 @@ function updateIMG(targetEl){
   controlFirst_IMG.setAttribute('src', activeID['data-thumb'])
 }
 
-function createSquare( listArray, whereId ){
+function createSquare( listArray, whereId, space ){
   let arraySquare = []
 
   listArray.forEach( (child, childIndex) => {
-    if( childIndex != 0 ){
-      let listContainer = document.getElementById( whereId )
+      if( childIndex != 0 ){
+      let listContainer = space.querySelector( `#${whereId}` )
 
       let liElem = document.createElement('li')
       let spanElem = document.createElement('span')
@@ -520,28 +520,21 @@ function createSquare( listArray, whereId ){
       liElem.setAttribute('name', razmerName)
       liElem.appendChild( spanElem )
 
-      // let liElem = `
-      //   <li class="details__razmer__list__item" name="${razmerName}">
-      //     <span class="details-select-square">${razmerCod}</span>
-      //   </li>
-      // `
-
       arraySquare.push( spanElem )
-      //listContainer.insertAdjacentHTML( 'afterbegin', liElem )
       listContainer.appendChild( liElem )
-    }
+      }
   } )
 
   return arraySquare;
 }
 
-function createCircle( listArray, whereId ){
+function createCircle( listArray, whereId, space ){
   let arratCircle = [];
 
   listArray.forEach( (child, childIndex, childArray)=>{
 
-    if( childIndex != 0 ){
-      let listContainer = document.getElementById( whereId );
+      if( childIndex != 0 ){
+      let listContainer = space.querySelector( `#${whereId}` );
 
       let liElem = document.createElement('li');
       let spanElem = document.createElement('span');
@@ -560,82 +553,85 @@ function createCircle( listArray, whereId ){
 
       arratCircle.push( spanElem );
       listContainer.appendChild( liElem );
-    }
-    
+      }
+      
   } );
 
   return arratCircle;
 }
 
+function productVariation( space ){
 
-document.addEventListener('DOMContentLoaded', event => {
-
-  let optionsProductCzvet = document.getElementById('czvet')
-  let optionsProductRazmer = document.getElementById('razmer')
-  let optionsProductPaRazmer = document.getElementById('pa_razmer')
-
-  console.log(optionsProductCzvet)
-  console.log(optionsProductRazmer)
-  console.log(optionsProductPaRazmer)
+  let optionsProductCzvet = space.querySelector('[data-attribute_name="attribute_czvet"]')
+  let optionsProductRazmer = space.querySelector('[data-attribute_name="attribute_razmer"]')
+  let optionsProductPaRazmer = space.querySelector('[data-attribute_name="attribute_pa_razmer"]')
 
   if( optionsProductCzvet ){
 
-    let childrenCzvet = [ ...optionsProductCzvet.children ]
-    
-    let circleCzvet = createCircle( childrenCzvet, 'setElementHere__czvet' )
-    
-    updateHTML( circleCzvet[0], childrenCzvet, optionsProductCzvet, circleCzvet, 'setNameHere__czvet' )
+      let childrenCzvet = [ ...optionsProductCzvet.children ]
+      
+      let circleCzvet = createCircle( childrenCzvet, 'setElementHere__czvet', space )
+      
+      updateHTML( circleCzvet[0], childrenCzvet, optionsProductCzvet, circleCzvet, 'setNameHere__czvet', space )
 
-    circleCzvet.forEach( circleEl => {
+      circleCzvet.forEach( circleEl => {
       circleEl.addEventListener('click', (event)=>{
-        event.preventDefault();
-        let targetEl = event.target.getAttribute('id')
+          event.preventDefault();
+          let targetEl = event.target.getAttribute('id')
 
-        updateHTML( circleEl, childrenCzvet, optionsProductCzvet, circleCzvet, 'setNameHere__czvet' );
-        updateIMG( targetEl );
+          updateHTML( circleEl, childrenCzvet, optionsProductCzvet, circleCzvet, 'setNameHere__czvet', space );
+          updateIMG( targetEl );
 
       })
-    })
+      })
 
   }
   if( optionsProductRazmer ){
 
-    let childrenRazmer = [ ...optionsProductRazmer.children ]
+      let childrenRazmer = [ ...optionsProductRazmer.children ]
 
-    let squareRazmer = createSquare( childrenRazmer, 'setElementHere__razmer' )
+      let squareRazmer = createSquare( childrenRazmer, 'setElementHere__razmer', space )
 
-    updateHTML( squareRazmer[0], childrenRazmer, optionsProductRazmer, squareRazmer, 'setNameHere__razmer' )
+      updateHTML( squareRazmer[0], childrenRazmer, optionsProductRazmer, squareRazmer, 'setNameHere__razmer', space )
 
-    squareRazmer.forEach( circleEl => {
+      squareRazmer.forEach( circleEl => {
       circleEl.addEventListener('click', (event)=>{
-        event.preventDefault();
+          event.preventDefault();
 
-        updateHTML( circleEl, childrenRazmer, optionsProductRazmer, squareRazmer, 'setNameHere__razmer' );
+          updateHTML( circleEl, childrenRazmer, optionsProductRazmer, squareRazmer, 'setNameHere__razmer', space );
 
       })
-    })
+      })
 
   }
   if( optionsProductPaRazmer ){
 
-    let childrenRazmer = [ ...optionsProductPaRazmer.children ]
+      let childrenRazmer = [ ...optionsProductPaRazmer.children ]
 
-    let squareRazmer = createSquare( childrenRazmer, 'setElementHere__pa_razmer' )
+      let squareRazmer = createSquare( childrenRazmer, 'setElementHere__pa_razmer', space )
 
-    updateHTML( squareRazmer[0], childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer' )
+      updateHTML( squareRazmer[0], childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer', space )
 
-    squareRazmer.forEach( circleEl => {
+      squareRazmer.forEach( circleEl => {
       circleEl.addEventListener('click', (event)=>{
-        event.preventDefault();
+          event.preventDefault();
 
-        updateHTML( circleEl, childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer' );
+          updateHTML( circleEl, childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer', space );
 
       })
-    })
+      })
 
   }
 
+}
+
+document.addEventListener('DOMContentLoaded', event => {
+  let $prod_info = document.querySelector('.information-product')
+  if( $prod_info ){
+    productVariation( $prod_info ) 
+  }
 })
+
 
 /**
  * ************************ Vaiable Colors End ************************

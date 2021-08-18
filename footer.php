@@ -92,13 +92,13 @@
                                     <li class="footer-menu__list__item">
                                         <ul class="sub-menu-social">
                                             <li class="sub-menu-social__item">
-                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'vk_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Vk.svg"></a>
+                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'vk_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Vk.svg" alt="ВК"></a>
                                             </li>
                                             <li class="sub-menu-social__item">
-                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'facebook_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Facebook.svg"></a>
+                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'facebook_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Facebook.svg" alt="Facebook"></a>
                                             </li>
                                             <li class="sub-menu-social__item">
-                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'instagram_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Instagram.svg"></a>
+                                                <a rel="nofollow" target="_blank" href="<?php echo get_theme_mod( 'instagram_header' ); ?>"><img src="<?php echo bloginfo('template_url') . "/assets/img/" ?>Icon/Dark/Instagram.svg" alt="Instagram"></a>
                                             </li>
                                         </ul>
                                     </li>

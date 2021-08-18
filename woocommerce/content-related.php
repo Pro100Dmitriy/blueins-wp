@@ -25,7 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				<img class="product-img figure-product__first" src="<?php echo wp_get_attachment_image_url( $attachment_ids[0], 'full' ); ?>" alt="Картинка товара">
 				<img class="product-img figure-product__second" src="<?php echo wp_get_attachment_image_url( $attachment_ids[1], 'full' ); ?>" alt="Картинка товара">
 			</figure>
-            <a class="fast-view" href="<?php the_permalink(); ?>">Быстрый просмотр</a>
+            <a data-blu-product-id="<?php echo $product->id; ?>" data-el="blu_fastview" class="fast-view" href="<?php the_permalink(); ?>">Быстрый просмотр</a>
         </div>
         <div class="product-cart__bottom">
             <div class="product-cart__bottom__left">
