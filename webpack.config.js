@@ -9,10 +9,16 @@ module.exports = {
 
     context: path.resolve( __dirname, 'assets/js' ),
 
-    entry: [
-        './common.js',
-        './frontend/blueins-cart-ajax.js'
-    ],
+    // entry: [
+    //     './common.js',
+    //     './frontend/blueins-cart-ajax.js'
+    // ],
+
+    entry: {
+        common: './common.js',
+        'blueins-cart-ajax': './frontend/blueins-cart-ajax.js',
+        'price-slider': './frontend/price-slider/price-slider.js'
+    },
 
     output: {
         path: path.resolve( __dirname, 'dist' ),

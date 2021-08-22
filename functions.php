@@ -21,20 +21,21 @@ add_action( 'wp_enqueue_scripts', 'blueins_scripts' );
 
 function blueins_scripts() {
 	//wp_enqueue_style( 'blueins-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'blueins-style', get_template_directory_uri() . '/dist/main.css' );
+	wp_enqueue_style( 'blueins-style', get_template_directory_uri() . '/dist/common.css' );
 	wp_enqueue_style( 'blueins-animation', get_template_directory_uri() . '/assets/css/aos.css' );
 
     wp_enqueue_script( 'blueins-jquery', get_template_directory_uri() . '/assets/js/libs/jquery.min.js', array(), null, true );
     wp_enqueue_script( 'blueins-scripts-animation', get_template_directory_uri() . '/assets/js/libs/aos.js', array(), null, true );
-    wp_enqueue_script( 'blueins-scripts', get_template_directory_uri() . '/dist/main.js', array(), null, true );
+    wp_enqueue_script( 'blueins-scripts', get_template_directory_uri() . '/dist/common.js', array(), null, true );
 
     //wp_enqueue_script( 'blueins-cart-ajax', get_template_directory_uri() . '/assets/js/frontend/blueins-cart-ajax.js', array(), null, true );
+    wp_enqueue_script( 'blueins-cart-ajax', get_template_directory_uri() . '/dist/blueins-cart-ajax.js', array(), null, true );
 
 	global $wp_query;
  
 	wp_enqueue_script('jquery');
  
-	wp_localize_script( 'blueins-scripts', 'misha_loadmore_params', array(
+	wp_localize_script( 'blueins-scripts', 'blu_loadmore_param', array(
 		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php',
 		'posts' => json_encode( $wp_query->query_vars ),
 		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,

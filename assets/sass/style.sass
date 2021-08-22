@@ -79,7 +79,7 @@ body
     @media screen and ( max-width: 468px )
         width: 100%
     .cart__top
-        background: $blue
+        //background: $blue
         display: flex
         justify-content: space-between
         padding: 1.4rem 2.66rem
@@ -105,6 +105,19 @@ body
     .cart__center
         height: calc(100vh - 232px - 66px - 1rem)
         overflow-y: scroll
+        /* width */
+        &::-webkit-scrollbar 
+            width: 5px
+        /* Track */
+        &::-webkit-scrollbar-track
+            background: white
+        /* Handle */
+        &::-webkit-scrollbar-thumb
+            background: $gray
+            transition: all 0.3s ease
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover
+            background: $dark-light
         @media screen and ( max-width: 1200px )
             height: calc(100vh - 191px - 68px - 1rem)
         .tomatchContainer-hidden

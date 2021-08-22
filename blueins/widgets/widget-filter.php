@@ -24,7 +24,8 @@ class Blueins_Widget_Price_Filter extends WC_Widget {
 		//$version                  = Constants::get_constant( 'WC_VERSION' );
 		wp_register_script( 'accounting', WC()->plugin_url() . '/assets/js/accounting/accounting' . $suffix . '.js', array( 'jquery' ), '0.4.2', true );
 		wp_register_script( 'wc-jquery-ui-touchpunch', WC()->plugin_url() . '/assets/js/jquery-ui-touch-punch/jquery-ui-touch-punch' . $suffix . '.js', array( 'jquery-ui-slider' ), null, true );
-		wp_register_script( 'wc-price-slider', get_template_directory_uri() . '/assets/js/frontend/price-slider.js', array( 'jquery' ), null, true );
+		//wp_register_script( 'wc-price-slider', get_template_directory_uri() . '/assets/js/frontend/price-slider.js', array( 'jquery' ), null, true );
+		wp_register_script( 'wc-price-slider', get_template_directory_uri() . '/dist/price-slider.js', array( 'jquery' ), null, true );
 		wp_localize_script(
 			'wc-price-slider',
 			'woocommerce_price_slider_params',

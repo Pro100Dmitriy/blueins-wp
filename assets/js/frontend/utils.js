@@ -20,31 +20,55 @@ export function mutation_observe( $element, callback, settings = {
 
 
 /*
-const sendObject = {
+
+sendRequest( {
     method: 'GET',
     url: ajax_url,
-    action,
-    product_id,
-    priduct_qty,
-    variation_id,
-    color,
-    size,
-    onloadstart_callback(){},
-}
+    action: 'loadmore',
+    data: {
+        category: category_id,
+        min,
+        max,
+        order,
+        taxonomyID: taxonomy
+    },
+    onloadstart_callback(){
+        
+    }
+} )
+.then( data => {
+
+} )
+.catch( error => {
+
+} )
+
 */
 export function sendRequest( sendObject ){
     return new Promise( (resolve, reject) => {
-        const xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest()
 
-        xhr.open( sendObject.method, sendObject.url + sendObject.query )
-        
+        let dataURL = ''
+        let dataKeys = Object.keys( sendObject.data )
+        dataKeys.forEach( key => {
+            dataURL += `&${key}=${sendObject.data[key]}`
+        } )
+
+        xhr.open( sendObject.method, sendObject.url + `?action=${sendObject.action}` + dataURL )
         xhr.onloadstart = sendObject.onloadstart_callback()
         xhr.onload = () => {
-            resolve(xhr.response)
+            resolve( xhr.response )
         }
         xhr.onerror = () => {
-            reject(xhr.response)
+            reject( xhr.response )
         }
         xhr.send()
-    })
+
+    } )
+}
+
+
+
+export function css(el, styles = {}){
+    Object.assign(el.style, styles)
 }

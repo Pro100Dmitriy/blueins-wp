@@ -80,7 +80,10 @@ document.addEventListener('DOMContentLoaded', event => {
                 sendRequest( {
                     method: 'GET',
                     url: AJAX_URL,
-                    query: `?action=${action}&product_id=${product_id}`,
+                    action,
+                    data: {
+                        product_id
+                    },
                     onloadstart_callback(){
     
                         document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
@@ -169,7 +172,14 @@ document.addEventListener('DOMContentLoaded', event => {
                 sendRequest( {
                     method: 'GET',
                     url: AJAX_URL,
-                    query: `?action=${action}&product_id=${product_id}&product_qty=${product_qty}&variaction_id=${variaction_id}&color=${color}&size=${size}`,
+                    action,
+                    data: {
+                        product_id,
+                        product_qty,
+                        variaction_id,
+                        color,
+                        size
+                    },
                     onloadstart_callback(){
     
                         document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
@@ -262,7 +272,11 @@ document.addEventListener('DOMContentLoaded', event => {
                 sendRequest( {
                     method: 'GET',
                     url: AJAX_URL,
-                    query: `?action=${action}&product_id=${product_id}&data_cart_item_key=${product_key}`,
+                    action,
+                    data: {
+                        product_id,
+                        data_cart_item_key: product_key
+                    },
                     onloadstart_callback(){
     
                         document.querySelector('.blueins_cart_center').insertAdjacentHTML('afterbegin', preloader)
