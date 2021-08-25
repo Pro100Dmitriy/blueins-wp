@@ -11,6 +11,19 @@ html
 
 body
     color: $dark
+    /* width */
+    &::-webkit-scrollbar 
+        width: 5px
+    /* Track */
+    &::-webkit-scrollbar-track
+        background: $light
+    /* Handle */
+    &::-webkit-scrollbar-thumb
+        background: $blue
+        transition: all 0.3s ease
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover
+        background: $dark-light
 
 
 @import 'font_style'

@@ -47,7 +47,22 @@
          &:hover
             background: $light
    &__bottom
+      height: calc(100vh - 90.03px)
       padding: 1.4rem 2.66rem
+      overflow-y: scroll
+      /* width */
+      &::-webkit-scrollbar 
+         width: 5px
+      /* Track */
+      &::-webkit-scrollbar-track
+         background: $dark
+      /* Handle */
+      &::-webkit-scrollbar-thumb
+         background: $gray
+         transition: all 0.3s ease
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover
+         background: $dark-light
       .prod-filter__customs
          .customs__list
             .activeFilters-hidden
