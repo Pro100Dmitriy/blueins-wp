@@ -136,10 +136,18 @@ $('.groupe-cust-title').on('click', function(e){
  *      Variations
  */
 const variation = new Blueins_Variation({
-  space: document.querySelector('.information-product'),
-  circleContainerId: 'setElementHere__pa_czvet',
-  circleNameContainerId: 'setNameHere__pa_czvet'
+  space: 'information-product',
+  colorPaContainerId: 'setElementHere__pa_czvet',
+  colorPaNameContainerId: 'setNameHere__pa_czvet',
+  razmerPaContainerId: 'setElementHere__pa_razmer',
+  razmerPaNameContainerId: 'setNameHere__pa_razmer',
+  colorContainerId: 'setElementHere__czvet',
+  colorNameContainerId: 'setNameHere__czvet',
+  razmerContainerId: 'setElementHere__razmer',
+  razmerNameContainerId: 'setNameHere__razmer',
+  jquery: $
 })
+
 
 
 

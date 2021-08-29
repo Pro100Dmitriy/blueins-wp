@@ -1,57 +1,71 @@
 export class Blueins_Variation{
     constructor( options ){
-        this.space = options.space
-        this.setColorCircleContainer = this.space.querySelector(`#${options.circleContainerId}`)
-        this.setColorNameContainer = this.space.querySelector(`#${options.circleNameContainerId}`)
-
-        this.init()
+        this.space = document.querySelector( `.${options.space}` ) ?? null
+        if( this.space ){
+            // Without Pa_
+            this.setColorCircleContainer = this.space.querySelector(`#${options.colorContainerId}`)
+            this.setColorNameContainer = this.space.querySelector(`#${options.colorNameContainerId}`)
+            this.setRazmerSquareContainer = this.space.querySelector(`#${options.razmerContainerId}`)
+            this.setRazmerNameContainer = this.space.querySelector(`#${options.razmerNameContainerId}`)
+            // With Pa_
+            this.setColorPaCircleContainer = this.space.querySelector(`#${options.colorPaContainerId}`)
+            this.setColorPaNameContainer = this.space.querySelector(`#${options.colorPaNameContainerId}`)
+            this.setRazmerPaSquareContainer = this.space.querySelector(`#${options.razmerPaContainerId}`)
+            this.setRazmerPaNameContainer = this.space.querySelector(`#${options.razmerPaNameContainerId}`)
+            this.$ = options.jquery
+            this.init()
+        }
     }
 
     init(){
-        let optionsProductPaRazmer = this.space.querySelector('[data-attribute_name="attribute_pa_razmer"]')
         let optionsProductPaCzvet = this.space.querySelector('[data-attribute_name="attribute_pa_czvet"]')
+        let optionsProductPaRazmer = this.space.querySelector('[data-attribute_name="attribute_pa_razmer"]')
+        let optionsProductCzvet = this.space.querySelector('[data-attribute_name="attribute_czvet"]')
+        let optionsProductRazmer = this.space.querySelector('[data-attribute_name="attribute_razmer"]')
 
         if( optionsProductPaRazmer ){
-      
-            let childrenRazmer = [ ...optionsProductPaRazmer.children ]
-      
-            let squareRazmer = createSquare( childrenRazmer, 'setElementHere__pa_razmer', space )
-      
-            updateHTML( squareRazmer[0], childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer', space )
-      
-            squareRazmer.forEach( circleEl => {
-            circleEl.addEventListener('click', (event)=>{
-                event.preventDefault();
-      
-                updateHTML( circleEl, childrenRazmer, optionsProductPaRazmer, squareRazmer, 'setNameHere__pa_razmer', space );
-      
-            })
-            })
-      
+            this.razmerInit( optionsProductPaRazmer, this.setRazmerPaNameContainer, this.setRazmerPaSquareContainer )
         }
         if( optionsProductPaCzvet ){
-            this.colorInit( optionsProductPaCzvet )
+            this.colorInit( optionsProductPaCzvet, this.setColorPaNameContainer, this.setColorPaCircleContainer )
+        }
+        if( optionsProductRazmer ){
+            this.razmerInit( optionsProductRazmer, this.setRazmerNameContainer, this.setRazmerSquareContainer )
+        }
+        if( optionsProductCzvet ){
+            this.colorInit( optionsProductCzvet, this.setColorNameContainer, this.setColorCircleContainer )
         }
     }
 
-    colorInit( selectPaCzvet ){
+    colorInit( selectPaCzvet, nameContainer, container ){
         let optionsPaCzvet = [ ...selectPaCzvet.options ]
             
-        let colors = this.createCircle( optionsPaCzvet )
-        console.log( colors )
-        
-        this.renderHTML( colors.first, optionsPaCzvet, selectPaCzvet, colors.list )
+        let colors = this.createCircle( optionsPaCzvet, container )
+        this.renderHTML( colors.first, optionsPaCzvet, selectPaCzvet, colors.list, nameContainer )
     
         colors.list.forEach( color => color.addEventListener( 'click', (e) => {
             e.preventDefault()
-            this.renderHTML( e.target, optionsPaCzvet, selectPaCzvet, colors.list )
+            let targetElId = e.target
+            this.renderHTML( e.target, optionsPaCzvet, selectPaCzvet, colors.list, nameContainer )
+            this.updateIMG( targetElId )
         } ) )
     }
 
-    createCircle( optionsArray ){
+    razmerInit( selectPaRazmer, nameContainer, container ){
+        let optionsPaRazmer = [ ...selectPaRazmer.options ]
+      
+        let razmers = this.createSquare( optionsPaRazmer, container )
+        this.renderHTML( razmers.first, optionsPaRazmer, selectPaRazmer, razmers.list, nameContainer )
+  
+        razmers.list.forEach( razmer => razmer.addEventListener( 'click', (e) => {
+            e.preventDefault()
+            this.renderHTML( e.target, optionsPaRazmer, selectPaRazmer, razmers.list, nameContainer )
+        } ) )
+    }
+
+    createCircle( optionsArray, container ){
         optionsArray.forEach( (child, childIndex) => {
             if( childIndex != 0 ){
-                // Fint Color #Cod
                 let colorCod = child.innerHTML.slice( child.innerHTML.indexOf('#') ).trim()
                 let colorName = child.innerHTML.slice( 0, child.innerHTML.indexOf('#') ).trim()
         
@@ -65,70 +79,104 @@ export class Blueins_Variation{
                     </li>
                 `
 
-                this.setColorCircleContainer.insertAdjacentHTML('afterbegin', HTML)
+                container.insertAdjacentHTML('afterbegin', HTML)
             }
         } );
 
         return {
-            first: this.setColorCircleContainer.querySelector( `li:first-child span` ),
-            list: this.setColorCircleContainer.querySelectorAll( `.details__colors__list__item span` )
+            first: container.querySelector( `li:first-child span` ),
+            list: container.querySelectorAll( `.details__colors__list__item span` )
         }
     }
 
-    createSquare( listArray, whereId ){
-        let arraySquare = []
-
-        listArray.forEach( (child, childIndex) => {
+    createSquare( optionsArray, container ){
+        optionsArray.forEach( (child, childIndex) => {
             if( childIndex != 0 ){
-            let listContainer = space.querySelector( `#${whereId}` )
+                let razmerCod = child.innerHTML.slice( child.innerHTML.indexOf('#') ).trim()
+                let razmerCodHTML = child.innerHTML.slice( child.innerHTML.indexOf('#') + 1 )
+                let razmerName = child.innerHTML.slice( 0, child.innerHTML.indexOf('#') )
 
-            let liElem = document.createElement('li')
-            let spanElem = document.createElement('span')
+                let HTML = `
+                    <li class="details__razmer__list__item" name="${ razmerName }">
+                        <span   class="details-select-square element-select"
+                                id="${ razmerCod }" 
+                                data-value="${child.value}">
+                        ${razmerCodHTML}
+                        </span>
+                    </li>
+                `
 
-            let razmerCod = child.value.slice( child.value.indexOf('#') )
-            let razmerCodHTML = child.value.slice( child.value.indexOf('#') + 1 )
-            let razmerName = child.value.slice( 0, child.value.indexOf('#') )
-
-            spanElem.setAttribute('class', 'details-select-square')
-            spanElem.setAttribute('id', razmerCod.trim());
-            spanElem.textContent = razmerCodHTML
-
-            liElem.setAttribute('class', 'details__razmer__list__item')
-            liElem.setAttribute('name', razmerName)
-            liElem.appendChild( spanElem )
-
-            arraySquare.push( spanElem )
-            listContainer.appendChild( liElem )
+                container.insertAdjacentHTML('afterbegin', HTML)
             }
         } )
 
-        return arraySquare;
+        return {
+            first: container.querySelector( `li:first-child span` ),
+            list: container.querySelectorAll( `.details__razmer__list__item span` )
+        };
     }
 
-    renderHTML( active, optionsHTML, selectHTML, list){
-        for( let i=0; i < list.length; i++ ){
-            list[i].classList.remove('element-select'); 
+    renderHTML( active, optionsHTML, selectHTML, list, placeName){
+        for( let item of list ){
+            item.classList.remove('element-select')
         }
-        active.classList.add('element-select');
+        active.classList.add('element-select')
       
-        let circleFirstValue = active.getAttribute('data-value');
+        let circleFirstValue = active.getAttribute('data-value')
         let selectedValue = optionsHTML.map( option => {
-            if( option.value == circleFirstValue ) return option.value
+            if( option.value == circleFirstValue ) {
+                return option.value
+            }
         } )
       
         selectedValue = selectedValue.filter( optVal => {
            if( optVal != undefined ) return optVal 
         } );
-        selectHTML.value = selectedValue
-        //$( optionsWoo ).val(fullval[0]).change();
+        
+        //selectHTML.value = selectedValue
+        this.$( selectHTML ).val(selectedValue[0]).change();
       
         // Set Name Color
-        let name = selectHTML.querySelector(`[value="${selectedValue}"]`).innerHTML
-        this.setColorNameContainer.innerHTML = name.slice( 0, name.indexOf('#') );
+        let name = selectHTML.querySelector(`[value="${selectedValue[0]}"]`).innerHTML
+        placeName.innerHTML = name.slice( 0, name.indexOf('#') )
     }
 
-    updateIMG(){
+    updateIMG( targetEl ){
+        let activeID
+        if( img_variation_src ){
+            if( targetEl.getAttribute('id').indexOf('#') ){
+                img_variation_src.forEach( item => {
+                    let harpIdex = item['id'].indexOf('#')
+                    if( item['id'].slice( harpIdex ) == targetEl.getAttribute('id') ){
+                        activeID = item
+                    }
+                })
+            }else{
+                img_variation_src.forEach( item => {
+                    if( item['id'] == targetEl.getAttribute('data-value') ){
+                        activeID = item
+                    }
+                })     
+            }
+        }
 
+        let variation_slider = document.getElementById('blu-variations-slider')
+        let firstElement = variation_slider.children[0]
+        let firstURL = firstElement.children[0]
+        let firstIMG = firstElement.querySelector('.wp-post-image')
+
+        let variation_control_nav = document.querySelector('.flex-control-nav')
+        let controlFirst_IMG = variation_control_nav.children[0].children[0]
+
+        firstElement.setAttribute('data-thumb', activeID['data-thumb'])
+        firstURL.setAttribute('href', activeID['data-src'])
+
+        firstIMG.setAttribute('src', activeID['src'])
+        firstIMG.setAttribute('data-src', activeID['data-src'])
+        firstIMG.setAttribute('data-large_image', activeID['data-large_image'])
+        firstIMG.setAttribute('srcset', activeID['srcset'])
+
+        controlFirst_IMG.setAttribute('src', activeID['data-thumb'])
     }
 }
 

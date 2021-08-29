@@ -28,8 +28,9 @@ if(  $product->is_type( 'variable' ) ){
 	$variations_IMG = array();
 
 	foreach($variations as $variant){
+		$id = $variant['attributes']['attribute_czvet'] ?? $variant['attributes']['attribute_pa_czvet'];
 		$var = array(
-			'id' => $variant['attributes']['attribute_czvet'],
+			'id' => $id,
 			'src' => $variant['image']['src'],
 			'data-src' => $variant['image']['url'],
 			'data-large_image' => $variant['image']['full_src'],
@@ -39,6 +40,7 @@ if(  $product->is_type( 'variable' ) ){
 		array_push( $variations_IMG, $var );
 	}
 
+	//print_r($variations);
 	//print_r($variations_IMG);
 
 	wp_localize_script( 'blueins-scripts', 'img_variation_src', $variations_IMG );
