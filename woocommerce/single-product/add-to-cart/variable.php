@@ -22,7 +22,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 			<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 				<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
 			<?php else : ?>
-
+				
 				<div class="variations">
 					<?php foreach ( $attributes as $attribute_name => $options ) : ?>
 
@@ -57,6 +57,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							
 
 				<div class="details__quantity-but">
+					<div class="bfv-details-price"></div>
 					<?php
 						/**
 						 * Hook: woocommerce_before_single_variation.

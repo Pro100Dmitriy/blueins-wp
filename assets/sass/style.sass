@@ -1353,11 +1353,11 @@ body
                                 margin-right: 1.33rem
                     .percant-price
                         .onsale
-                        margin-left: 1.33rem
-                        color: $red
-                        border: 1px solid $red
-                        border-radius: 50px
-                        padding: 0.27rem 0.75rem
+                            margin-left: 1.33rem
+                            color: $red
+                            border: 1px solid $red
+                            border-radius: 50px
+                            padding: 0.27rem 0.75rem
                 .product_meta
                     margin: 1.66rem 0
                     .woocommerce-product-attributes
@@ -1397,7 +1397,78 @@ body
                         .tagged_as
                 .variations_form
                     @include el-variation
+                .cart
+                    .woocommerce-variation-add-to-cart
+                        display: flex
+                        flex-direction: row
+                        align-items: center
+                        .details__quantity-but__quantity
+                            margin-right: 1rem
+                            @include el-quantity($dark, $light, $line_gray)
+                        .el-form__button
+                            margin-right: 1rem
+                        .details-like-button
+                            margin-right: 1rem
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            width: 48px
+                            height: 48px
+                            background: $gray
+                            transition: all 0.3s ease
+                            border: none
+                            svg
+                                path
+                                    fill: $white
+                                    transition: all 0.3s ease
+                            &:hover
+                                background: $white
+                                svg
+                                    path
+                                        fill: $dark
                 .details__quantity-but
+                    .bfv-details-price
+                        margin-bottom: 1rem
+                        .woocommerce-variation
+                            display: flex
+                            align-items: center
+                            margin-bottom: 1.66rem
+                            &-price
+                                margin-right: 3rem
+                                .price
+                                    del
+                                        opacity: .7
+                                        .woocommerce-Price-amount
+                                            font-size: 1rem
+                                            font-family: 'Jost'
+                                            font-weight: 300
+                                            letter-spacing: 0.05rem
+                                            line-height: 2rem
+                                            color: $dark-light
+                                            margin-right: .5rem
+                                    ins
+                                        text-decoration: none !important
+                                        .woocommerce-Price-amount
+                                            font-size: 1.7rem
+                                            font-family: 'Jost'
+                                            font-weight: 500
+                                            letter-spacing: 0.05rem
+                                            line-height: 2rem
+                                            color: $dark-light
+                                .woocommerce-Price-amount
+                                    font-size: 1.7rem
+                                    font-family: 'Jost'
+                                    font-weight: 500
+                                    letter-spacing: 0.05rem
+                                    line-height: 2rem
+                                    color: $dark-light
+                            &-availability
+                                .stock
+                                    font-size: 1rem
+                                    font-family: 'Jost'
+                                    font-weight: 400
+                                    letter-spacing: 0.05rem
+                                    line-height: 2rem
                     .variations_button
                         display: flex
                         flex-direction: row

@@ -331,8 +331,6 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
     /**
      * Remove Item User Navigation — My Account
      */
-
-    add_filter ( 'woocommerce_account_menu_items', 'blueins_remove_my_account_links' );
     function blueins_remove_my_account_links( $menu_links ){
     
         //unset( $menu_links['edit-address'] ); // Addresses
@@ -348,14 +346,13 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
         return $menu_links;
 
     }
+    add_filter ( 'woocommerce_account_menu_items', 'blueins_remove_my_account_links' );
+
 
 
     /**
      *  Change Inputs in Checkout Forms
      */
-
-    add_filter( 'woocommerce_checkout_fields', 'blueins_remove_fields', 9999 );
- 
     function blueins_remove_fields( $woo_checkout_fields_array ) {
      
         // she wanted me to leave these fields in checkout
@@ -376,6 +373,8 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
      
         return $woo_checkout_fields_array;
     }
+    add_filter( 'woocommerce_checkout_fields', 'blueins_remove_fields', 9999 );
+
 
     function blueins_woocommerce_form_input( $field, $key, $args, $value) {
         // Based on key
@@ -457,9 +456,13 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
     }
     add_filter( 'woocommerce_form_field', 'blueins_woocommerce_form_input', 10, 4 );
 
+
+
+
     /**
      * Remove Cupon Form
      */
     remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form' );
 
-    }
+    
+}

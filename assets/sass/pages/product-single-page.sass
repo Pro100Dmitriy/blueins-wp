@@ -170,21 +170,32 @@
                      @include after-line ($dark)
             .sku_wrapper
             .tagged_as
-      .woocommerce-variation-price
+      .woocommerce-variation
+         display: flex
+         align-items: center
          margin-bottom: 1.66rem
-         .price
-            del
-               opacity: .7
-               .woocommerce-Price-amount
-                  font-size: 1rem
-                  font-family: 'Jost'
-                  font-weight: 300
-                  letter-spacing: 0.05rem
-                  line-height: 2rem
-                  color: $dark-light
-                  margin-right: .5rem
-            ins
-               text-decoration: none !important
+         &-price
+            margin-right: 3rem
+            .price
+               del
+                  opacity: .7
+                  .woocommerce-Price-amount
+                     font-size: 1rem
+                     font-family: 'Jost'
+                     font-weight: 300
+                     letter-spacing: 0.05rem
+                     line-height: 2rem
+                     color: $dark-light
+                     margin-right: .5rem
+               ins
+                  text-decoration: none !important
+                  .woocommerce-Price-amount
+                     font-size: 1.7rem
+                     font-family: 'Jost'
+                     font-weight: 500
+                     letter-spacing: 0.05rem
+                     line-height: 2rem
+                     color: $dark-light
                .woocommerce-Price-amount
                   font-size: 1.7rem
                   font-family: 'Jost'
@@ -192,13 +203,12 @@
                   letter-spacing: 0.05rem
                   line-height: 2rem
                   color: $dark-light
-            .woocommerce-Price-amount
-               font-size: 1.7rem
-               font-family: 'Jost'
-               font-weight: 500
-               letter-spacing: 0.05rem
-               line-height: 2rem
-               color: $dark-light
+         &-availability
+            font-size: 1rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            line-height: 2rem
 
 
       .details__quantity-but
@@ -207,6 +217,8 @@
          display: flex
          .details__quantity-but__quantity
             @include el-quantity ($dark, $light, $line_gray)
+            margin-right: 1rem
+         .el-form__button
             margin-right: 1rem
          .fill-button-dark
             margin-right: 1rem
