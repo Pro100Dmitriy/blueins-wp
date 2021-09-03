@@ -7,6 +7,14 @@ export class Active_Filters{
     constructor( object ){
         this.list = this.create_AF()
         this.sliderEl1 = object.priceSlider
+
+        if( this.space && options.type == 'filter' ){
+            // With Pa_
+            this.filter_setColorPaCircleContainer = this.space.querySelector(`#${options.colorPaContainerId}`)
+            this.filter_setRazmerPaSquareContainer = this.space.querySelector(`#${options.razmerPaContainerId}`)
+            this.$ = options.jquery
+            this.filterinit()
+        }
     }
 
     create_AF(){
@@ -91,4 +99,5 @@ export class Active_Filters{
 
         blueins_get_posts()
     }
+    
 }

@@ -4,6 +4,7 @@ import {EventWindow} from './frontend/event-window'
 import {FullscreenMenu} from './frontend/blueins-fullscreen-menu'
 import {mutation_observe} from './frontend/utils'
 import {Blueins_Variation} from './frontend/blueins-variation-class'
+import {blueins_product_search} from './frontend/blueins-product-search'
 
 
 const start_img_animation = new EventWindow({
@@ -64,6 +65,11 @@ function headerAnimation(event){
   }
 
 }
+
+/**
+ *      Search
+ */
+ blueins_product_search()
 
 
 

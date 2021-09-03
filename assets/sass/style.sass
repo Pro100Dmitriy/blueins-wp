@@ -1166,7 +1166,7 @@ body
 .blueins_login_user_form_popup-overlay
     position: fixed
     top: 0%
-    left: 00%
+    left: 0%
     width: 100%
     height: 100%
     visibility: hidden
@@ -1398,6 +1398,15 @@ body
                 .variations_form
                     @include el-variation
                 .cart
+                    .available-single
+                        margin-bottom: 1rem
+                        &__quantity
+                            .stock
+                                font-size: 1rem
+                                font-family: 'Jost'
+                                font-weight: 400
+                                letter-spacing: 0.05rem
+                                line-height: 2rem
                     .woocommerce-variation-add-to-cart
                         display: flex
                         flex-direction: row
@@ -1421,6 +1430,8 @@ body
                                 path
                                     fill: $white
                                     transition: all 0.3s ease
+                                rect
+                                    fill: none
                             &:hover
                                 background: $white
                                 svg
@@ -1478,7 +1489,81 @@ body
                             @include el-quantity($dark, $light, $line_gray)
                         .el-form__button
                             margin-right: 1rem
+                        .details-like-button
+                            margin-right: 1rem
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            width: 48px
+                            height: 48px
+                            background: $gray
+                            transition: all 0.3s ease
+                            border: none
+                            svg
+                                path
+                                    fill: $white
+                                    transition: all 0.3s ease
+                                rect
+                                    fill: none
+                            &:hover
+                                background: $white
+                                svg
+                                    path
+                                        fill: $dark
 
+
+
+// Search Bar
+.blueins-search-bar
+    position: fixed
+    top: -50%
+    left: 50%
+    transform: translate(-50%, 0%)
+    z-index: $search-z-index
+    width: 100vw
+    background: white
+    padding: 2rem 0 0 0
+    transition: all 0.3s ease
+    .blueins-search-bar__close-button
+        display: flex
+        justify-content: flex-end
+    form
+        padding: 6rem 0 5rem 0
+    .search-button-group
+        padding: 1rem 0
+        display: flex
+        align-items: center
+        width: 100%
+        border-bottom: 2px solid $dark-light
+        .search-icon
+            svg
+                path
+                    fill: $gray
+        .search-input
+            width: 100%
+            border: none
+            font-size: 2rem
+            font-family: 'Jost'
+            font-weight: 400
+            letter-spacing: 0.05rem
+            line-height: 2rem
+            color: $dark-light
+        .search-button
+            display: none
+            
+
+
+
+
+.blueins-search-bar-overlay
+    position: fixed
+    z-index: $search-overlay-z-index
+    background: rgba($dark , 0.4)
+    width: 100vw
+    height: 100vh
+    visibility: hidden
+    opacity: 0
+    transition: all 0.5s ease
 
 
 @import 'pages/main-page.sass'

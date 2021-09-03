@@ -1,7 +1,8 @@
 import { Slider } from './class/blueins-slider-class'
 import { blueins_get_posts } from './blueins-get_posts'
 import { blueins_more_posts_loadmore } from './blueins-loadmore'
-import { Active_Filters } from './class/blueins-active_filters-class';
+import { Active_Filters } from './class/blueins-active_filters-class'
+import { Blueins_Color_Filters } from './class/blueins-color-filters-class'
 
 
 
@@ -21,6 +22,16 @@ export const sliderEl1 = new Slider({
 /*****  Active Filters HTML  *****/
 export const activeFilters = new Active_Filters({
     priceSlider: sliderEl1
+})
+
+
+
+/*****  Color Filters HTML  *****/
+const variation_filter = new Blueins_Color_Filters({
+    space: 'prod-filter',
+    colorPaContainerId: 'setElementHere__pa_czvet',
+    razmerPaContainerId: 'setElementHere__pa_razmer',
+    jquery: $
 })
 
 

@@ -234,17 +234,17 @@
                                             </a>
                                         <?php } ?>
                                     </li>
+                                    <li>
+                                        <button name="search" id="search-icon-menu" class="search-icon search-hov-information">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45"><path d="M19.589,18.322l-3.008-2.965a9.386,9.386,0,1,0-1.224,1.224l3.009,2.965a.866.866,0,1,0,1.224-1.224ZM1.732,9.373a7.641,7.641,0,1,1,7.641,7.641A7.65,7.65,0,0,1,1.732,9.373Z" transform="translate(13 12)" fill="#fff"/><rect width="45" height="45" fill="none"/></svg>
+                                        </button>
+                                    </li>
                                     <li><?php echo do_shortcode('[blu_woo_wishlist_page]'); ?></li>
                                     <li>
                                         <button name="cart" id="cart-icon-menu" class="cart-icon cart-hov-information">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45"><g transform="translate(-2.359 10)"><g transform="translate(22.237)"><path d="M82.527,2.8a3.26,3.26,0,0,0-5.86-1.457.383.383,0,1,0,.619.452A2.493,2.493,0,0,1,81.767,2.9a.384.384,0,0,0,.379.329.411.411,0,0,0,.055,0A.384.384,0,0,0,82.527,2.8Z" transform="translate(-76.593)" fill="#fff"/></g><g transform="translate(16.125 4.985)"><path d="M39.769,46.475l-1.15-1.917a.383.383,0,0,0-.329-.186h-1.1a.383.383,0,0,0,0,.767h.885l.69,1.15H23.246l.69-1.15h.406a.383.383,0,1,0,0-.767h-.623a.383.383,0,0,0-.329.186l-1.15,1.917a.384.384,0,0,0,.329.581H39.44a.384.384,0,0,0,.329-.581Z" transform="translate(-22.185 -44.372)" fill="#fff"/></g><g transform="translate(25.467 2.149)"><path d="M111.674,20.53a.383.383,0,0,0-.238-.171l-5.227-1.223a.383.383,0,0,0-.461.286l-.394,1.685a.383.383,0,0,0,.747.174l.307-1.312,4.48,1.048-.7,3.01a.383.383,0,0,0,.286.46.388.388,0,0,0,.088.01.383.383,0,0,0,.373-.3l.791-3.383A.382.382,0,0,0,111.674,20.53Z" transform="translate(-105.343 -19.126)" fill="#fff"/></g><g transform="translate(17.62 1.165)"><g transform="translate(0)"><path d="M43.021,13.667l-.349-2.955a.384.384,0,0,0-.426-.336l-6.413.758a.384.384,0,0,0-.336.426l.582,4.929a.384.384,0,0,0,.38.339l.046,0a.384.384,0,0,0,.336-.426L36.3,11.851l5.652-.668.3,2.574a.383.383,0,0,0,.762-.09Z" transform="translate(-35.494 -10.374)" fill="#fff"/></g></g><g transform="translate(20.485 3.681)"><path d="M68.691,36.228l-.761-3.165a.383.383,0,0,0-.462-.283l-6.177,1.486a.384.384,0,0,0-.283.462l.38,1.582a.383.383,0,1,0,.746-.179l-.291-1.209,5.431-1.306.671,2.792a.384.384,0,0,0,.746-.18Z" transform="translate(-60.997 -32.769)" fill="#fff"/></g><g transform="translate(15.359 6.902)"><g transform="translate(0)"><path d="M33.764,61.8a.384.384,0,0,0-.383-.364H16.509a.384.384,0,0,0-.383.364l-.767,14.954a.383.383,0,0,0,.383.4H34.147a.383.383,0,0,0,.383-.4ZM16.145,76.4l.728-14.187H33.016L33.744,76.4Z" transform="translate(-15.359 -61.441)" fill="#fff"/></g></g><g transform="translate(26.67 8.436)"><path d="M117.2,75.093a1.15,1.15,0,1,0,1.15,1.15A1.152,1.152,0,0,0,117.2,75.093Zm0,1.534a.383.383,0,1,1,.383-.383A.384.384,0,0,1,117.2,76.627Z" transform="translate(-116.052 -75.093)" fill="#fff"/></g><g transform="translate(20.918 8.436)"><path d="M66,75.093a1.15,1.15,0,1,0,1.15,1.15A1.152,1.152,0,0,0,66,75.093Zm0,1.534a.383.383,0,1,1,.383-.383A.384.384,0,0,1,66,76.627Z" transform="translate(-64.852 -75.093)" fill="#fff"/></g><g transform="translate(21.685 9.586)"><path d="M77.814,85.333h-.03a.384.384,0,0,0-.383.383.379.379,0,0,0,.03.148v1.961a2.492,2.492,0,0,1-4.985,0V85.717a.383.383,0,1,0-.767,0v2.109a3.259,3.259,0,0,0,6.518,0V85.717A.384.384,0,0,0,77.814,85.333Z" transform="translate(-71.679 -85.333)" fill="#fff"/></g></g><rect width="45" height="45" fill="none"/></svg>
                                         </button>
                                     </li>
-                                    <!--li class="user-page__links__like-icon">
-                                        <a href="like.html" class="like-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45"><g transform="translate(11 -16.534)"><g transform="translate(0 28.534)"><path d="M11.295,48.606c-.476-.412-.718-.646-3.262-2.809C3.2,41.683,0,38.966,0,35a6.158,6.158,0,0,1,6-6.464,5.975,5.975,0,0,1,5.294,3.574,5.975,5.975,0,0,1,5.294-3.574,6.158,6.158,0,0,1,6,6.464c0,3.967-3.2,6.685-8.033,10.8C12,47.97,11.792,48.175,11.295,48.606ZM6,29.858c-2.666,0-4.677,2.21-4.677,5.141,0,3.356,3.01,5.915,7.567,9.79.772.657,1.567,1.332,2.4,2.06.837-.728,1.632-1.4,2.4-2.06,4.557-3.875,7.567-6.435,7.567-9.79,0-2.931-2.011-5.141-4.677-5.141-2.407,0-4.1,2.158-4.657,4.147v0l-1.275,0h0C10.169,32.248,8.585,29.858,6,29.858Z" transform="translate(0 -28.534)" fill="#fff"/></g></g><rect width="45" height="45" fill="none"/></svg>
-                                        </a>
-                                    </li-->
                                 </ul>
                             </nav>
                         </div>
@@ -274,3 +274,18 @@
     <?php
         wc_get_template_part( 'fastview', 'template' );
     ?>
+
+
+    <!-- Search Bar -->
+    <div id="blueins-search-bar" class="blueins-search-bar">
+        <div class="container">
+            <div class="blueins-search-bar__close-button">
+                <button id="blueins-search-bar_popup-colose" class="close-button">Close Popup</button>
+            </div>
+        </div>
+        <div class="small-container">
+            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("blu_search") ) : ?><?php endif; ?>
+        </div>
+    </div>
+    <div id="blueins-search-bar-overlay" class="blueins-search-bar-overlay"></div>
+    <!-- Search Bar -->

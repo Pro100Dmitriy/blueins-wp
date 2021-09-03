@@ -25,9 +25,7 @@ if ( ! $product->is_purchasable() ) {
 
 ?>
 
-<div class="available_quantity">
-	<?php echo wc_get_stock_html( $product ); ?>
-</div>
+
 
 <?php
 if ( $product->is_in_stock() ) : ?>
@@ -38,6 +36,11 @@ if ( $product->is_in_stock() ) : ?>
 	<!-- Form -->
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
+			<div class="available-single">
+				<div class="available-single__quantity">
+					<?php echo wc_get_stock_html( $product ); ?>
+				</div>
+			</div>
 			<div class="woocommerce-variation-add-to-cart variations_button details__quantity-but">
 				<?php
 					do_action( 'woocommerce_before_add_to_cart_quantity' );

@@ -1,7 +1,7 @@
 export class Blueins_Variation{
     constructor( options ){
         this.space = document.querySelector( `.${options.space}` ) ?? null
-        if( this.space ){
+        if( this.space){
             // Without Pa_
             this.setColorCircleContainer = this.space.querySelector(`#${options.colorContainerId}`)
             this.setColorNameContainer = this.space.querySelector(`#${options.colorNameContainerId}`)

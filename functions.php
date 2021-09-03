@@ -110,6 +110,18 @@ if ( function_exists('register_sidebar') ){
 		//'after_sidebar'  => '',
 		)
 	);
+
+	register_sidebar(array(
+		'name' => 'Поиск',
+		'id' => 'blu_search',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<div class="search__title"><h6 class="groupe-cust-title">',
+		'after_title' => '</h6></div>',
+		//'before_sidebar' => '',
+		//'after_sidebar'  => '',
+		)
+	);
 }
 
 /**
