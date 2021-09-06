@@ -1090,7 +1090,7 @@ document.addEventListener('DOMContentLoaded', event => {
     const shopObsurver = new MutationObserver( mutation => {
       mutation.forEach( mut => {
 
-        console.log(mut)
+        //console.log(mut)
         add_variation_in_shop()
 
       } )

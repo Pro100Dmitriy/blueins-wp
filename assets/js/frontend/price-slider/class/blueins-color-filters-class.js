@@ -73,7 +73,7 @@ export class Blueins_Color_Filters{
             if( childIndex != 0 ){
                 let colorCod = child.innerHTML.slice( child.innerHTML.indexOf('#') ).trim()
                 let colorName = child.innerHTML.slice( 0, child.innerHTML.indexOf('#') ).trim()
-        
+
                 let HTML = `
                     <li class="details__colors__list__item" name="${ colorName }">
                         <span   class="details-select-circle" 

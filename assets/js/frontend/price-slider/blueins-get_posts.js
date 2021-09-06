@@ -15,8 +15,10 @@ export function blueins_get_posts(){
     let max = Number( _.blueins_get_max() )
     let order = String( _.blueins_get_order() )
     let taxonomy = blu_loadmore_param.taxonomy ? String( blu_loadmore_param.taxonomy ) : 0
+    let color = _.blueins_get_color()
+    let razmer = _.blueins_get_razmer()
     
-
+    
     sendRequest( {
         method: 'GET',
         url: ajax_url,
@@ -26,7 +28,9 @@ export function blueins_get_posts(){
             min,
             max,
             order,
-            taxonomyID: taxonomy
+            taxonomyID: taxonomy,
+            color: color,
+            razmer: razmer
         },
         onloadstart_callback(){
             activeFilters.add(category_id, min, max)

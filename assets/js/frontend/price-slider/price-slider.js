@@ -5,6 +5,8 @@ import { Active_Filters } from './class/blueins-active_filters-class'
 import { Blueins_Color_Filters } from './class/blueins-color-filters-class'
 
 
+const PROD_FILTER = document.querySelector('#prod-filter-menu')
+
 
 /*****  Price Slider HTML  *****/
 export const sliderEl1 = new Slider({
@@ -52,8 +54,7 @@ function blueins_get_max(){
 
 /*****  Filter by catogory  *****/
 function blueins_category(){
-    let prodFilter = document.querySelector('#prod-filter-menu');
-    let cartItem = prodFilter.querySelectorAll('.cat-item a');
+    let cartItem = PROD_FILTER.querySelectorAll('.cat-item a');
 
     cartItem.forEach( item => item.addEventListener('click', (event) => {
         event.preventDefault();
@@ -66,8 +67,7 @@ function blueins_category(){
 blueins_category();
 
 function blueins_get_category(){
-    let prodFilter = document.querySelector('#prod-filter-menu');
-    let cartItem = prodFilter.querySelectorAll('.cat-item');
+    let cartItem = PROD_FILTER.querySelectorAll('.cat-item');
     let data = [];
 
     cartItem.forEach(item => {
@@ -117,9 +117,59 @@ blueins_load_more()
 
 
 
+/*****  Get Color  *****/
+function blueins_color(){
+    let colors = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .details-select-circle')
+
+    colors.forEach( color => {
+        color.addEventListener( 'click', blueins_get_posts )
+    } )
+}
+
+blueins_color()
+
+function blueins_get_color(){
+    let color_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .element-select')
+    let values = []
+
+    color_selected.forEach( color => {
+        values.push( color.getAttribute( 'data-value' ) )
+    } )
+
+    return values
+}
+
+
+
+/*****  Get Razmer  *****/
+function blueins_razmer(){
+    let razmers = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .details-select-square')
+
+    razmers.forEach( razmer => {
+        razmer.addEventListener( 'click', blueins_get_posts )
+    } )
+}
+
+blueins_razmer()
+
+function blueins_get_razmer(){
+    let razmer_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .element-select')
+    let values = []
+
+    razmer_selected.forEach( razmer => {
+        values.push( razmer.getAttribute( 'data-value' ) )
+    } )
+
+    return values
+}
+
+
+
 export const _ = {
     blueins_get_min,
     blueins_get_max,
     blueins_get_category,
     blueins_get_order,
+    blueins_get_color,
+    blueins_get_razmer
 }

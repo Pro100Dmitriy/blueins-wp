@@ -150,6 +150,9 @@ function blu_loadmore_ajax_handler(){
 	//$tax_active_page = get_queried_object()->term_id ? get_queried_object()->term_id : false;
 	$tax_active_page = $_GET['taxonomyID'] ? $_GET['taxonomyID'] : false;
 	$categories = $_GET['category'] ? explode(',', $_GET['category'] ) : false;
+	$color = $_GET['color'];
+	$razmer = $_GET['razmer'];
+
 
 	if( $tax_active_page ){
 		if( $categories ){
@@ -177,11 +180,49 @@ function blu_loadmore_ajax_handler(){
 		)
 	);
 
-	$tax_query = $categories ? array(array(
-		'taxonomy' => 'product_cat',
-		'field' => 'id',
-		'terms' => $categories
-	)) : false;
+	$tax = array();
+
+	if( !empty($categories) ){
+		array_push( $tax, array(
+			'taxonomy' => 'product_cat',
+			'field' => 'id',
+			'terms' => $categories
+		) );
+	}
+
+	if( !empty($color) ){
+		array_push( $tax, array(
+			'taxonomy' => 'pa_czvet',
+			'field' => 'id',
+			'terms' => $color
+		) );
+	}
+
+	if( !empty($razmer) ){
+		array_push( $tax, array(
+			'taxonomy' => 'pa_razmer',
+			'field' => 'id',
+			'terms' => $razmer
+		) );
+	}
+
+	// $tax_query = $categories ? array(
+	// 	array(
+	// 		'taxonomy' => 'product_cat',
+	// 		'field' => 'id',
+	// 		'terms' => $categories
+	// 	)
+	// ) : false;
+
+	// $tax_query = $color ? array(
+	// 	array(
+	// 		'taxonomy' => 'pa_czvet',
+	// 		'field' => 'id',
+	// 		'terms' => $color
+	// 	)	
+	// ) : false;
+
+	$tax_query = $tax ?? false;
 
 	$args = array(
 		'post_type' => 'product',
@@ -539,10 +580,20 @@ function blueins_cart_add_single(){
 	$product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_GET['product_id']));
 	$quantity = empty($_GET['product_qty']) ? 1 : wc_stock_amount($_GET['product_qty']);
 	$variation_id = absint( $_GET['variaction_id'] );
-	$variation = array(
-		'attribute_czvet' => $_GET['color'] ? str_replace('_', ' #', $_GET['color']) : false,
-		'attribute_razmer' => $_GET['size'] ? str_replace('_', ' #', $_GET['size']) : false
-	);
+
+	if( !empty( $_GET['color'] ) || !empty( $_GET['razmer'] ) ){
+		$variation = array(
+			'attribute_czvet' => $_GET['color'] ? str_replace('_', ' #', $_GET['color']) : false,
+			'attribute_razmer' => $_GET['size'] ? str_replace('_', ' #', $_GET['size']) : false
+		);
+	}else{
+		$variation = array(
+			'attribute_pa_czvet' => $_GET['pa_color'] ? $_GET['pa_color'] : false,
+			'attribute_pa_razmer' => $_GET['pa_size'] ? $_GET['pa_size'] : false
+		);
+	}
+	
+
 	$passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
 	$product_status = get_post_status($product_id);
 

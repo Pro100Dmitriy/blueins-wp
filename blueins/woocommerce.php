@@ -488,4 +488,22 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
         return $form;
 
     }
+
+
+
+    /**
+     * In Stock Products
+     */
+    function custom_woocommerce_shortcode_products_query( $args ) {
+        if ( 'yes' == get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+          $args['meta_query'][] = array(
+            'key' => '_stock_status',
+            'value' => 'instock',
+            'compare' => 'IN'
+          );
+        }
+        return $args;
+     }
+     
+     add_filter( 'woocommerce_shop_loop', 'custom_woocommerce_shortcode_products_query' );
 }

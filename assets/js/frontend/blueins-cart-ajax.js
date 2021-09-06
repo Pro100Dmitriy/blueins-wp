@@ -132,6 +132,9 @@ document.addEventListener('DOMContentLoaded', event => {
             let color = document.querySelector('#czvet') ? document.querySelector('#czvet').value.replace(' #', '_') : ''                                                                                                   // Color
             let size = document.querySelector('#razmer') ? document.querySelector('#razmer').value.replace(' #', '_') : ''                                                                                                  // Size
 
+            let pa_color = document.querySelector('#pa_czvet') ? document.querySelector('#pa_czvet').value : ''
+            let pa_size = document.querySelector('#pa_razmer') ? document.querySelector('#pa_razmer').value : ''
+
             let preloader = `
                 <div class="preloader">
                     <svg version="1.1" id="L5" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -178,7 +181,9 @@ document.addEventListener('DOMContentLoaded', event => {
                         product_qty,
                         variaction_id,
                         color,
-                        size
+                        size,
+                        pa_color,
+                        pa_size
                     },
                     onloadstart_callback(){
     
@@ -204,7 +209,6 @@ document.addEventListener('DOMContentLoaded', event => {
         }
 
     }
-
 
 
 

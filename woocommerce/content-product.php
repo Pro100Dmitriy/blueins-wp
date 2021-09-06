@@ -114,14 +114,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 						$counter = 0;
 
 						foreach( $woo_product_variant_color as $product_variant ): 
-							if( isset($product_variant['attributes']['attribute_czvet']) ):
+							if( isset($product_variant['attributes']['attribute_czvet']) || isset($product_variant['attributes']['attribute_pa_czvet']) ):
 					?>
 
-						<?php 
-							$color = substr($product_variant['attributes']['attribute_czvet'], strpos($product_variant['attributes']['attribute_czvet'], '#'));
+						<?php
+							$prod = isset($product_variant['attributes']['attribute_czvet']) ? $product_variant['attributes']['attribute_czvet'] : $product_variant['attributes']['attribute_pa_czvet'];
+							$color = isset($product_variant['attributes']['attribute_czvet']) ? substr($prod, strpos($prod, '#')+1) : substr($prod, strpos($prod, '-')+1);
 						?>
 						<li class="product-color__item">
-							<span data-color-name="<?php echo $product_variant['attributes']['attribute_czvet']; ?>" data-blu-variation_id="<?php echo $product_variant['variation_id']; ?>" data-blu-color-id="<?php echo $product->id; ?>" data-img="<?php echo $product_variant['image']['url']; ?>" style="background: <?php echo $color; ?>" class="color-select-circle <?php if($counter === 0){ echo "color-select"; } ?>"></span>
+							<span data-color-name="<?php echo $prod; ?>" data-blu-variation_id="<?php echo $product_variant['variation_id']; ?>" data-blu-color-id="<?php echo $product->id; ?>" data-img="<?php echo $product_variant['image']['url']; ?>" style="background: #<?php echo $color; ?>" class="color-select-circle <?php if($counter === 0){ echo "color-select"; } ?>"></span>
 						</li>
 
 					<?php $counter++; ?>

@@ -45,7 +45,7 @@ class Blueins_Widget_Filter_Attributes extends WC_Widget{
         extract($args);
         extract($instance);
         $title = apply_filters('widget_title', $title);
-        $dropdown = wp_dropdown_categories("taxonomy=". $tax ."&echo=0&show_option_none=". $show_option ."&name=". $name);
+        $dropdown = wp_dropdown_categories("taxonomy=". $tax ."&echo=0&show_option_none=". $show_option ."&name=". $name . "&value_field=slug");
 
         echo $before_widget;
         echo $before_title . $title . $after_title;

@@ -1252,6 +1252,8 @@ body
             display: flex
             flex-direction: row
             transition: all 0.2s ease-in-out
+            @media screen and ( max-width: 870px )
+                flex-direction: column
             &__slider
                 .fastview__src_variation
                     display: none
@@ -1260,6 +1262,12 @@ body
                     width: 500px
                     height: 500px
                     margin-bottom: 0px
+                    @media screen and ( max-width: 1050px )
+                        width: 430px
+                        height: 430px
+                    @media screen and ( max-width: 375px )
+                        width: 100vw
+                        height: 100vw
                     .slick-arrow
                         position: absolute
                         top: 50%
@@ -1305,12 +1313,24 @@ body
                         img
                             width: 500px
                             height: 500px
+                            @media screen and ( max-width: 1050px )
+                                width: 430px
+                                height: 430px
+                            @media screen and ( max-width: 375px )
+                                width: 100vw
+                                height: 100vw
             &__content
                 position: relative
                 width: 500px
                 height: 500px
                 overflow-y: scroll
                 padding: 3.5rem 4rem 2rem 2rem
+                @media screen and ( max-width: 1050px )
+                    width: 430px
+                    height: 430px
+                @media screen and ( max-width: 375px )
+                    width: 100vw
+                    height: calc( 100vh - 100vw )
                 /* width */
                 &::-webkit-scrollbar 
                     width: 5px
