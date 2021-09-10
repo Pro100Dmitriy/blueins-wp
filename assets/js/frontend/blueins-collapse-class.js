@@ -1,5 +1,7 @@
 export class Blueins_Collapse{
     constructor( settings = {} ){
+        if( !settings.list ) return
+
         this.margin = settings.margin
         this.cssClass = settings.class
         this.$ = settings.jquery

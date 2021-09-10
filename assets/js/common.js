@@ -142,6 +142,7 @@ const $filter = new Blueins_Collapse({
   jquery: $
 })
 
+
 const $footer = new Blueins_Collapse({
   list: document.querySelector('.footer__links'),
   class: 'footer-item-active',
