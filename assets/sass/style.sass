@@ -829,9 +829,9 @@ body
         position: relative
         top: -100%
         @media screen and ( max-width: 500px )
-            position: fixed
-            top: 0
-            width: 100%
+            //position: fixed
+            //top: 0
+            //width: 100%
     &__bottom
         padding: 0 1rem
         position: relative
@@ -839,8 +839,8 @@ body
         transition: all 0.3s ease
         transition-delay: 0.1s
         @media screen and ( max-width: 700px )
-            background: $white
-            border-bottom: 1px solid rgba($line_gray, 1)
+            //background: $white
+            //border-bottom: 1px solid rgba($line_gray, 1)
             .main-menu__item
                 &>a
                     &::after
@@ -1431,11 +1431,20 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
+                        @media screen and ( max-width: 375px )
+                            flex-direction: column
+                            align-items: flex-start
                         .details__quantity-but__quantity
                             margin-right: 1rem
                             @include el-quantity($dark, $light, $line_gray)
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                         .el-form__button
                             margin-right: 1rem
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                         .details-like-button
                             margin-right: 1rem
                             display: flex
@@ -1446,6 +1455,9 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                             svg
                                 path
                                     fill: $white
@@ -1504,11 +1516,20 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
+                        @media screen and ( max-width: 375px )
+                            flex-direction: column
+                            align-items: flex-start
                         .details__quantity-but__quantity
                             margin-right: 1rem
                             @include el-quantity($dark, $light, $line_gray)
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                         .el-form__button
                             margin-right: 1rem
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                         .details-like-button
                             margin-right: 1rem
                             display: flex
@@ -1519,6 +1540,9 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
+                            @media screen and ( max-width: 375px )
+                                margin-bottom: 1rem
+                                margin-right: 0
                             svg
                                 path
                                     fill: $white
@@ -1695,6 +1719,13 @@ body
         padding: 3.8rem 0
         @media screen and ( max-width: 768px )
             padding: 3.8rem 0 0
+        .footer-item-active
+            .footer-menu__title
+                span
+                    &::before
+                        transform: translateY(-50%) rotate(0deg)
+                    &::after
+                        transform: translateY(-50%) rotate(0deg)
         .footer-menu
             @media screen and ( max-width: 768px )
                 margin-bottom: 5rem
@@ -1703,11 +1734,51 @@ body
                 cursor: text
                 @media screen and ( max-width: 576px )
                     text-align: center
+                @media screen and ( max-width: 480px )
+                    width: 100%
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    text-align: left
+                span
+                    width: 15px
+                    height: 15px
+                    display: none
+                    position: relative
+                    right: 0
+                    @media screen and ( max-width: 480px )
+                        display: block
+                    &::before
+                        content: ''
+                        position: absolute
+                        top: 50%
+                        left: 0%
+                        transform: translateY(-50%) rotate(-45deg)
+                        width: 50%
+                        height: 2px
+                        background: $dark
+                        border-radius: 3px
+                        transition: all 0.3s ease
+                    &::after
+                        content: ''
+                        position: absolute
+                        top: 50%
+                        left: 35%
+                        transform: translateY(-50%) rotate(45deg)
+                        width: 50%
+                        height: 2px
+                        background: $dark
+                        border-radius: 3px
+                        transition: all 0.3s ease
+            .item__nav
+                transition: 0.2s ease
             &__list
                 &__item
                     margin-bottom: 0.7rem
                     @media screen and ( max-width: 576px )
                         text-align: center
+                    @media screen and ( max-width: 480px )
+                        text-align: left
                     &:last-child
                         margin-bottom: 0
                     .list-title
@@ -1755,6 +1826,8 @@ body
                 flex-direction: row
                 @media screen and ( max-width: 768px )
                     justify-content: center
+                @media screen and ( max-width: 480px )
+                    margin-bottom: 3rem
                 @media screen and ( max-width: 380px )
                     flex-direction: column
                 &__item

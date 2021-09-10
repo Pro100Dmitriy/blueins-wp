@@ -90,9 +90,9 @@ function filter_nav_menu_link_attributes($atts, $item, $args){
 if ( function_exists('register_sidebar') ){
 	register_sidebar(array(
 		'name' => 'Sidebar',
-		'before_widget' => '<li class="customs__list__item">',
+		'before_widget' => '<li class="customs__list__item collapsible">',
 		'after_widget' => '</li>',
-		'before_title' => '<div class="customs__list__item__title"><h6 class="groupe-cust-title">',
+		'before_title' => '<div class="customs__list__item__title collaps-title"><h6 class="groupe-cust-title">',
 		'after_title' => '</h6><span></span></div>',
 		//'before_sidebar' => '',
 		//'after_sidebar'  => '',
@@ -102,9 +102,9 @@ if ( function_exists('register_sidebar') ){
 	register_sidebar(array(
 		'name' => 'Сайдбар с активной категорией',
 		'id' => 'blu_taxonomy_sidebar',
-		'before_widget' => '<li class="customs__list__item">',
+		'before_widget' => '<li class="customs__list__item collapsible">',
 		'after_widget' => '</li>',
-		'before_title' => '<div class="customs__list__item__title"><h6 class="groupe-cust-title">',
+		'before_title' => '<div class="customs__list__item__title collaps-title"><h6 class="groupe-cust-title">',
 		'after_title' => '</h6><span></span></div>',
 		//'before_sidebar' => '',
 		//'after_sidebar'  => '',

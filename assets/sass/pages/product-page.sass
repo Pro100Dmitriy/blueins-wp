@@ -67,17 +67,6 @@
          .customs__list
             .activeFilters-hidden
             .cust-active
-               //margin-bottom: 0
-               .item_nav
-                  transform: scaleY(0)
-               ul
-                  margin-top: -120px
-               .variations
-                  margin-top: -120px
-                  visibility: hidden
-               form
-                  margin-top: -120px
-                  visibility: hidden
                .customs__list__item__title
                   span
                      &::before
@@ -88,6 +77,7 @@
                margin-bottom: 2.5rem
                transition: all 0.3s ease
                .variations
+                  margin-top: 10px
                   transition: all 0.3s ease
                   &__selects
                      display: none
@@ -110,6 +100,8 @@
                                  top: -44px
                                  opacity: 1
                                  visibility: visible
+                                 @media screen and ( max-width: 480px )
+                                    top: -38px
                            &::before
                               position: absolute
                               top: -19px
@@ -178,6 +170,8 @@
                                     top: -44px
                                     opacity: 1
                                     visibility: visible
+                                    @media screen and ( max-width: 480px )
+                                       top: -38px
                               &::before
                                  position: absolute
                                  top: -19px
@@ -281,7 +275,7 @@
                         border-radius: 3px
                         transition: all 0.3s ease
                .item__nav
-                  overflow: hidden
+                  overflow: visible
                   transition: all 0.3s ease
                   padding: 4px 5px
                   .ul-selected-active
@@ -354,8 +348,9 @@
                               margin-left: 13px
                               @media screen and ( max-width: 1200px )
                                  font-size: 8px
-                  ul
+                  &>ul
                      transition: all 0.3s ease
+                     margin-top: 10px
                      &>li
                         a
                            font-size: 1rem
@@ -399,10 +394,8 @@
                            background: #D9C2AD
                         .grey
                            background: #C9C9C9
+                     
                            
-
-
-
 
 //filter
 
@@ -512,7 +505,7 @@
             @media screen and ( max-width: 420px )
                margin-top: 1rem
             @media screen and ( max-width: 700px )
-               display: none
+               //display: none
             &>a
                display: inline-block
                color: inherit
@@ -550,6 +543,9 @@
 .filters
    margin-right: 0.85rem
    margin-left: 0.85rem
+   @media screen and ( max-width: 480px )
+      margin-right: 0
+      margin-left: 0
    &-flex
       padding: 2.4rem 2rem
       width: 100%
@@ -557,16 +553,14 @@
       flex-direction: row
       align-items: center
       justify-content: space-between
-      @media screen and ( max-width: 420px )
-         padding: 1.6rem 1.8rem 1.4rem
+      @media screen and ( max-width: 480px )
+         padding: 1.6rem 15px 1.4rem
    &__left
       .details__breadcrumbs
          &__list
             display: flex
             flex-direction: row
             align-items: center
-            @media screen and ( max-width: 480px )
-               display: none
             &__item
                position: relative
                a
@@ -587,26 +581,32 @@
                      &::after
                         content: ''
    &__right
+      @media screen and ( max-width: 480px )
+         position: fixed
+         bottom: 0
+         left: 0
+         background: white
+         width: 100%
+         z-index: $filter-z-index
+         border-top: 1px solid rgba($line_gray, 1)
+         box-shadow: 0 -3px 10px rgba($dark, 0.2)
       &__list
          display: flex
          flex-direction: row
          justify-content: flex-end
          align-items: center
+         @media screen and ( max-width: 480px )
+            padding: 1rem 15px
+            justify-content: space-between
          &__item
             display: inline-flex
             border-right: 2px solid $dark
             padding: 0 0.7rem
-            @media screen and ( max-width: 480px )
-               &:nth-child(2)
-                  border-right: none
-            &:nth-child(2)         
-               @media screen and ( max-width: 480px )
-                  border-right: none
-                  padding-right: 0
             &:last-child
                border-right: none
-               @media screen and ( max-width: 480px )
-                  display: none
+               #grid-five
+                  @media screen and ( max-width: 480px )
+                     display: none
             button
                border: none
                background: none
@@ -676,8 +676,6 @@
                width: 33px
                height: 33px
                margin: 0 0.3rem 0 0
-               @media screen and ( max-width: 430px )
-                  //display: 
                svg
                   position: absolute
                   top: 0
@@ -705,6 +703,7 @@
    padding: 0rem 2rem 2rem !important
    @media screen and ( max-width: 480px )
       padding-top: 0
+      padding: 0rem 15px 0rem !important
    .products__list
       transition: all 0.3s ease
    .fore-item
@@ -713,7 +712,7 @@
       width: 100%
       flex-wrap: wrap
       @media screen and ( max-width: 768px )
-         justify-content: center
+         justify-content: space-between
       .big-products__list__item
          width: calc( (100vw - 12rem) / 4 )
          margin-bottom: 3rem
@@ -730,19 +729,7 @@
             margin-right: 0rem
             margin-left: 0rem
          @media screen and ( max-width: 480px )
-            width: 88vw
-         // &:nth-child(4)
-         //    //margin-right: 0
-         //    @media screen and ( max-width: 992px )
-         //       margin-right: 1rem
-         // &:nth-child(8)
-         //    //margin-right: 0
-         //    @media screen and ( max-width: 992px )
-         //       margin-right: 1rem
-         // &:nth-child(12)
-         //    //margin-right: 0
-         //    @media screen and ( max-width: 992px )
-         //       margin-right: 1rem
+            width: calc(50vw - 24px)
          .product-cart
             max-width: 100%
             .product-cart__top
@@ -753,8 +740,9 @@
                @media screen and ( max-width: 768px )
                   height: 360px
                @media screen and ( max-width: 480px )
-                  width: 88vw
-                  height: 88vw
+                  width: calc(50vw - 24px)
+                  height: calc(50vw - 24px)
+                  margin-bottom: 7px
             .product-cart__bottom
                &__left
                   .additing-block-information
@@ -780,24 +768,6 @@
             width: calc( (100vw - 12rem) / 3 )
          @media screen and ( max-width: 768px )
             width: calc( (100vw - 10rem) / 2 )
-         // &:nth-child(5)
-         //    margin-right: 0
-         //    @media screen and ( max-width: 1200px )
-         //       margin: 1rem
-         //    @media screen and ( max-width: 768px )
-         //       margin: 1rem
-         // &:nth-child(10)
-         //    margin-right: 0
-         //    @media screen and ( max-width: 1200px )
-         //       margin: 1rem
-         //    @media screen and ( max-width: 768px )
-         //       margin: 1rem
-         // &:nth-child(15)
-         //    margin-right: 0
-         //    @media screen and ( max-width: 1200px )
-         //       margin: 1rem
-         //    @media screen and ( max-width: 768px )
-         //       margin: 1rem
          .product-cart
             max-width: 100%
             .product-cart__top
@@ -820,6 +790,8 @@
       flex-direction: row
       width: 100%
       flex-wrap: wrap
+      @media screen and ( max-width: 480px )
+         flex-direction: column
       .big-products__list__item
          width: calc( (100vw - 8rem) / 2 )
          margin-bottom: 3rem
@@ -831,21 +803,14 @@
          @media screen and ( max-width: 768px )
             width: calc( (100vw - 8rem) )
             margin-right: 0rem
-         // &:nth-child(2)
-         //    margin-right: 0
-         // &:nth-child(4)
-         //    margin-right: 0
-         // &:nth-child(6)
-         //    margin-right: 0
-         // &:nth-child(8)
-         //    margin-right: 0
-         // &:nth-child(10)
-         //    margin-right: 0
-         // &:nth-child(12)
-         //    margin-right: 0
+         @media screen and ( max-width: 480px )
+            width: calc(100vw - 30px)
+            margin: 0 0 3rem !important
          .product-cart
             max-width: 100%
             display: flex
+            @media screen and ( max-width: 480px )
+               flex-direction: column
             &__top
                width: 400px
                height: 400px
@@ -861,6 +826,21 @@
                   .product-img
                      height: auto
                      width: 100%
+               @media screen and ( max-width: 480px )
+                  width: calc(100vw - 30px)
+                  height: calc(100vw - 30px)
+                  margin-bottom: 7px
+                  .fast-view
+                     bottom: 0
+                  .product-cart__list-icon
+                     button
+                        background: $white
+                        svg
+                           path
+                              fill: $dark
+                     .cart-icon
+                        top: calc( 1rem + 1rem + 35px )
+                        opacity: 1
             &__bottom
                padding: 2.53rem 2.2rem
                @media screen and ( max-width: 1500px )
@@ -879,6 +859,13 @@
                         display: none
                      i
                         text-transform: uppercase
+               @media screen and ( max-width: 480px )
+                  padding: 0
+                  width: 100%
+                  .additing-block-information
+                     display: none
+                  .product-color
+                     margin-bottom: 0
                &__left
                   &__links
                      margin: 1rem 0
@@ -925,6 +912,13 @@
    justify-content: center
    .woocommerce-pagination
       @include el-stroke-button($dark-light, $dark, $dark-light, $dark, none)
+      @media screen and ( max-width: 480px )
+         width: 100%
+      .button-preloader
+         width: 100%
+         display: flex
+         justify-content: center
+         align-items: center
       .blueins-load_more__hidden
          visibility: hidden !important
          opacity: 0 !important

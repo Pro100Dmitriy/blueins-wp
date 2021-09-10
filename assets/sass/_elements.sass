@@ -255,6 +255,8 @@
    @media screen and ( max-width: 500px )
       bottom: 35px
       right: 35px
+   @media screen and ( max-width: 480px )
+      display: none
    &:hover
       span
          &::before
@@ -328,6 +330,7 @@
 
 
 .el-price-slider
+   margin-top: 10px
    &_container
       position: relative
       height: 3px
@@ -372,6 +375,8 @@
          display: none
       .el-slider__values
          display: flex
+         @media screen and ( max-width: 480px )
+            flex-direction: column
          p
             margin-right: 1rem
             font-size: 1rem

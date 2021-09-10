@@ -51,7 +51,7 @@ class Blueins_Widget_Filter_Attributes extends WC_Widget{
         echo $before_title . $title . $after_title;
         ?>
 
-        <div class="item_nav">
+        <div class="item__nav">
             <div class="variations">
                 <div class="variations__selects">
                     <label for="<?php echo esc_attr( sanitize_title( $tax ) ); ?>">

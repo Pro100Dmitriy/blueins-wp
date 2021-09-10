@@ -293,15 +293,32 @@
          width: 360px
          height: 360px
       @media screen and ( max-width: 450px )
-         width: 280px
-         height: 280px
+         //width: 280px
+         //height: 280px
+         width: calc(50vw - 4rem)
+         height: calc(50vw - 4rem)
       @media screen and ( max-width: 480px )
-         width: 88vw
-         height: 88vw
+         //width: 88vw
+         //height: 88vw
+         width: calc(50vw - 4rem)
+         height: calc(50vw - 4rem)
+
 
 
 .product-cart
    max-width: 360px
+   @media screen and ( max-width: 480px )
+      &:hover
+         .product-cart__top
+            margin-top: 0px !important
+            margin-bottom: 7px !important
+         .product-cart__bottom
+            &__left
+               &__links
+                  .price
+                     margin-top: 0 !important
+                  .view-product-link
+                     margin-top: 0 !important
    &:hover
       .product-cart__top
          margin-top: -8px
@@ -338,11 +355,11 @@
          width: 360px
          height: 360px
       @media screen and ( max-width: 450px )
-         width: 280px
-         height: 280px
+         width: calc(50vw - 4rem)
+         height: calc(50vw - 4rem)
       @media screen and ( max-width: 480px )
-         width: 88vw
-         height: 88vw
+         width: calc(50vw - 4rem)
+         height: calc(50vw - 4rem)
       .new-icon
          position: absolute
          top: 1rem
@@ -406,6 +423,13 @@
                opacity: 0
             .figure-product__second
                transform: translate(-50%, -50%) scale(1.1)
+         @media screen and ( max-width: 480px )
+            &:hover
+               .figure-product__first
+                  transform: translate(-50%, -50%)
+                  opacity: 0
+               .figure-product__second
+                  transform: translate(-50%, -50%)
          .product-img
             position: absolute
             top: 50%

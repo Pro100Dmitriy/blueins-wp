@@ -28,58 +28,64 @@
             <div class="footer__links__top">
                 <div class="container">
                     <div class="row">
+                        <?php
+                            $sectionTitle = explode( ' | ', get_theme_mod('section_footer') );
+                        ?>
                         <div class="col-md-3 col-sm-6">
-                            <?php
-                                $sectionTitle = explode( ' | ', get_theme_mod('section_footer') );
-                            ?>
-                            <nav class="footer-menu">
-                                <div class="footer-menu__title list-title medium-ninteen"><?php echo $sectionTitle[0]; ?></div>
-                                <?php
-                                wp_nav_menu( [
-                                    'menu'            => 'Users', 
-                                    'container'       => false,
-                                    'menu_class'      => 'footer-menu__list',
-                                    'echo'            => true,
-                                    'fallback_cb'     => 'wp_page_menu',
-                                    'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
-                                    'depth'           => 1,
-                                    'walker'          => new blueins_footer_walker_nav_menu
-                                ] );
-                                ?>
+                            <nav class="footer-menu collapsible">
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[0]; ?><span></span></div>
+                                <div class="item__nav">
+                                    <?php
+                                    wp_nav_menu( [
+                                        'menu'            => 'Users', 
+                                        'container'       => false,
+                                        'menu_class'      => 'footer-menu__list',
+                                        'echo'            => true,
+                                        'fallback_cb'     => 'wp_page_menu',
+                                        'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
+                                        'depth'           => 1,
+                                        'walker'          => new blueins_footer_walker_nav_menu
+                                    ] );
+                                    ?>
+                                </div>
                             </nav>
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <nav class="footer-menu">
-                                <div class="footer-menu__title list-title medium-ninteen"><?php echo $sectionTitle[1]; ?></div>
-                                <?php
-                                wp_nav_menu( [
-                                    'menu'            => 'Information', 
-                                    'container'       => false,
-                                    'menu_class'      => 'footer-menu__list',
-                                    'echo'            => true,
-                                    'fallback_cb'     => 'wp_page_menu',
-                                    'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
-                                    'depth'           => 1,
-                                    'walker'          => new blueins_footer_walker_nav_menu
-                                ] );
-                                ?>
+                            <nav class="footer-menu collapsible">
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[1]; ?><span></span></div>
+                                <div class="item__nav">
+                                    <?php
+                                    wp_nav_menu( [
+                                        'menu'            => 'Information', 
+                                        'container'       => false,
+                                        'menu_class'      => 'footer-menu__list',
+                                        'echo'            => true,
+                                        'fallback_cb'     => 'wp_page_menu',
+                                        'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
+                                        'depth'           => 1,
+                                        'walker'          => new blueins_footer_walker_nav_menu
+                                    ] );
+                                    ?>
+                                </div>
                             </nav>
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <nav class="footer-menu">
-                                <div class="footer-menu__title list-title medium-ninteen"><?php echo $sectionTitle[2]; ?></div>
-                                <?php
-                                wp_nav_menu( [
-                                    'menu'            => 'Shop', 
-                                    'container'       => false,
-                                    'menu_class'      => 'footer-menu__list',
-                                    'echo'            => true,
-                                    'fallback_cb'     => 'wp_page_menu',
-                                    'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
-                                    'depth'           => 1,
-                                    'walker'          => new blueins_footer_walker_nav_menu
-                                ] );
-                                ?>
+                            <nav class="footer-menu collapsible">
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[2]; ?><span></span></div>
+                                <div class="item__nav">
+                                    <?php
+                                    wp_nav_menu( [
+                                        'menu'            => 'Shop', 
+                                        'container'       => false,
+                                        'menu_class'      => 'footer-menu__list',
+                                        'echo'            => true,
+                                        'fallback_cb'     => 'wp_page_menu',
+                                        'items_wrap'      => '<ul class="footer-menu__list">%3$s</ul>',
+                                        'depth'           => 1,
+                                        'walker'          => new blueins_footer_walker_nav_menu
+                                    ] );
+                                    ?>
+                                </div>
                             </nav>
                         </div>
                         <div class="col-md-3 col-sm-6">
