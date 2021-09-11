@@ -33,7 +33,7 @@
                         ?>
                         <div class="col-md-3 col-sm-6">
                             <nav class="footer-menu collapsible">
-                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[0]; ?><span></span></div>
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true" data-collapse-breakpoint="480"><?php echo $sectionTitle[0]; ?><span></span></div>
                                 <div class="item__nav">
                                     <?php
                                     wp_nav_menu( [
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <nav class="footer-menu collapsible">
-                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[1]; ?><span></span></div>
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true" data-collapse-breakpoint="480"><?php echo $sectionTitle[1]; ?><span></span></div>
                                 <div class="item__nav">
                                     <?php
                                     wp_nav_menu( [
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <nav class="footer-menu collapsible">
-                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true"><?php echo $sectionTitle[2]; ?><span></span></div>
+                                <div class="footer-menu__title list-title medium-ninteen collaps-title" data-collapse="true" data-collapse-breakpoint="480"><?php echo $sectionTitle[2]; ?><span></span></div>
                                 <div class="item__nav">
                                     <?php
                                     wp_nav_menu( [

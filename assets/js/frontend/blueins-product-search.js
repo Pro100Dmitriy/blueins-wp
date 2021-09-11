@@ -3,6 +3,10 @@ import { css } from './utils'
 
 export function blueins_product_search(){
     const $search = search()
+
+    let search_input = $search.$bar.querySelector('.search-input')
+    search_input.addEventListener( 'input', input )
+
     $search.openButton.addEventListener('click', e => {
         e.preventDefault()
         $search.open()
@@ -14,6 +18,13 @@ export function blueins_product_search(){
 }
 
 
+
+function input(){
+    console.log( event.target.value )
+}
+
+
+
 function search(){
     let openButton = document.querySelector('#search-icon-menu')
     let closeButton = document.querySelector('#blueins-search-bar_popup-colose')
@@ -22,6 +33,7 @@ function search(){
     return {
         openButton,
         closeButton,
+        $bar,
         open(){
             css( $bar, {
                 top: '0%'

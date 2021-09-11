@@ -2,23 +2,36 @@ export class Blueins_Collapse{
     constructor( settings = {} ){
         if( !settings.list ) return
 
+        this.$list = settings.list
         this.margin = settings.margin
         this.cssClass = settings.class
         this.$ = settings.jquery
         
-        this.collapse_list( settings.list )
+        this.collapse_list()
     }
 
-    collapse_list( $list ){
-        let titles = $list.querySelectorAll('.collaps-title')
+    collapse_list(){
+        let titles = this.$list.querySelectorAll('.collaps-title')
         titles.forEach( title => {
-            if( title.hasAttribute('data-collapse') & title.getAttribute('data-collapse') == 'true' ){
-                let list = title.parentNode
-                let item_nav = list.querySelector('.item__nav')
-                this.close( item_nav, list )
+            if( title.hasAttribute('data-collapse-breakpoint') ){
+                let breakpoint = title.getAttribute('data-collapse-breakpoint')
+                let window = document.documentElement.clientWidth
+                if( breakpoint >= window ){
+                    this.init(title)
+                }
+            }else{
+                this.init(title)
             }
-            title.addEventListener( 'click', this.collapse.bind(this) )
         } )
+    }
+
+    init( title ){
+        if( title.hasAttribute('data-collapse') & title.getAttribute('data-collapse') == 'true' ){
+            let list = title.parentNode
+            let item_nav = list.querySelector('.item__nav')
+            this.close( item_nav, list )
+        }
+        title.addEventListener( 'click', this.collapse.bind(this) )
     }
       
     collapse(event){

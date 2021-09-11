@@ -469,7 +469,7 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
     /**
      * Search Form Template
      */
-    add_filter( 'get_product_search_form' , 'blueins_product_search_form' );
+    //add_filter( 'get_product_search_form' , 'blueins_product_search_form' );
     function blueins_product_search_form( $form ) {
 
         $form = '<form role="search" method="get" id="searchform" action="' . esc_url( home_url( '/'  ) ) . '">
