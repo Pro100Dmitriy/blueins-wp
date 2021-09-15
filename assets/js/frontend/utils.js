@@ -62,7 +62,11 @@ export function sendRequest( sendObject ){
         xhr.onerror = () => {
             reject( xhr.response )
         }
-        xhr.send()
+        if( sendObject.timeout != 0 ){
+            setTimeout( () => xhr.send(), sendObject.timeout )
+        }else{
+            xhr.send()
+        }
 
     } )
 }

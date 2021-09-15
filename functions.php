@@ -922,3 +922,15 @@ function my_custom_cart_contains( $product_id ) {
 	}
 	return false;
 }
+
+
+
+/**
+ ************************************  Search Ajax ******************************************
+*/
+
+function blueins_search_ajax(){
+
+}
+add_action( 'wp_ajax_blueins_search', 'blueins_search_ajax' );
+add_action( 'wp_ajax_nopriv_blueins_search', 'blueins_search_ajax' );
