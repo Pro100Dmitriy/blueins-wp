@@ -151,7 +151,6 @@ const $footer = new Blueins_Collapse({
 })
 
 
-
 /**
  *      Collapse
  */

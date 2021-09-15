@@ -9,10 +9,16 @@ export function blueins_product_search(){
     $search.openButton.addEventListener('click', e => {
         e.preventDefault()
         $search.open()
+        css(document.querySelector('body'),{
+            overflow: 'hidden'
+        })
     })
     $search.closeButton.addEventListener('click', e => {
         e.preventDefault()
         $search.close()
+        css(document.querySelector('body'),{
+            overflow: 'scroll'
+        })
     })
 }
 
@@ -21,25 +27,26 @@ export function blueins_product_search(){
 function input(event){
     let messege = event.target.value
 
-    sendRequest( {
-        method: 'GET',
-        url: AJAX_URL,
-        action: 'blueins_search',
-        data: {
-            messege
-        },
-        timeout: 500,
-        onloadstart_callback(){
-            $search.preloader_on()
-        }
-    } )
-    .then( data => {
-        $search.preloader_off()
-        $search.UI.$search_result.innerHTML = data
-    } )
-    .catch( error => {
-        console.log( error )
-    } )
+    setTimeout( () => {
+        sendRequest( {
+            method: 'GET',
+            url: AJAX_URL,
+            action: 'blueins_search',
+            data: {
+                messege
+            },
+            onloadstart_callback(){
+                $search.preloader_on()
+            }
+        } )
+        .then( data => {
+            $search.preloader_off()
+            $search.UI.$search_result.innerHTML = data
+        } )
+        .catch( error => {
+            console.log( error )
+        } )
+    }, 1000 )
 }
 
 
@@ -91,6 +98,9 @@ function search(){
     let $icon = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45"><path d="M19.589,18.322l-3.008-2.965a9.386,9.386,0,1,0-1.224,1.224l3.009,2.965a.866.866,0,1,0,1.224-1.224ZM1.732,9.373a7.641,7.641,0,1,1,7.641,7.641A7.65,7.65,0,0,1,1.732,9.373Z" transform="translate(13 12)" fill="#000"/><rect width="45" height="45" fill="none"/></svg>
     `
+    let $clear = `
+                <button class="close-button blueins-search-clear">Clear text</button>
+    `
 
     return {
         openButton,
@@ -98,7 +108,8 @@ function search(){
         $bar,
         UI: {
             $input,
-            $search_result
+            $search_result,
+            $icon_container
         },
         open(){
             css( $bar, {
@@ -112,7 +123,7 @@ function search(){
         },
         close(){
             css( $bar, {
-                top: '-50%'
+                top: '-150%'
             } )
 
             css( $overlay, {
@@ -124,7 +135,20 @@ function search(){
             $icon_container.innerHTML = $preloader
         },
         preloader_off(){
-            $icon_container.innerHTML = $icon
+            if( $input.value != '' ){
+                $icon_container.innerHTML = $clear
+                let clear_button = $icon_container.querySelector('.blueins-search-clear')
+                clear_button.addEventListener( 'click', e => {
+                    e.preventDefault()
+                    $input.value = ''
+                    $search_result.innerHTML = ''
+                } )
+            }else{
+                $icon_container.innerHTML = $icon
+            }
+        },
+        clearInput(){
+            $input.value = ''
         }
     }
 }

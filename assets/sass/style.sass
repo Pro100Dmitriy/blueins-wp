@@ -1566,13 +1566,20 @@ body
     z-index: $search-z-index
     width: 100vw
     background: white
-    padding: 2rem 0 0 0
+    padding: 2rem 0 3.5rem 0
     transition: all 0.3s ease
+    @media screen and ( max-width: 480px )
+        padding: 2rem 0 1.5rem 0
+    @media screen and ( max-width: 325px )
+        padding-left: 15px
+        padding-right: 15px
     .blueins-search-bar__close-button
         display: flex
         justify-content: flex-end
     form
-        padding: 6rem 0 5rem 0
+        padding: 6rem 0 2rem 0
+        @media screen and ( max-width: 480px )
+            padding: 1rem 0 2rem 0
     .search-button-group
         padding: 1rem 0
         display: flex
@@ -1580,7 +1587,13 @@ body
         width: 100%
         border-bottom: 2px solid $dark-light
         .search-icon
+            .blueins-search-clear
+                background: none
+                margin-right: 0.5rem
+                &:hover
+                    background: none
             svg
+                margin-right: 0.5rem
                 path
                     fill: $gray
         .search-input
@@ -1594,6 +1607,94 @@ body
             color: $dark-light
         .search-button
             display: none
+    .search-result
+        &__container
+            display: flex
+            flex-direction: row
+            flex-wrap: wrap
+            justify-content: space-between
+            padding: 0 2rem 0 2rem
+            @media screen and ( max-width: 480px )
+                padding: 0
+                flex-wrap: nowrap
+                flex-direction: column
+            /* width */
+            &::-webkit-scrollbar 
+                width: 5px
+            /* Track */
+            &::-webkit-scrollbar-track
+                background: $dark
+            /* Handle */
+            &::-webkit-scrollbar-thumb
+                background: $gray
+                transition: all 0.3s ease
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover
+                background: $dark-light
+            .product-cart-search
+                max-width: 160px
+                @media screen and ( max-width: 480px )
+                    width: calc( 100vw - 30px )
+                    max-width: fit-content
+                    display: flex
+                    margin-bottom: 1.5rem
+                &__top
+                    position: relative
+                    width: 160px
+                    height: 160px
+                    overflow: hidden
+                    margin-bottom: 7px
+                    transition: 0.3s ease-out
+                    @media screen and ( max-width: 480px )
+                        width: 80px
+                        height: 80px
+                        margin-right: 1rem
+                        margin-bottom: 0
+                    .new-icon
+                        position: absolute
+                        top: 1rem
+                        left: 1rem
+                        z-index: 3
+                        font-family: 'Jost'
+                        font-size: 0.8rem
+                        letter-spacing: 0.05rem
+                        color: $dark
+                        background: $white
+                        border-radius: 50px
+                        padding: 0.42em 1.2em
+                    .figure-product
+                        width: 100%
+                        height: 100%
+                        position: relative
+                        @media screen and ( max-width: 480px )
+                            width: 80px
+                            height: 80px
+                        .product-img
+                            position: absolute
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%) scale(1.03)
+                            width: 100%
+                            transition: all 0.5s ease
+                            &__first
+                                z-index: 2
+                &__bottom
+                    display: flex
+                    justify-content: space-between
+                    flex-direction: row
+                    @media screen and ( max-width: 480px )
+                        width: calc( 100vw - 30px - 1rem - 80px )
+                    &__left
+                        .product-title
+                            margin-bottom: 0.3rem
+                        &__links
+                            overflow: hidden
+                            height: 28px
+                            margin-bottom: 0.5rem
+                            .price
+                                color: $dark-light
+                                margin-top: 0
+                                transition: all 0.3s ease
             
 
 

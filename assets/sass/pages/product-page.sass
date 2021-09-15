@@ -627,6 +627,13 @@
                padding-left: 0.3rem
             .woocommerce-ordering
                position: relative
+               .select-selected
+                  span
+                     @media screen and ( max-width: 325px )    
+                        overflow: hidden
+                        text-overflow: ellipsis
+                        white-space: nowrap
+                        max-width: 50px
                .orderby
                   display: none
                .select-hide
@@ -646,8 +653,11 @@
                   transition: all 0.4s ease
                   @media screen and ( max-width: 480px )
                      left: auto
-                     right: 0
+                     right: 50%
+                     top: auto
+                     bottom: 50px
                      width: 250px
+                     transform: translateX(50%)
                   .same-as-selected
                      color: $light
                      background: $dark

@@ -930,7 +930,34 @@ function my_custom_cart_contains( $product_id ) {
 */
 
 function blueins_search_ajax(){
+	$query = $_GET;
+    
+    $args = array(
+        'post_type' => 'product',
+		'posts_per_page' => 4,
+        'post_status' => 'publish',
+        's' => $query['messege'],
+		'sentence' => true,
+    );
+    $search = new WP_Query( $args );
+    
+    ob_start();
+    
+    if ( $search->have_posts() ) :
 
+		while ( $search->have_posts() ) : 
+			$search->the_post();
+			wc_get_template_part( 'content', 'search' );
+		endwhile;
+
+		wp_reset_postdata();
+
+	else :
+		//get_template_part( 'content', 'none' );
+	endif;
+
+	die();
 }
+
 add_action( 'wp_ajax_blueins_search', 'blueins_search_ajax' );
 add_action( 'wp_ajax_nopriv_blueins_search', 'blueins_search_ajax' );
