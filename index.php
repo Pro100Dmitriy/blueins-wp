@@ -166,36 +166,18 @@ get_header('','about__header__bottom');
                             'order' => 'ASC',
                         ));
                         $count = 0;
-                        while ( $loop->have_posts() ): $loop->the_post(); global $product;
-                        ?>
-                        <?php echo $loop->post_id; ?>
-                        <li class="big-products__list__item" data-aos="fade-up"  data-aos-delay="<?php echo $count += 100; ?>">
-                            <div data-blu-product-id="<?php echo $product->id; ?>" class="product-cart">
-                                <div class="product-cart__top">
-                                    <small class="new-icon">Новое</small>
-                                    <figure class="figure-product">
-                                    <?php 
-                                        $attachment_ids = $product->get_gallery_image_ids(); 
-                                    ?>
-                                        <img class="product-img figure-product__first" src="<?php echo wp_get_attachment_image_url( $attachment_ids[0], 'full' ); ?>" alt="Картинка товара">
-                                        <img class="product-img figure-product__second" src="<?php echo wp_get_attachment_image_url( $attachment_ids[1], 'full' ); ?>" alt="Картинка товара">
-                                    </figure>
-                                    <a data-blu-product-id="<?php echo $product->id; ?>" data-el="blu_fastview" class="fast-view" href="<?php the_permalink(); ?>">Быстрый просмотр</a>
-                                </div>
-                                <div class="product-cart__bottom">
-                                    <div class="product-cart__bottom__left">
-                                        <span class="product-title h4-style"><?php the_title(); ?></span>
-                                        <div class="product-cart__bottom__left__links">
-                                            <p class="price regular-fiveteen"><?php woocommerce_template_loop_price(); ?></p>
-                                            <a class="view-product-link regular-fiveteen" href="<?php the_permalink(); ?>">Просмотреть продукт</a>
-                                        </div>
-                                    </div>
-                                    <div data-target="blu_woo_wishlist_public" data-target-id="<?php echo $product->id ?>" class="product-cart__bottom__right"></div>
-                                </div>
-                            </div>
-                        </li>
+                        while ( $loop->have_posts() ):
+                            
+                            $loop->the_post();
+                            global $product;
+                            ?>
 
-                        <?php
+                            <li class="big-products__list__item" data-aos="fade-up"  data-aos-delay="<?php echo $count += 100; ?>">
+                                <?php wc_get_template_part( 'content', 'product-index' ); ?>
+                            </li>
+
+                            <?php
+
                         endwhile;
                         wp_reset_postdata();
                         ?>
@@ -281,36 +263,17 @@ get_header('','about__header__bottom');
                             'order' => 'ASC',
                         ));
                         $count = 0;
-                        while ( $loop->have_posts() ): $loop->the_post(); global $product;
-                        ?>
+                        while ( $loop->have_posts() ):
 
-                        <li class="small-products__list__item" data-aos="fade-up" data-aos-delay="<?php echo $count += 100; ?>">
-                            <div data-blu-product-id="<?php echo $product->id; ?>" class="product-cart small-product-cart">
-                                <div class="product-cart__top">
-                                    <small class="new-icon">Новое</small>
-                                    <figure class="figure-product">
-                                    <?php 
-                                        $attachment_ids = $product->get_gallery_image_ids(); 
-                                    ?>
-                                        <img class="product-img figure-product__first" src="<?php echo wp_get_attachment_image_url( $attachment_ids[0], 'full' ); ?>" alt="Картинка товара">
-                                        <img class="product-img figure-product__second" src="<?php echo wp_get_attachment_image_url( $attachment_ids[1], 'full' ); ?>" alt="Картинка товара">
-                                    </figure>
-                                    <a data-blu-product-id="<?php echo $product->id; ?>" data-el="blu_fastview" class="fast-view" href="<?php the_permalink(); ?>">Быстрый просмотр</a>
-                                </div>
-                                <div class="product-cart__bottom">
-                                    <div class="product-cart__bottom__left">
-                                        <span class="product-title h4-style"><?php the_title(); ?></span>
-                                        <div class="product-cart__bottom__left__links">
-                                            <p class="price regular-fiveteen"><?php woocommerce_template_loop_price(); ?></p>
-                                            <a class="view-product-link regular-fiveteen" href="<?php the_permalink(); ?>">Просмотреть продукт</a>
-                                        </div>
-                                    </div>
-                                    <div data-target="blu_woo_wishlist_public" data-target-id="<?php echo $product->id ?>" class="product-cart__bottom__right"></div>
-                                </div>
-                            </div>
-                        </li>
+                            $loop->the_post();
+                            global $product;
+                            ?>
 
-                        <?php
+                            <li class="small-products__list__item" data-aos="fade-up" data-aos-delay="<?php echo $count += 100; ?>">
+                                <?php wc_get_template_part( 'content', 'product-index-small' ); ?>
+                            </li>
+
+                            <?php
                         endwhile;
                         wp_reset_postdata();
                         ?>

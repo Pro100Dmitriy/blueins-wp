@@ -167,14 +167,14 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
                             $blu_loop->the_post();
                             ?>
                                 <li class="big-products__list__item" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="<?php echo $count += 100; ?>">
-                                <?php
-                                /**
-                                 * Hook: woocommerce_shop_loop.
-                                 */
-                                do_action( 'woocommerce_shop_loop' );
-                    
-                                wc_get_template_part( 'content', 'product' );
-                                ?>
+                                    <?php
+                                    /**
+                                     * Hook: woocommerce_shop_loop.
+                                     */
+                                    do_action( 'woocommerce_shop_loop' );
+                        
+                                    wc_get_template_part( 'content', 'product' );
+                                    ?>
                                 </li>
                             <?php
                         }

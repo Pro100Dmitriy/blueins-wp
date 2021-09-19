@@ -263,6 +263,13 @@
 
 .big-products
    padding: 6rem 0
+   .product-cart__top
+      @media screen and ( max-width: 450px )
+         width: 280px
+         height: 280px
+      @media screen and ( max-width: 480px )
+         width: calc( 100vw - 30px )
+         height: calc( 100vw - 30px )
    &__list
       display: flex
       justify-content: space-between
@@ -293,15 +300,14 @@
          width: 360px
          height: 360px
       @media screen and ( max-width: 450px )
-         //width: 280px
-         //height: 280px
-         width: calc(50vw - 4rem)
-         height: calc(50vw - 4rem)
+         width: 280px
+         height: 280px
       @media screen and ( max-width: 480px )
-         //width: 88vw
-         //height: 88vw
-         width: calc(50vw - 4rem)
-         height: calc(50vw - 4rem)
+         width: calc(50vw - 24px)
+         height: calc(50vw - 24px)
+   .product-cart__bottom
+      @media screen and ( max-width: 480px )
+         width: calc(50vw - 24px)
 
 
 
@@ -354,12 +360,6 @@
       @media screen and ( max-width: 768px )
          width: 360px
          height: 360px
-      @media screen and ( max-width: 450px )
-         width: calc(50vw - 4rem)
-         height: calc(50vw - 4rem)
-      @media screen and ( max-width: 480px )
-         width: calc(50vw - 4rem)
-         height: calc(50vw - 4rem)
       .new-icon
          position: absolute
          top: 1rem
@@ -426,10 +426,10 @@
          @media screen and ( max-width: 480px )
             &:hover
                .figure-product__first
-                  transform: translate(-50%, -50%)
+                  transform: translate(-50%, -50%) scale(1.15)
                   opacity: 0
                .figure-product__second
-                  transform: translate(-50%, -50%)
+                  transform: translate(-50%, -50%) scale(1.1)
          .product-img
             position: absolute
             top: 50%
@@ -640,12 +640,17 @@
       @media screen and ( max-width: 992px )
          flex-wrap: wrap
          justify-content: center
+      @media screen and ( max-width: 480px )
+         justify-content: space-between
+         padding: 0 15px
       &__item
          width: 270px
          @media screen and ( max-width: 1200px )
             width: auto
          @media screen and ( max-width: 992px )
             margin: 1.5rem
+         @media screen and ( max-width: 480px )
+            margin: 0 0 7px 0
 
 
 .about

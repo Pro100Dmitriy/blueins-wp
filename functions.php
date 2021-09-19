@@ -186,7 +186,8 @@ function blu_loadmore_ajax_handler(){
 		array_push( $tax, array(
 			'taxonomy' => 'product_cat',
 			'field' => 'id',
-			'terms' => $categories
+			'terms' => $categories,
+			'operator' => 'AND'
 		) );
 	}
 
@@ -194,7 +195,8 @@ function blu_loadmore_ajax_handler(){
 		array_push( $tax, array(
 			'taxonomy' => 'pa_czvet',
 			'field' => 'id',
-			'terms' => $color
+			'terms' => $color,
+			'operator' => 'AND'
 		) );
 	}
 
@@ -202,7 +204,8 @@ function blu_loadmore_ajax_handler(){
 		array_push( $tax, array(
 			'taxonomy' => 'pa_razmer',
 			'field' => 'id',
-			'terms' => $razmer
+			'terms' => $razmer,
+			'operator' => 'AND'
 		) );
 	}
 

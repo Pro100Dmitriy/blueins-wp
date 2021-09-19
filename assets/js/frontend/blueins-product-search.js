@@ -4,20 +4,22 @@ const AJAX_URL = woocommerce_params.ajax_url
 const $search = search()
 
 export function blueins_product_search(){
+    if( !$search ){ return }
+    
     $search.UI.$input.addEventListener( 'input', input )
 
     $search.openButton.addEventListener('click', e => {
         e.preventDefault()
         $search.open()
         css(document.querySelector('body'),{
-            overflow: 'hidden'
+            'overflow-y': 'hidden'
         })
     })
     $search.closeButton.addEventListener('click', e => {
         e.preventDefault()
         $search.close()
         css(document.querySelector('body'),{
-            overflow: 'scroll'
+            'overflow-y': 'scroll'
         })
     })
 }
@@ -101,6 +103,10 @@ function search(){
     let $clear = `
                 <button class="close-button blueins-search-clear">Clear text</button>
     `
+
+    if( !openButton || !closeButton || !$bar || !$overlay || !$input || !$search_result || !$icon_container ){
+        return false
+    }
 
     return {
         openButton,

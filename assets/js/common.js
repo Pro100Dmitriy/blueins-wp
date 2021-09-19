@@ -70,7 +70,7 @@ function headerAnimation(event){
 /**
  *      Search
  */
- blueins_product_search()
+blueins_product_search()
 
 
 

@@ -61,18 +61,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 <?php endif; ?>
 	<div class="product-cart__top">
 		<?php 
-		$date = the_date('', '', '', false);
-		$oldDate = date("m.d.y", strtotime( $date ) );
-		$newDate = date("m.d.y", strtotime( $date." + 10 day" ) );
-		$nowDate = date("m.d.y", time() );
+			$date = the_date('', '', '', false);
+			$oldDate = date("m.d.y", strtotime( $date ) );
+			$newDate = date("m.d.y", strtotime( $date." + 10 day" ) );
+			$nowDate = date("m.d.y", time() );
 		?>
 		<?php if( $nowDate <= $newDate ) : ?>
 			<small class="new-icon">Новое</small>
 		<?php endif; ?>
 		<div class="product-cart__list-icon">
-			<!--button class="like-icon blu-">
-				<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33"><g transform="translate(8.105 8.684)"><path d="M8.323,43.324a23.174,23.174,0,0,1-2.4-2.07C2.355,38.223,0,36.221,0,33.3a4.537,4.537,0,0,1,4.421-4.763c2.815,0,3.722,2.634,3.9,2.634s1.007-2.634,3.9-2.634A4.537,4.537,0,0,1,16.645,33.3c0,2.923-2.355,4.926-5.919,7.957A23.087,23.087,0,0,1,8.323,43.324Zm-3.9-13.815A3.549,3.549,0,0,0,.975,33.3c0,2.473,2.218,4.359,5.576,7.214C7.12,41,8.1,42.029,8.323,42.029s1.2-1.034,1.771-1.518c3.358-2.855,5.576-4.742,5.576-7.214a3.549,3.549,0,0,0-3.446-3.788c-1.774,0-3.024,1.59-3.431,3.056v0l-.939,0h0C7.493,31.271,6.326,29.509,4.421,29.509Z" transform="translate(0 -28.534)" fill="#fff"/></g><rect width="33" height="33" fill="none"/></svg>
-			</button-->
 			<?php do_shortcode('[blu_woo_wishlist_public class="like-icon" id="' . $product->id .'"]'); ?>
 			<a href="<?php echo $product->add_to_cart_url(); ?>" data-product-id="<?php echo $product->id ?>" class="button blueins_add_to_cart">  <!--product_type_simple add_to_cart_button ajax_add_to_cart-->
 				<button class="cart-icon">
@@ -82,9 +79,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		</div>
 		<a href="<?php the_permalink(); ?>">
 			<figure class="figure-product">
-			<?php
-				$attachment_ids = $product->get_gallery_image_ids(); 
-			?>
+				<?php
+					$attachment_ids = $product->get_gallery_image_ids(); 
+				?>
 				<img class="product-img figure-product__first" src="<?php echo wp_get_attachment_image_url( $attachment_ids[0], 'full' ); ?>" alt="Картинка товара">
 				<img class="product-img figure-product__second" src="<?php echo wp_get_attachment_image_url( $attachment_ids[1], 'full' ); ?>" alt="Картинка товара">
 			</figure>

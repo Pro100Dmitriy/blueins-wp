@@ -1265,7 +1265,7 @@ body
                     @media screen and ( max-width: 1050px )
                         width: 430px
                         height: 430px
-                    @media screen and ( max-width: 375px )
+                    @media screen and ( max-width: 430px )
                         width: 100vw
                         height: 100vw
                     .slick-arrow
@@ -1310,15 +1310,21 @@ body
                                 height: 0.4rem
                                 background: rgba($dark, 1)
                     .slick-item
+                        position: relative
+                        overflow: hidden
+                        height: 500px
+                        @media screen and ( max-width: 1050px )
+                            height: 430px
+                        @media screen and ( max-width: 430px )
+                            height: 100vw
                         img
+                            @include absolute-align-center
                             width: 500px
-                            height: 500px
+                            height: auto
                             @media screen and ( max-width: 1050px )
                                 width: 430px
-                                height: 430px
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 width: 100vw
-                                height: 100vw
             &__content
                 position: relative
                 width: 500px
@@ -1328,7 +1334,8 @@ body
                 @media screen and ( max-width: 1050px )
                     width: 430px
                     height: 430px
-                @media screen and ( max-width: 375px )
+                @media screen and ( max-width: 430px )
+                    padding: 2.5rem 2rem 2rem 2rem
                     width: 100vw
                     height: calc( 100vh - 100vw )
                 /* width */
@@ -1348,6 +1355,17 @@ body
                     position: fixed
                     top: 1rem
                     right: 1rem
+                    @media screen and ( max-width: 430px )
+                        margin-bottom: 2px
+                        .close-button
+                            background: rgba( $black, 0.25 )
+                            backdrop-filter: blur(5px)
+                            &:hover
+                                background: rgba( $black, 0.5 )
+                            &::before
+                                background: white
+                            &::after
+                                background: white
                 .details__h1
                     margin-bottom: 2rem
                 .details__price
@@ -1431,20 +1449,26 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
-                        @media screen and ( max-width: 375px )
+                        @media screen and ( max-width: 430px )
                             flex-direction: column
                             align-items: flex-start
                         .details__quantity-but__quantity
                             margin-right: 1rem
                             @include el-quantity($dark, $light, $line_gray)
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
+                                .el-quantity__input-number
+                                    width: 100%
                         .el-form__button
                             margin-right: 1rem
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
+                                font-size: 15px
+                                padding: 0.734em 1.828em
                         .details-like-button
                             margin-right: 1rem
                             display: flex
@@ -1455,9 +1479,10 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
                             svg
                                 path
                                     fill: $white
@@ -1476,6 +1501,7 @@ body
                             display: flex
                             align-items: center
                             margin-bottom: 1.66rem
+                            justify-content: space-between
                             &-price
                                 margin-right: 3rem
                                 .price
@@ -1516,20 +1542,26 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
-                        @media screen and ( max-width: 375px )
+                        @media screen and ( max-width: 430px )
                             flex-direction: column
                             align-items: flex-start
                         .details__quantity-but__quantity
                             margin-right: 1rem
                             @include el-quantity($dark, $light, $line_gray)
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
+                                .el-quantity__input-number
+                                    width: 100%
                         .el-form__button
                             margin-right: 1rem
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
+                                font-size: 15px
+                                padding: 0.734em 1.828em
                         .details-like-button
                             margin-right: 1rem
                             display: flex
@@ -1540,9 +1572,10 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
-                            @media screen and ( max-width: 375px )
+                            @media screen and ( max-width: 430px )
                                 margin-bottom: 1rem
                                 margin-right: 0
+                                width: 100%
                             svg
                                 path
                                     fill: $white
