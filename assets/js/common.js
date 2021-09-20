@@ -55,8 +55,8 @@ document.addEventListener( 'touchmove', headerAnimation )
 
 function headerAnimation(event){
   
-  if( $(window).scrollTop() >= height ){
-    header.style = `top: -${height}px`
+  if( $(window).scrollTop() >= 10 ){
+    header.style = `top: -${height + 2}px`
     $header_bottom.classList.add('header__bottom-fixed')
     $header_bottom.style = `top: ${TOP_HEADER}px`
   }else{
@@ -610,6 +610,16 @@ $('.slick-slider').slick({
       arrows: false
     }
 
+  },
+  {
+
+    breakpoint: 480,
+    settings: {
+      arrows: false,
+      fade: false,
+      speed: 400
+    }
+
   }]
  });
 
@@ -780,9 +790,24 @@ $(document).ready(function(){
 
     function viewGrid(event){
 
-      $('#header__bottom-cover').addClass('header__bottom-fixed');
+      const header = document.querySelector('.header')
+      const { height } = document.querySelector('.header__top').getBoundingClientRect()
+      const $header_bottom = document.querySelector('#header__bottom-cover')
+      const $go_to_top = document.querySelector('#go-to-top')
+
+  
+      header.style = `top: -${height}px`
+      $header_bottom.classList.add('header__bottom-fixed')
+      $header_bottom.style = `top: ${TOP_HEADER}px`
+
+
       let element = document.querySelector('#blueins-filters-block').getBoundingClientRect()
-      $('html, body').animate({scrollTop: window.pageYOffset + element.y  - 76 }, 1000);
+      $('html, body').animate({scrollTop: window.pageYOffset + element.y - element.height}, 1000);
+
+      console.log(window.pageYOffset)
+      console.log(element.y)
+      console.log(element.height)
+      console.log(element)
 
       event.preventDefault();
 

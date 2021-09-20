@@ -794,8 +794,6 @@ body
             path
                 fill: $dark !important
     .header__bottom-fixed
-        //position: fixed !important
-        //top: 0 !important
         width: 100%
         .main-menu__item
             &>a
@@ -828,33 +826,12 @@ body
         transition-delay: 0.1s
         position: relative
         top: -100%
-        @media screen and ( max-width: 500px )
-            //position: fixed
-            //top: 0
-            //width: 100%
     &__bottom
         padding: 0 1rem
         position: relative
         border-bottom: 1px solid rgba($line_gray, 0)
         transition: all 0.3s ease
         transition-delay: 0.1s
-        @media screen and ( max-width: 700px )
-            //background: $white
-            //border-bottom: 1px solid rgba($line_gray, 1)
-            .main-menu__item
-                &>a
-                    &::after
-                        background: $dark
-                .sub-nav__item__pages
-                    a
-                        &::after
-                            background: $dark
-            ul
-                a
-                    color: $dark !important
-            svg
-                path
-                    fill: $dark !important
         &__content
             display: flex
             justify-content: space-between
@@ -1254,7 +1231,15 @@ body
             transition: all 0.2s ease-in-out
             @media screen and ( max-width: 870px )
                 flex-direction: column
+            @media screen and ( max-width: 480px )
+                position: relative
+                width: 100vw
+                height: 100vh
             &__slider
+                @media screen and ( max-width: 480px )
+                    position: absolute
+                    top: 0
+                    z-index: 1
                 .fastview__src_variation
                     display: none
                 .fastview-slick-list
@@ -1329,15 +1314,19 @@ body
                 position: relative
                 width: 500px
                 height: 500px
-                overflow-y: scroll
+                overflow-y: hidden
                 padding: 3.5rem 4rem 2rem 2rem
                 @media screen and ( max-width: 1050px )
                     width: 430px
                     height: 430px
-                @media screen and ( max-width: 430px )
+                @media screen and ( max-width: 480px )
                     padding: 2.5rem 2rem 2rem 2rem
                     width: 100vw
                     height: calc( 100vh - 100vw )
+                    position: absolute
+                    bottom: 0
+                    z-index: 2
+                    background: white
                 /* width */
                 &::-webkit-scrollbar 
                     width: 5px
@@ -1449,13 +1438,13 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
-                        @media screen and ( max-width: 430px )
+                        @media screen and ( max-width: 480px )
                             flex-direction: column
                             align-items: flex-start
                         .details__quantity-but__quantity
                             margin-right: 1rem
                             @include el-quantity($dark, $light, $line_gray)
-                            @media screen and ( max-width: 430px )
+                            @media screen and ( max-width: 480px )
                                 margin-bottom: 1rem
                                 margin-right: 0
                                 width: 100%
@@ -1463,7 +1452,7 @@ body
                                     width: 100%
                         .el-form__button
                             margin-right: 1rem
-                            @media screen and ( max-width: 430px )
+                            @media screen and ( max-width: 480px )
                                 margin-bottom: 1rem
                                 margin-right: 0
                                 width: 100%
@@ -1479,7 +1468,7 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
-                            @media screen and ( max-width: 430px )
+                            @media screen and ( max-width: 480px )
                                 margin-bottom: 1rem
                                 margin-right: 0
                                 width: 100%
@@ -1542,26 +1531,25 @@ body
                         display: flex
                         flex-direction: row
                         align-items: center
-                        @media screen and ( max-width: 430px )
+                        @media screen and ( max-width: 480px )
                             flex-direction: column
                             align-items: flex-start
-                        .details__quantity-but__quantity
-                            margin-right: 1rem
-                            @include el-quantity($dark, $light, $line_gray)
-                            @media screen and ( max-width: 430px )
-                                margin-bottom: 1rem
-                                margin-right: 0
+                        &__group
+                            display: flex
+                            flex-direction: row
+                            @media screen and ( max-width: 480px )
                                 width: 100%
-                                .el-quantity__input-number
+                            .details__quantity-but__quantity
+                                margin-right: 1rem
+                                @include el-quantity($dark, $light, $line_gray)
+                            .el-form__button
+                                margin-right: 1rem
+                                @media screen and ( max-width: 480px )
+                                    margin-bottom: 1rem
+                                    margin-right: 0
                                     width: 100%
-                        .el-form__button
-                            margin-right: 1rem
-                            @media screen and ( max-width: 430px )
-                                margin-bottom: 1rem
-                                margin-right: 0
-                                width: 100%
-                                font-size: 15px
-                                padding: 0.734em 1.828em
+                                    font-size: 15px
+                                    padding: 0.734em 1.828em
                         .details-like-button
                             margin-right: 1rem
                             display: flex
@@ -1572,7 +1560,7 @@ body
                             background: $gray
                             transition: all 0.3s ease
                             border: none
-                            @media screen and ( max-width: 430px )
+                            @media screen and ( max-width: 480px )
                                 margin-bottom: 1rem
                                 margin-right: 0
                                 width: 100%
@@ -1948,6 +1936,8 @@ body
             padding: 2rem 0
             max-width: 800px
             margin: 0 auto
+            @media screen and ( max-width: 480px )
+                padding: 2rem 15px
             p
                 text-align: center
                 color: $dark

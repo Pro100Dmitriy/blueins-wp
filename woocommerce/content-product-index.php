@@ -44,6 +44,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 <a class="view-product-link regular-fiveteen" href="<?php the_permalink(); ?>">Просмотреть продукт</a>
             </div>
         </div>
-        <div data-target="blu_woo_wishlist_public" data-target-id="<?php echo $product->id ?>" class="product-cart__bottom__right"></div>
+        <div class="product-cart__bottom__right" data-target="blu_woo_wishlist_public" data-target-id="<?php echo $product->id ?>"></div>
     </div>
 </div>

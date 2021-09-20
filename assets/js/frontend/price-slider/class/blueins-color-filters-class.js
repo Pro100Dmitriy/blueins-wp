@@ -46,6 +46,13 @@ export class Blueins_Color_Filters{
     }
 
     filter_renderHTML( active, optionsHTML, selectHTML, list ){
+        if( active.classList.contains('details-select-circle') || active.classList.contains('details-select-square') ){
+            active = active.parentNode
+        }else if( active.classList.contains('details__colors__list__item') || active.classList.contains('details__razmer__list__item') ){
+            active = active.firstChild
+        }else{
+            active = active
+        }
         
         if( active.classList.contains('element-select') ){
             active.classList.remove('element-select')
@@ -76,11 +83,13 @@ export class Blueins_Color_Filters{
 
                 let HTML = `
                     <li class="details__colors__list__item" name="${ colorName }">
-                        <span   class="details-select-circle" 
-                                style="background: ${ colorCod }" 
-                                id="${ colorCod }" 
-                                data-value="${child.value}">
-                        </span>
+                        <div class="color-bg">
+                            <span   class="details-select-circle" 
+                                    style="background: ${ colorCod }" 
+                                    id="${ colorCod }" 
+                                    data-value="${child.value}">
+                            </span>
+                        </div>
                     </li>
                 `
 
@@ -89,8 +98,8 @@ export class Blueins_Color_Filters{
         } );
 
         return {
-            first: container.querySelector( `li:first-child span` ),
-            list: container.querySelectorAll( `.details__colors__list__item span` )
+            first: container.querySelector( `li:first-child div` ),
+            list: container.querySelectorAll( `.details__colors__list__item div` )
         }
     }
 
@@ -103,11 +112,13 @@ export class Blueins_Color_Filters{
 
                 let HTML = `
                     <li class="details__razmer__list__item" name="${ razmerName }">
-                        <span   class="details-select-square"
-                                id="${ razmerCod }" 
-                                data-value="${child.value}">
-                        ${razmerCodHTML}
-                        </span>
+                        <div class="razmer-bg">
+                            <span   class="details-select-square"
+                                    id="${ razmerCod }" 
+                                    data-value="${child.value}">
+                            ${razmerCodHTML}
+                            </span>
+                        </div>
                     </li>
                 `
 
@@ -116,8 +127,8 @@ export class Blueins_Color_Filters{
         } )
 
         return {
-            first: container.querySelector( `li:first-child span` ),
-            list: container.querySelectorAll( `.details__razmer__list__item span` )
+            first: container.querySelector( `li:first-child div` ),
+            list: container.querySelectorAll( `.details__razmer__list__item div` )
         };
     }
 }

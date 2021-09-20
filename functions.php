@@ -196,7 +196,7 @@ function blu_loadmore_ajax_handler(){
 			'taxonomy' => 'pa_czvet',
 			'field' => 'id',
 			'terms' => $color,
-			'operator' => 'AND'
+			'operator' => 'IN'
 		) );
 	}
 
@@ -205,7 +205,7 @@ function blu_loadmore_ajax_handler(){
 			'taxonomy' => 'pa_razmer',
 			'field' => 'id',
 			'terms' => $razmer,
-			'operator' => 'AND'
+			'operator' => 'IN'
 		) );
 	}
 

@@ -119,21 +119,23 @@ blueins_load_more()
 
 /*****  Get Color  *****/
 function blueins_color(){
-    let colors = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .details-select-circle')
+    let colors = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .color-bg')
 
     colors.forEach( color => {
-        color.addEventListener( 'click', blueins_get_posts )
+        color.addEventListener( 'click', blueins_get_posts ) 
     } )
 }
 
 blueins_color()
 
 function blueins_get_color(){
-    let color_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .element-select')
+    let color_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_czvet .element-select span')
     let values = []
 
     color_selected.forEach( color => {
-        values.push( color.getAttribute( 'data-value' ) )
+        let color_name = color.parentNode.parentNode.getAttribute('name')
+        let color_code = color.getAttribute( 'data-value' )
+        values.push([color_name, color_code])
     } )
 
     return values
@@ -143,7 +145,7 @@ function blueins_get_color(){
 
 /*****  Get Razmer  *****/
 function blueins_razmer(){
-    let razmers = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .details-select-square')
+    let razmers = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .razmer-bg')
 
     razmers.forEach( razmer => {
         razmer.addEventListener( 'click', blueins_get_posts )
@@ -153,11 +155,13 @@ function blueins_razmer(){
 blueins_razmer()
 
 function blueins_get_razmer(){
-    let razmer_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .element-select')
+    let razmer_selected = PROD_FILTER.querySelectorAll('#setElementHere__pa_razmer .element-select span')
     let values = []
 
     razmer_selected.forEach( razmer => {
-        values.push( razmer.getAttribute( 'data-value' ) )
+        let razmer_name = razmer.parentNode.parentNode.getAttribute('name')
+        let razmer_code = razmer.getAttribute( 'data-value' )
+        values.push( [razmer_name, razmer_code] )
     } )
 
     return values

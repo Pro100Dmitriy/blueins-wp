@@ -33,9 +33,9 @@ export class Active_Filters{
         return this.$filter.querySelector('.product-categories-active')
     }
 
-    add(categorys_id, min, max){
+    add(categorys_id, min, max, color, razmer){
         let $activeFilters = this.$filter.querySelector('#activeFilters')
-        if(categorys_id.length == 0 && min == this.sliderEl1.publickMinPrice && max == this.sliderEl1.publickMaxPrice){
+        if(categorys_id.length == 0 && min == this.sliderEl1.publickMinPrice && max == this.sliderEl1.publickMaxPrice && color.length == 0 && razmer.length == 0){
             css($activeFilters,{
                 display: 'none'
             })
@@ -51,6 +51,14 @@ export class Active_Filters{
         } )
     
         let template = activeCat.map( (item, index)=> `<li data-cat-id="${categorys_id[index]}" class="cat-item-active cart-item-selected-active">${item}</li>`)
+
+        color.forEach( cl => {
+            template.push( `<li data-attr-value="${cl[1]}" class="cat-item-active cart-item-selected-active"><a href="#">${cl[0]}</a></li>` )
+        } )
+
+        razmer.forEach( rz => {
+            template.push( `<li data-attr-value="${rz[1]}" class="cat-item-active cart-item-selected-active"><a href="#">${rz[0]}</a></li>` )
+        } )
 
         if( min != this.sliderEl1.publickMinPrice ){
             template.push(`<li data-cat-min="${min}" class="cat-item-active cart-item-selected-active"><a href="#">Мин: ${min}</a></li>`)   
@@ -79,6 +87,10 @@ export class Active_Filters{
         if( e.target.parentNode.hasAttribute('data-cat-max') ){
             this.sliderEl1.cahngeMaxPosition( this.sliderEl1.publickMaxPrice )
         }
+        if( e.target.parentNode.hasAttribute('data-attr-value') ){
+            let removeAttr = document.querySelector(`[data-value="${e.target.parentNode.getAttribute('data-attr-value')}"]`)
+            removeAttr.parentNode.classList.remove('element-select')
+        }
         if( e.target.parentNode.hasAttribute('data-remove-all') ){
 
             for( let node of this.list.children ){
@@ -92,6 +104,10 @@ export class Active_Filters{
                 }
                 if( node.hasAttribute('data-cat-max') ){
                     this.sliderEl1.cahngeMaxPosition( this.sliderEl1.publickMaxPrice )
+                }
+                if( node.hasAttribute('data-attr-value') ){
+                    let removeAttr = document.querySelector(`[data-value="${node.getAttribute('data-attr-value')}"]`)
+                    removeAttr.parentNode.classList.remove('element-select')
                 }
             }
 

@@ -18,6 +18,8 @@ export function blueins_get_posts(){
     let color = _.blueins_get_color()
     let razmer = _.blueins_get_razmer()
     
+    let color_codes = color.map( cl => cl[1] )
+    let razmer_codes = razmer.map( rz => rz[1] )
     
     sendRequest( {
         method: 'GET',
@@ -29,11 +31,11 @@ export function blueins_get_posts(){
             max,
             order,
             taxonomyID: taxonomy,
-            color: color,
-            razmer: razmer
+            color: color_codes,
+            razmer: razmer_codes
         },
         onloadstart_callback(){
-            activeFilters.add(category_id, min, max)
+            activeFilters.add(category_id, min, max, color, razmer)
 
             $preloader.show()
 

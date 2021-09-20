@@ -85,10 +85,12 @@
                      margin: 0
                      &__list
                         display: flex
+                        flex-wrap: wrap
                         padding: 0.5rem 0
+                        align-items: center
                         .details__razmer__list__item
                            margin-right: 0.8rem
-                           margin-bottom: 0.8rem
+                           margin-bottom: 1rem
                            transition: all 0.3s ease
                            position: relative
                            &:hover
@@ -139,26 +141,53 @@
                               opacity: 0
                               visibility: hidden
                               transition: all 0.3s ease
-                           .details-select-square
-                              transition: all 0.3s ease
-                              width: 26px
+                           .razmer-bg
                               height: 26px
-                              display: flex
-                              justify-content: center
-                              align-items: center
-                              border-radius: 2px
-                              border: 1px solid $gray
-                              color: $light
-                              font-family: 'Jost'
-                              font-size: 1rem
-                              position: relative
-                              cursor: pointer
-                              &:hover
-                                 border: 1px solid $light
+                              .details-select-square
+                                 transition: all 0.3s ease
+                                 width: 26px
+                                 height: 26px
+                                 display: flex
+                                 justify-content: center
+                                 align-items: center
+                                 border-radius: 2px
+                                 border: 1px solid $gray
+                                 color: $light
+                                 font-family: 'Jost'
+                                 font-size: 1rem
+                                 position: relative
+                                 cursor: pointer
                            .element-select
-                              border: 1px solid $light
-                        &__item
+                              position: relative
+                              background: rgba($white,.08)
+                              border: none
+                              padding: 0px 20px 0px 0px
+                              .details-select-square
+                                 border: none
+                              &::after
+                                 position: absolute
+                                 top: 50%
+                                 transform: translateY(-50%)
+                                 font-family: 'BlueinsIcon'
+                                 content: "\e900"
+                                 font-weight: 400
+                                 font-size: 10px
+                                 line-height: 1
+                                 height: 0.5rem
+                                 width: 0.5rem
+                                 color: $light
+                                 margin-left: 29px
+                                 transition: all 0.3s ease
+                                 @media screen and ( max-width: 1200px )
+                                    font-size: 8px
+                              &:hover
+                                 &::after
+                                    color: $blue
+                                 .details-select-square
+                                    border: none
+                        .details__colors__list__item
                               margin-right: 0.8rem
+                              margin-bottom: 1rem
                               transition: all 0.3s ease
                               position: relative
                               &:hover
@@ -209,28 +238,55 @@
                                  opacity: 0
                                  visibility: hidden
                                  transition: all 0.3s ease
-                              .details-select-circle
-                                 transition: all 0.3s ease
-                                 width: 20px
+                              .color-bg
                                  height: 20px
-                                 display: inline-block
-                                 border-radius: 100px
-                                 position: relative
-                                 &::after
-                                    content: ''
-                                    @include absolute-align-center
-                                    width: 26px
-                                    height: 26px
-                                    border: 1px solid $light
-                                    border-radius: 100px
+                                 .details-select-circle
                                     transition: all 0.3s ease
-                                    opacity: 0
+                                    width: 20px
+                                    height: 20px
+                                    display: inline-block
+                                    border-radius: 100px
+                                    position: relative
+                                    &::after
+                                       content: ''
+                                       @include absolute-align-center
+                                       width: 26px
+                                       height: 26px
+                                       border: 1px solid $white
+                                       border-radius: 100px
+                                       transition: all 0.3s ease
+                                       opacity: 0
+                                    &:hover
+                                       &::after
+                                          opacity: 1
+                              .element-select
+                                 position: relative
+                                 background: rgba($white,.08)
+                                 border-radius: 30px
+                                 padding: 5px 30px 5px 5px
+                                 height: 30px
+                                 &::after
+                                    position: absolute
+                                    top: 50%
+                                    transform: translateY(-50%)
+                                    content: "\e900"
+                                    font-family: 'BlueinsIcon'
+                                    font-weight: 400
+                                    font-size: 10px
+                                    line-height: 1
+                                    height: 0.5rem
+                                    width: 0.5rem
+                                    color: $light
+                                    margin-left: 10px
+                                    transition: all 0.3s ease
+                                    @media screen and ( max-width: 1200px )
+                                       font-size: 8px
                                  &:hover
                                     &::after
-                                       opacity: 1
-                              .element-select
-                                 &::after
-                                    opacity: 1
+                                       color: $blue
+                                    .details-select-circle
+                                       &::after
+                                          opacity: 0
                &__title
                   width: 100%
                   display: flex
@@ -362,38 +418,6 @@
                            transition: all 0.3s ease
                            &:hover
                               color: $line_gray
-                  .customs__cl
-                     display: flex
-                     &__item
-                        margin-right: 1rem
-                        .cl-circle
-                           width: 20px
-                           height: 20px
-                           display: inline-block
-                           border-radius: 100px
-                           position: relative
-                           &:hover
-                              &::after
-                                 opacity: 1
-                           &::after
-                              content: ''
-                              @include absolute-align-center
-                              width: 24px
-                              height: 24px
-                              border: 1px solid $white
-                              border-radius: 100px
-                              opacity: 0
-                              transition: all 0.3s ease
-                        .red
-                           background: #CF7878
-                        .black
-                           background: $black
-                        .blue
-                           background: $blue
-                        .gold
-                           background: #D9C2AD
-                        .grey
-                           background: #C9C9C9
                      
                            
 
@@ -405,9 +429,7 @@
    height: calc(88vw - (100vw / 2))
    position: relative
    @media screen and ( max-width: 700px )
-      height: 35vh
-   @media screen and ( max-width: 430px )
-      height: 40vh
+      height: 45vh
    &::before
       content: ''
       position: absolute
@@ -422,9 +444,7 @@
       position: relative
       overflow: hidden
       @media screen and ( max-width: 700px )
-         height: 35vh
-      @media screen and ( max-width: 430px )
-         height: 40vh
+         height: 45vh
       &__img
          width: 100%
          position: absolute
@@ -432,7 +452,6 @@
          left: 50%
          transform: translate(-50%, 0)
          @media screen and ( max-width: 700px )
-            //transform: translate(-50%, -50%)
             height: 100%
             width: auto
    .start-img__cover__content
@@ -442,9 +461,7 @@
       top: 0
       left: 0
       @media screen and ( max-width: 700px )
-         height: 35vh
-      @media screen and ( max-width: 430px )
-         height: 40vh
+         height: 45vh
    &__content
       text-align: center
       color: inherit
@@ -453,8 +470,6 @@
       left: 50%
       transform: translate(-50%, -50%)
       @media screen and ( max-width: 700px )
-         transform: translate(-50%, 0%)
-      @media screen and ( max-width: 430px )
          transform: translate(-50%, -50%)
          top: 58%
          width: calc(100vw - 2rem)
@@ -469,47 +484,28 @@
          color: $dark-light
          position: relative
          padding: 0.8rem 0
-         // &::before
-         //    content: ''
-         //    position: absolute
-         //    top: 0
-         //    left: 50%
-         //    width: 90%
-         //    transform: translateX(-50%)
-         //    height: 1px
-         //    background: $dark-light
-         // &::after
-         //    content: ''
-         //    position: absolute
-         //    bottom: 0
-         //    left: 50%
-         //    width: 40%
-         //    transform: translateX(-50%)
-         //    height: 1px
-         //    background: $dark-light
       &__list
          display: flex
          align-items: center
          justify-content: center
-         @media screen and ( max-width: 430px )
+         @media screen and ( max-width: 480px )
             flex-direction: row
          &__item
             margin-top: 1.6rem
             padding: 0 1.26rem
-            @media screen and ( max-width: 430px )
+            @media screen and ( max-width: 480px )
                margin-top: 1rem
-            @media screen and ( max-width: 700px )
-               //display: none
             &>a
                display: inline-block
                color: inherit
                text-decoration: none
                position: relative
                padding: 0.5rem 0
+               @include after-line($dark)
                &:hover
                   color: inherit
                   text-decoration: none
-               @include after-line($dark)
+
 
 .start-img-white-color
    .start-img__content
@@ -532,6 +528,9 @@
                &:hover
                   color: $dark
                @include after-line($dark)
+
+
+
 
 
 .filters
@@ -699,9 +698,15 @@
    margin-top: 2rem
    img
       margin: 0 auto
+      @media screen and ( max-width: 600px )
+         width: 100%
+         height: auto
    
+
+
 .archive-container
    padding: 0 2rem
+
 
 
 .products
@@ -749,6 +754,8 @@
                   height: calc(50vw - 24px)
                   margin-bottom: 7px
             .product-cart__bottom
+               @media screen and ( max-width: 480px )
+                  width: calc(50vw - 24px)
                &__left
                   .additing-block-information
                      display: none
@@ -878,6 +885,7 @@
                   display: none
 
 
+
 .products
    position: relative
    .preloader
@@ -897,6 +905,8 @@
          width: 60px
          height: 60px
          z-index: 2
+
+
 
 .button-preloader
    width: 138px
