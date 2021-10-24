@@ -44,47 +44,7 @@ if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){
     <main class="main">
     <!-- Main -->
 
-      	<section class="start-img <?php if( get_theme_mod( 'shop-start-img-color-text' ) === 'normal' ){ echo 'start-img-white-color'; }else{ echo 'start-img-dark-color'; } ?>">
-            <div class="start-img__cover">
-                <img id="parallax_img" class="start-img__cover__img" src="<?php echo get_theme_mod('shop-start-img-upload'); ?>">
-            </div>
-            <div class="start-img__cover__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="start-img__content">
-                            <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-                                <h1 class="h1-style"><?php woocommerce_page_title(); ?></h1>
-                            <?php endif; ?>
-                            <ul class="start-img__content__list">
-                                <?php
-                                    $category_id = get_theme_mod('shop_category_id_view');
-                                    $category_id_separated = explode( ' | ', $category_id );
-
-                                    $woo_categories = get_categories( array(
-                                        'taxonomy'    => 'product_cat',
-                                        'orderby'     => 'name',
-                                        'order'       => 'ASC',
-                                        'hide_empty'  => false,
-                                        'include'     => $category_id_separated,
-                                        'number'      => 3
-                                    ) );
-            
-                                    $woo_categories = array_reverse ( $woo_categories );
-            
-                                    foreach( $woo_categories as $woo_cat ):
-                                ?>
-                                    <li class="start-img__content__list__item">
-                                        <a class="light-seventeen" href="<?php echo get_term_link( $woo_cat->term_id, 'product_cat' ); ?>"><?php echo $woo_cat->name; ?></a>
-                                    </li>
-                                <?php
-                                    endforeach;
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		</section>
+        <?php do_shortcode('[blu_BCP_get_content]') ?>
 
 		<section id="blueins-filters-block" class="filters">
 			<div class="big-container">
