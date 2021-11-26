@@ -85,16 +85,16 @@ get_header('','about__header__bottom');
         </section>
 
         <section class="category">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <?php if( get_field('main_title_section_0') ) : ?>
-                        <div class="section-title">
-                            <h1 class="section-text__title h2-style"><?php echo get_field('main_title_section_0'); ?></h1>
-                            <?php if( get_field('main_describtion_section_0') ): ?>
-                                <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_0'); ?></p>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
+            <div class="container-fluid">
+                <?php if( get_field('main_title_section_0') ) : ?>
+                    <!-- <div class="section-title"> -->
+                        <!-- <h1 class="section-text__title h2-style"><?php echo get_field('main_title_section_0'); ?></h1> -->
+                        <?php if( get_field('main_describtion_section_0') ): ?>
+                            <!-- <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_0'); ?></p> -->
+                        <?php endif; ?>
+                    <!-- </div> -->
+                <?php endif; ?>
+                <div class="row justify-content-between row-cols-3">
                     <?php
 
                     $category_id = get_theme_mod('shop_category_id_view');
@@ -111,13 +111,13 @@ get_header('','about__header__bottom');
                         'number'      => 3
                       ) );
 
-                      $woo_categories = array_reverse ( $woo_categories );
+                    $woo_categories = array_reverse ( $woo_categories );
 
-                        foreach( $woo_categories as $woo_cat ):
-                        setup_postdata( $woo_cat );
+                    foreach( $woo_categories as $woo_cat ):
+                    setup_postdata( $woo_cat );
                     ?>
 
-                    <div class="col-md-4 col-sm-12">
+                    <div class="coll">
                         <div class="category__cart" data-aos="fade-up" data-aos-delay="<?php 
                             if($woo_cat->term_id == 34) echo '0';
                             if($woo_cat->term_id == 19) echo '100';
@@ -137,11 +137,11 @@ get_header('','about__header__bottom');
                                 <a class="fill-button-white" href="<?php echo get_term_link( $woo_cat->term_id, 'product_cat' );?>">Посмотреть</a>
                             </div>
                         </div>
-                    </div>       
+                    </div>
 
                     <?php 
-                        endforeach;
-                        wp_reset_postdata();
+                    endforeach;
+                    wp_reset_postdata();
                     ?>
                 </div>
             </div>
@@ -155,34 +155,34 @@ get_header('','about__header__bottom');
                     <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_1'); ?></p>
                 </div>
                 <?php endif; ?>
-                <div class="row">
-                    <ul class="big-products__list">
-                        <!-- Big Products Item -->
-                        <?php
-                        $loop = new WP_Query( array(
-                            'post_type' => 'product',
-                            'posts_per_page' => 3,
-                            'orderby' => 'menu_order',
-                            'order' => 'ASC',
-                        ));
-                        $count = 0;
-                        while ( $loop->have_posts() ):
-                            
-                            $loop->the_post();
-                            global $product;
-                            ?>
+                <div class="slick-product-slider">
+                    <!-- Big Products Item -->
+                    <?php
+                    $loop = new WP_Query( array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'orderby' => 'menu_order',
+                        'order' => 'ASC',
+                    ));
+                    $count = 0;
+                    while ( $loop->have_posts() ):
+                        
+                        $loop->the_post();
+                        global $product;
+                        ?>
 
+                        <div class="slick-product__item">
                             <li class="big-products__list__item" data-aos="fade-up"  data-aos-delay="<?php echo $count += 100; ?>">
                                 <?php wc_get_template_part( 'content', 'product-index' ); ?>
                             </li>
+                        </div>
 
-                            <?php
+                        <?php
 
-                        endwhile;
-                        wp_reset_postdata();
-                        ?>
-                        <!-- Big Products Item -->
-                    </ul>
+                    endwhile;
+                    wp_reset_postdata();
+                    ?>
+                    <!-- Big Products Item -->
                 </div>
             </div>
         </section>

@@ -205,32 +205,33 @@
 
       
 .category
-   padding: 6rem 0
-   border-bottom: 1px solid $line_gray
+   padding: 0
+   .full-container
+      width: 100vw
    &__cart
       position: relative
-      max-width: 350px
-      height: 537px
+      max-width: 100%
+      height: 687px
       overflow: hidden
-      background: $blue
+      background: $gray
       @media screen and ( max-width: 992px )
-         height: 400px
+         // height: 400px
       @media screen and ( max-width: 768px )
-         max-width: 100%
-         height: 350px
-         margin-bottom: 2rem
+         // max-width: 100%
+         // height: 350px
+         // margin-bottom: 2rem
       &:hover
          .fill-button
             background: $light
          .category__cart__img
-            transform: scale(1.1)
+            transform: translate(-50%,-50%) scale(1.1)
       &__img
-         margin: 0 auto
+         @include absolute-align-center
          height: 100%
          transition: all 1.5s ease
          @media screen and ( max-width: 768px )
-            width: 100%
-            height: auto
+            // width: 100%
+            // height: auto
       &__text
          width: 80%
          position: absolute
@@ -251,14 +252,13 @@
    
 .section-title
    width: 100%
-   text-align: center
+   text-align: left
    margin-bottom: 3rem
    .section-text__title
       margin-bottom: 1rem
       display: block
    .seciton-text__description
       margin: 0 auto
-      max-width: 650px
 
 
 

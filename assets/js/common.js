@@ -672,6 +672,19 @@ $(document).ready( ()=>{
 } );
 
 
+$('.slick-product-slider').slick({
+  slidesToShow: 4,
+  dots: false,
+  infinite: false,
+  autoplay: false,
+  speed: 700,
+  fade: false,
+  cssEase: 'linear',
+  nextArrow: `<button type="button" class="slick-next"><img src="${PAGE_URL}/assets/img/Icon/Dark/next.svg" alt="Next"></button>`,
+  prevArrow: `<button type="button" class="slick-prev"><img src="${PAGE_URL}/assets/img/Icon/Dark/prev.svg" alt="Prev"></button>`,
+})
+
+
 $('#feedback__slider__img').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
