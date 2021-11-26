@@ -482,32 +482,67 @@
 
 .big-products
    padding: 6rem 0
-   &__list
+   .pos-relative
+      position: relative
+   &__title
       display: flex
-      justify-content: space-between
-      flex-direction: row
-      width: 100%
-      transition: all 0.3s ease
-      @media screen and ( max-width: 480px )
-         justify-content: flex-start
-         overflow-x: scroll
-         padding: 0 15px
-         /* width */
-         &::-webkit-scrollbar 
-            width: 0px
-      &__item
-         transition: all 0.3s ease
-         @media screen and ( max-width: 480px )
-            margin-right: 1rem
-            width: calc( 100vw - 30px - 10vw )
-         .product-cart
-            &__top
-               @media screen and ( max-width: 480px )
-                  width: calc( 100vw - 30px - 10vw )
-                  height: calc( 100vw - 30px - 10vw )
-            &__bottom
-               @media screen and ( max-width: 480px )
-                  width: calc( 100vw - 30px - 10vw )
+      .section-title
+      &__slider-controll
+         .slider-controll
+            position: initial
+            .slick-arrow
+               position: absolute
+               top: 1.4rem
+               z-index: 1
+               width: 2.8rem
+               height: 2.8rem
+               border-radius: 50%
+               border: 1px solid rgba($dark, 0.7)
+               display: flex
+               justify-content: center
+               align-items: center
+               transition: all 0.5s ease
+               opacity: 1
+               &::before
+                  content: ''
+            .slick-prev
+               right: calc(1.4rem + 2.8rem + 1.4rem)
+               left: auto
+            .slick-next
+               right: 1.4rem
+               left: auto
+            .slick-list
+               display: none
+   .slick-product-slider
+      width: calc( 1140px + ((100vw - 1140px) / 2)  )
+      .slick-list
+         padding: 1rem 0 0 0
+   // &__list
+   //    display: flex
+   //    justify-content: space-between
+   //    flex-direction: row
+   //    width: 100%
+   //    transition: all 0.3s ease
+   //    @media screen and ( max-width: 480px )
+   //       justify-content: flex-start
+   //       overflow-x: scroll
+   //       padding: 0 15px
+   //       /* width */
+   //       &::-webkit-scrollbar 
+   //          width: 0px
+   //    &__item
+   //       transition: all 0.3s ease
+   //       @media screen and ( max-width: 480px )
+   //          margin-right: 1rem
+   //          width: calc( 100vw - 30px - 10vw )
+   //       .product-cart
+   //          &__top
+   //             @media screen and ( max-width: 480px )
+   //                width: calc( 100vw - 30px - 10vw )
+   //                height: calc( 100vw - 30px - 10vw )
+   //          &__bottom
+   //             @media screen and ( max-width: 480px )
+   //                width: calc( 100vw - 30px - 10vw )
                
 
 

@@ -148,19 +148,48 @@ get_header('','about__header__bottom');
         </section>
 
         <section class="big-products">
-            <div class="container">
-                <?php if( get_field('main_title_section_1') ) : ?>
-                <div class="section-title">
-                    <span class="section-text__title h2-style"><?php echo get_field('main_title_section_1'); ?></span>
-                    <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_1'); ?></p>
+            <div class="container pos-relative">
+                <div class="big-products__title">
+                    <?php if( get_field('main_title_section_1') ) : ?>
+                    <div class="section-title">
+                        <span class="section-text__title h2-style"><?php echo get_field('main_title_section_1'); ?></span>
+                        <p class="seciton-text__description regular-fiveteen"><?php echo get_field('main_describtion_section_1'); ?></p>
+                    </div>
+                    <?php endif; ?>
+                    <div class="big-products__title__slider-controll">
+                        <div class="slider-controll">
+                            <!-- Big Products Controll -->
+                            <?php
+                            $loop = new WP_Query( array(
+                                'post_type' => 'product',
+                                'posts_per_page' => 6,
+                                'orderby' => 'menu_order',
+                                'order' => 'ASC',
+                            ));
+                            while ( $loop->have_posts() ):
+                                
+                                $loop->the_post();
+                                global $product;
+                                ?>
+
+                                <div class="slider-controll__item"></div>
+
+                                <?php
+
+                            endwhile;
+                            wp_reset_postdata();
+                            ?>
+                            <!-- Big Products Controll -->
+                        </div>
+                    </div>
                 </div>
-                <?php endif; ?>
+                
                 <div class="slick-product-slider">
                     <!-- Big Products Item -->
                     <?php
                     $loop = new WP_Query( array(
                         'post_type' => 'product',
-                        'posts_per_page' => 8,
+                        'posts_per_page' => 6,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                     ));
@@ -172,9 +201,9 @@ get_header('','about__header__bottom');
                         ?>
 
                         <div class="slick-product__item">
-                            <li class="big-products__list__item" data-aos="fade-up"  data-aos-delay="<?php echo $count += 100; ?>">
+                            <div class="big-products__list__item" data-aos="fade-up"  data-aos-delay="<?php echo $count += 100; ?>">
                                 <?php wc_get_template_part( 'content', 'product-index' ); ?>
-                            </li>
+                            </div>
                         </div>
 
                         <?php
