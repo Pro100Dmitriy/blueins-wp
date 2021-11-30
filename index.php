@@ -216,7 +216,7 @@ get_header('','about__header__bottom');
             </div>
         </section>
 
-        <section class="feedback">
+        <!-- <section class="feedback">
             <div class="container">
                 <div class="section-title">
                     <span class="section-text__title h2-style">Отзывы</span>
@@ -225,53 +225,55 @@ get_header('','about__header__bottom');
                  <div id="feedback__slider__img" class="feedback__slider__img">
                     <?php
                     
-                    $sliderComment = get_posts( array(
-                        'numberposts'   => -1,
-                        'category_name' => 'company-comments',
-                        'orderby'       => 'date',
-                        'order'         => 'ASC',
-                        'post_type'     => 'post'
-                    ) );
+                    // $sliderComment = get_posts( array(
+                    //     'numberposts'   => -1,
+                    //     'category_name' => 'company-comments',
+                    //     'orderby'       => 'date',
+                    //     'order'         => 'ASC',
+                    //     'post_type'     => 'post'
+                    // ) );
 
-                    foreach ($sliderComment as $post) :
-                        setup_postdata($post);
+                    // foreach ($sliderComment as $post) :
+                    //     setup_postdata($post);
                     ?>
                         <div class="feedback__img__el">
                             <div class="img-cover">
-                                <img class="img-cover__img" src="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" alt="Slide 1">
+                                <img class="img-cover__img" src="<?php //echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" alt="Slide 1">
                             </div>
                         </div>
                     <?php
-                    endforeach;
-                    wp_reset_postdata();
+                    // endforeach;
+                    // wp_reset_postdata();
                     ?>
                  </div>
                  <div id="feedback__slider__text" class="feedback__slider__text">
                     <?php
                     
-                    $sliderComment = get_posts( array(
-                        'numberposts'   => -1,
-                        'category_name' => 'company-comments',
-                        'orderby'       => 'date',
-                        'order'         => 'ASC',
-                        'post_type'     => 'post'
-                    ) );
+                    // $sliderComment = get_posts( array(
+                    //     'numberposts'   => -1,
+                    //     'category_name' => 'company-comments',
+                    //     'orderby'       => 'date',
+                    //     'order'         => 'ASC',
+                    //     'post_type'     => 'post'
+                    // ) );
 
-                    foreach ($sliderComment as $post) :
-                        setup_postdata($post);
+                    // foreach ($sliderComment as $post) :
+                    //     setup_postdata($post);
                     ?>
                         <div class="feedback__text__el">
-                            <cite class="el-name medium-ninteen"><?php the_title(); ?></cite>
-                            <div class="el-description regular-fiveteen"><?php the_content(); ?></div>
+                            <cite class="el-name medium-ninteen"><?php //the_title(); ?></cite>
+                            <div class="el-description regular-fiveteen"><?php //the_content(); ?></div>
                         </div>
                     <?php
-                    endforeach;
-                    wp_reset_postdata();
+                    // endforeach;
+                    // wp_reset_postdata();
                     ?>
                  </div>
              </div>
             </div>
-        </section>
+        </section> -->
+
+        <?php do_shortcode('[blu_BCP_get_content]') ?>
 
         <section class="small-products">
             <div class="container">
