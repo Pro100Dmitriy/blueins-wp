@@ -692,6 +692,15 @@ $('.slick-product-slider').slick({
   fade: false,
   arrows: false,
   asNavFor: '.slider-controll',
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    }
+  ]
 })
 
 

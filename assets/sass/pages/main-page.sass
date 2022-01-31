@@ -211,15 +211,12 @@
    &__cart
       position: relative
       max-width: 100%
-      height: 687px
+      height: calc( 100vw / 3 )
       overflow: hidden
       background: $gray
-      @media screen and ( max-width: 992px )
-         // height: 400px
       @media screen and ( max-width: 768px )
-         // max-width: 100%
-         // height: 350px
-         // margin-bottom: 2rem
+         height: 100vw
+         width: 100vw
       &:hover
          .fill-button
             background: $light

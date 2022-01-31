@@ -18,10 +18,10 @@ export class Blueins_Variation{
     }
 
     init(){
-        let optionsProductPaCzvet = this.space.querySelector('[data-attribute_name="attribute_pa_czvet"]')
-        let optionsProductPaRazmer = this.space.querySelector('[data-attribute_name="attribute_pa_razmer"]')
-        let optionsProductCzvet = this.space.querySelector('[data-attribute_name="attribute_czvet"]')
-        let optionsProductRazmer = this.space.querySelector('[data-attribute_name="attribute_razmer"]')
+        let optionsProductPaCzvet = this.space.querySelector('[data-attribute_name="attribute_pa_czvet"]') ?? false
+        let optionsProductPaRazmer = this.space.querySelector('[data-attribute_name="attribute_pa_razmer"]') ?? false
+        let optionsProductCzvet = this.space.querySelector('[data-attribute_name="attribute_czvet"]') ?? false
+        let optionsProductRazmer = this.space.querySelector('[data-attribute_name="attribute_razmer"]') ?? false
 
         if( optionsProductPaRazmer ){
             this.razmerInit( optionsProductPaRazmer, this.setRazmerPaNameContainer, this.setRazmerPaSquareContainer )
@@ -107,6 +107,7 @@ export class Blueins_Variation{
                 `
 
                 container.insertAdjacentHTML('afterbegin', HTML)
+                console.log( container )
             }
         } )
 
@@ -120,8 +121,9 @@ export class Blueins_Variation{
         for( let item of list ){
             item.classList.remove('element-select')
         }
+
         active.classList.add('element-select')
-      
+
         let circleFirstValue = active.getAttribute('data-value')
         let selectedValue = optionsHTML.map( option => {
             if( option.value == circleFirstValue ) {
