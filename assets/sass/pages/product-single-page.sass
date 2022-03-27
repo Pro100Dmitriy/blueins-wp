@@ -215,11 +215,22 @@
          margin-top: 1.66rem
       .woocommerce-variation-add-to-cart
          display: flex
+         @media screen and ( max-width: 420px )
+            flex-direction: column
+            width: 100%
+         .variations_button__group
+            display: flex
+            @media screen and ( max-width: 420px )
+               width: 100%
+               margin-bottom: 1rem
          .details__quantity-but__quantity
             @include el-quantity ($dark, $light, $line_gray)
             margin-right: 1rem
          .el-form__button
             margin-right: 1rem
+            @media screen and ( max-width: 420px )
+               margin-right: 0rem
+               width: 100%
          .fill-button-dark
             margin-right: 1rem
             @media screen and ( max-width: 500px )
@@ -237,6 +248,8 @@
             background: $gray
             transition: all 0.3s ease
             border: none
+            @media screen and ( max-width: 420px )
+               width: 100%
             svg
                path
                   fill: $white

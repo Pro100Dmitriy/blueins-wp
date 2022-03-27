@@ -38,6 +38,7 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
       </section>
 
 
+      <?php if( get_field('aq-section-hash-1') ) : ?>
       <section class="first-video <?php echo get_field('aq-section-hash-1'); ?>">
           <div class="container">
             <div class="section-title">
@@ -53,8 +54,10 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
             </div>
           </div>
       </section>
+      <?php endif; ?>
       
 
+      <?php if( get_field('aq-section-hash-2') ) : ?>
       <section class="text-block <?php echo get_field('aq-section-hash-2'); ?>">
          <div class="small-container">
             <div class="section-title">
@@ -67,8 +70,10 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
             </div>
          </div>
       </section>
+      <?php endif; ?>
 
 
+      <?php if( get_field('aq-section-hash-3') ) : ?>
       <section class="mixed-block <?php echo get_field('aq-section-hash-3'); ?>">
          <div class="container">
             <div class="section-title">
@@ -94,8 +99,10 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
             </div>
          </div>
       </section>
+      <?php endif; ?>
 
 
+      <?php if( get_field('aq-section-hash-4') ) : ?>
       <section class="text-block <?php echo get_field('aq-section-hash-4'); ?>">
          <div class="small-container">
             <div class="section-title">
@@ -108,8 +115,10 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
            </div>
          </div>
       </section>
+      <?php endif; ?>
 
 
+      <?php if( get_field('aq-section-hash-5') ) : ?>
       <section class="text-block <?php echo get_field('aq-section-hash-5'); ?>">
          <div class="small-container">
             <div class="section-title">
@@ -122,8 +131,10 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
            </div>
          </div>
       </section>
+      <?php endif; ?>
 
 
+      <?php if( get_field('aq-section-hash-6') ) : ?>
       <section class="mixed-block <?php echo get_field('aq-section-hash-6'); ?>">
          <div class="container">
             <div class="section-title">
@@ -139,6 +150,7 @@ if( get_theme_mod( 'aq-start-img-color-text' ) === 'normal' ){
             </div>
          </div>
       </section>
+      <?php endif; ?>
 
 
     <!-- Main -->

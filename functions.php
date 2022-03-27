@@ -125,17 +125,17 @@ if ( function_exists('register_sidebar') ){
 }
 
 /**
-*   Widgets Init
-*/
-
-require_once 'blueins/widgets/widgets.php';
-
-/**
 *   wooCommerce php file
 */
 
 require_once 'blueins/woocommerce.php';
 
+
+/**
+*   Widgets Init
+*/
+
+require_once 'blueins/widgets/widgets.php';
 
 
 /**
@@ -264,9 +264,6 @@ function blu_loadmore_ajax_handler(){
 			break;
 	}
 
-	//print_r($args);
-	//print_r($categories2);
-	//echo $_GET['active_tax'];
 
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ){
